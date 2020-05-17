@@ -1468,7 +1468,7 @@ h3 {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-image: url(../img/about/man.png);
+  /*background-image: url(../img/about/man.png);*/
   width: 397px;/*724px;*/
   height: 398px;/*767px;*/
   content: '';

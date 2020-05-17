@@ -17,6 +17,12 @@ $headers .= "Reply-To: $email_address";
 mail($to,$email_subject,$email_body,$headers);
 
 //redirect to the 'thank you' page
+$retval = mail ($to,$subject,$message,$header);
+   if( $retval == true ){
+      echo "Message sent successfully...";
+   }else{
+      echo "Message could not be sent...";
+   }
 
 
 
