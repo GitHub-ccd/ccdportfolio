@@ -1464,17 +1464,13 @@ h3 {
 }
 
 /* line 74, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
+/*background-image: url(../img/about/man.png);*/
 .slider_area .single_slider::before {
   position: absolute;
   bottom: 0;
   left: 0;
-  /*background-image: url(../img/about/man.png);*/
-<<<<<<< HEAD
-  /*background-image: url(../img/about/man.png);*/
-=======
->>>>>>> 52e9ad09ace390ed816f5d285339e2cb70d96e52
-  width: 397px;/*724px;*/
-  height: 398px;/*767px;*/
+  width: 397px;
+  height: 398px;
   content: '';
 }
 
@@ -5161,7 +5157,7 @@ h6 {
 /* line 14, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_blog.scss */
 .blog_area a:hover, .blog_area a :hover {
   background: -webkit-linear-gradient(131deg, #615CFD 0%, #615CFD 99%);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
   -webkit-transition: 0.5s;
@@ -5221,11 +5217,11 @@ h6 {
   font-weight: 300;
 }
 
-/* line 74, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_blog.scss */
+/* line 74, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_blog.scss 
+float: left; */
 .single-blog .tag {
   text-align: left;
   display: inline-block;
-  float: left;
   font-size: 13px;
   font-weight: 300;
   margin-right: 22px;
@@ -6653,7 +6649,7 @@ h6 {
 /* line 76, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_blog_part.scss */
 .blog_part .single-home-blog .card .card-body a:hover {
   background: -webkit-linear-gradient(131deg, #ff7e5f 0%, #feb47b 99%);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -6761,9 +6757,9 @@ h6 {
   -webkit-transition: 0.8s;
   transition: 0.8s;
   background: -webkit-linear-gradient(131deg, #feb47b 0%, #ff7e5f 99%);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-animation: 1s;
+  animation: 1s;
 }
 
 /* line 150, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_blog_part.scss */
