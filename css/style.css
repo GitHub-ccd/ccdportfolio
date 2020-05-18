@@ -1362,7 +1362,7 @@ h3 {
 .slider_area .single_slider {
   position: relative;
   z-index: 0;
-  height: 900px;
+  height: 600px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -1573,14 +1573,14 @@ h3 {
 }
 
 /* line 141, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
+/*text-transform: capitalize;*/
 .slider_area .single_slider .slider_text h3 {
   color: #FFF;
   font-family: "Muli", sans-serif;
-  font-size: 80px;  /*80px;*/
-  text-transform: capitalize;
-  font-weight: 500; /*700px;*/
-  line-height: 82px; 
-  margin-bottom: 9px; /*9px;*/
+  font-size: 70px;  /*80px;*/
+  font-weight: 700; /*700px;*/
+  line-height: 82px;   /*82px;*/
+  margin-bottom: 25%; /*9px;*/
 }
 
 @media (max-width: 767px) {
@@ -1651,7 +1651,7 @@ h3 {
   height: 2px;
   content: '';
   left: -67px;
-  top: 50%;
+  top: 30%;
   margin-bottom: -1px;
 }
 
@@ -2562,7 +2562,7 @@ h3 {
 .bradcam_area {
   background-size: cover;
   background-position: bottom;
-  padding: 233px 0 175px 0;
+  padding: 100px 0 175px 0;
   background-repeat: no-repeat;
   position: relative;
   z-index: 0;
