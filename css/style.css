@@ -2665,7 +2665,7 @@ h3 {
   outline: none;
 }
 
-/* line 101, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_bradcam.scss */
+/* line 101, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_bradcam.scss  height: 55px */
 .popup_box textarea {
   width: 100%;
   border: none;
@@ -3250,9 +3250,10 @@ h3 {
   overflow: hidden;
 }
 
-/* line 47, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_portfolio.scss */
+/* line 47, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_portfolio.scss height: 410px*/
 .portfolio_image_area .single_Portfolio .portfolio_thumb {
-  height: 410px;
+  height: 200px;
+  width: 200px;
 }
 
 /* line 49, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_portfolio.scss */
