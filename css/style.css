@@ -654,7 +654,7 @@ h3 {
   letter-spacing: 3px;
   color: #001D38;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 34px;
   display: block;
   padding-top: 14px;
 }
@@ -3197,7 +3197,7 @@ h3 {
   }
 }
 
-/* line 13, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_portfolio.scss */
+/* line 13, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_portfolio.scss 001D38 */
 .portfolio_area:before {
   position: absolute;
   width: 100%;
