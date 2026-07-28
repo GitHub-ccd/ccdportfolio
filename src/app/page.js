@@ -1,11 +1,10 @@
-import React from "react";
+"use client";
 
-export const metadata = {
-  title: "Dr. Chamila C. Dharmawardhana | Healthcare Data Scientist & AI Researcher",
-  description: "Personal portfolio of Dr. Chamila Chathuranga Dharmawardhana — Healthcare Data Scientist, Computational Physicist, and Health AI Researcher.",
-};
+import React, { useState } from "react";
 
 export default function Home() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-teal-500 selection:text-slate-950">
       {/* Background Subtle Gradient Glow */}
@@ -71,13 +70,19 @@ export default function Home() {
             >
               Explore Featured Projects
             </a>
+            <button
+              onClick={() => setIsVideoOpen(true)}
+              className="px-6 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-sm font-medium transition-all flex items-center space-x-2"
+            >
+              <span>🎬 Watch PhD Defense</span>
+            </button>
             <a
-              href="https://www.youtube.com/embed/2wWTxRMEA2g"
+              href="https://www.youtube.com/watch?v=2wWTxRMEA2g"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-sm font-medium transition-all"
+              className="px-4 py-3 rounded-lg bg-slate-900/50 hover:bg-slate-800/50 border border-slate-800/60 text-slate-400 text-xs font-medium transition-all flex items-center"
             >
-              🎬 Watch PhD Defense
+              YouTube Link ↗
             </a>
           </div>
         </section>
@@ -400,6 +405,34 @@ export default function Home() {
         </section>
 
       </main>
+
+      {/* VIDEO MODAL POPUP */}
+      {isVideoOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md">
+          <div className="relative w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+            <div className="flex items-center justify-between p-4 border-b border-slate-800">
+              <h3 className="text-sm font-semibold text-slate-200">
+                Ph.D. Defense Presentation — Dr. Chamila Dharmawardhana
+              </h3>
+              <button
+                onClick={() => setIsVideoOpen(false)}
+                className="px-3 py-1 text-xs font-semibold rounded bg-slate-800 hover:bg-slate-700 text-slate-300"
+              >
+                ✕ Close
+              </button>
+            </div>
+            <div className="relative aspect-video w-full">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/2wWTxRMEA2g?autoplay=1"
+                title="Ph.D. Defense Presentation"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
