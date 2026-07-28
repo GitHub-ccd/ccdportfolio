@@ -1,0 +1,3 @@
+# Disables Dependabot automated updates for this repository
+version: 2
+updates: []
