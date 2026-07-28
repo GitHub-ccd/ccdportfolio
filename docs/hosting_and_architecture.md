@@ -6,8 +6,8 @@ Both **GitHub Pages** and **Vercel** offer generous, permanent free tiers for st
 
 | Provider | Free Tier Benefits | Best Used For |
 | :--- | :--- | :--- |
-| **GitHub Pages** *(Primary Choice)* | • $0/month permanent free tier<br>• Directly hosted from repository (`ccdportfolio`) on `git push`<br>• Custom `.com` domain with free HTTPS/SSL<br>• Unlimited static bandwidth for normal sites | Main Portfolio Site, Resumes, Case Studies, Markdown Blog |
-| **Vercel** | • $0/month Hobby tier<br>• Instant preview deployments per git pull request<br>• Automatic global CDN edge network<br>• Easy integration if upgrading to Next.js/React later | Staging previews or dynamic React/Next.js deployments |
+| **GitHub Pages** *(Primary Choice)* | • **$0/month permanent free tier**<br>• **Global CDN powered by Fastly** for fast worldwide loading<br>• Directly hosted from repository (`ccdportfolio`) on `git push`<br>• Custom `.com` domain with free HTTPS/SSL<br>• Unlimited static bandwidth | Main Portfolio Site, Resumes, Case Studies, Markdown Blog |
+| **Vercel** | • **$0/month Hobby tier**<br>• **Vercel Global Edge Network CDN**<br>• Instant preview deployments per git pull request<br>• Easy integration if upgrading to dynamic Next.js/React later | Staging previews or dynamic React/Next.js deployments |
 
 ---
 
