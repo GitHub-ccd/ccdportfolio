@@ -1,0 +1,63 @@
+[
+  {
+    "id": "pneumonia-cnn",
+    "title": "Pneumonia Detection from Chest X-Rays via Deep CNNs",
+    "category": "Health AI & Medical Imaging",
+    "summary": "Automated diagnostic deep learning model evaluating lung X-ray scans using Convolutional Neural Networks to assist medical practitioners in identifying acute pneumonia infections.",
+    "description": "Pneumonia is an infection that inflames air sacs in one or both lungs, affecting over 150 million people annually. This project leverages transfer learning and deep CNN architectures to classify pediatric and adult chest X-ray images into Normal vs. Pneumonia infected cases, achieving high recall and diagnostic accuracy.",
+    "tech": ["TensorFlow", "Keras", "OpenCV", "Scikit-Learn", "Seaborn", "Python"],
+    "github": "https://github.com/GitHub-ccd/pneumonia_detection_CNN_MOD_4",
+    "blog": "https://findingdata.blogspot.com/2020/08/new-post.html",
+    "featured": true
+  },
+  {
+    "id": "protein-docking",
+    "title": "FFT-Based Protein Docking & Binding Affinity Simulation",
+    "category": "Bioinformatics & Computational Biology",
+    "summary": "Developed Fast Fourier Transform (FFT) binding affinity algorithms at Illinois Institute of Technology to evaluate protein complexes and streamline high-throughput docking simulations.",
+    "description": "High-throughput computational protein-protein docking requires rapid grid-based electrostatic and shape-complementarity evaluation. Developed specialized FFT-accelerated Python algorithms to calculate binding affinities across large structural databases.",
+    "tech": ["Python", "NumPy", "Pandas", "FFT Algorithms", "Molecular Docking", "Biopython"],
+    "institution": "Illinois Institute of Technology",
+    "featured": true
+  },
+  {
+    "id": "emotion-journal-app",
+    "title": "Facial Emotion Classification & E-Journaling App",
+    "category": "Computer Vision & Affective Computing",
+    "summary": "Transfer-learning Convolutional Neural Network trained to classify Paul Ekman’s 7 primary facial emotions (Angry, Disgust, Fear, Happy, Sad, Surprise, Neutral) for emotion tracking.",
+    "description": "Facial expressions convey emotional states that picture journals and vlogs capture. Built a full-stack Django application integrating a Keras CNN with transfer learning to train, re-train, and log emotional states from webcams and uploaded images.",
+    "tech": ["Django", "TensorFlow", "Keras", "OpenCV", "Selenium", "BeautifulSoup", "SQLite"],
+    "github": "https://github.com/GitHub-ccd/emoJ",
+    "blog": "https://findingdata.blogspot.com/2020/07/can-computers-really-tell-you-how-you.html",
+    "featured": true
+  },
+  {
+    "id": "retail-recommendation-nlp",
+    "title": "Retail Recommendation Engines & Consumer Sentiment NLP",
+    "category": "Applied Machine Learning & NLP",
+    "summary": "Supervised and unsupervised ML models built at Promoboxx, featuring campaign recommendation systems (XGBoost) and consumer sentiment NLP pipelines.",
+    "description": "Architected end-to-end feature engineering pipelines, missing data imputation strategies, A/B testing evaluation frameworks, and XGBoost recommendation models for digital retail marketing campaigns alongside spaCy/NLTK sentiment analysis.",
+    "tech": ["XGBoost", "spaCy", "NLTK", "Scikit-Learn", "Pandas", "A/B Testing"],
+    "institution": "Promoboxx.com",
+    "featured": true
+  },
+  {
+    "id": "materials-ab-initio",
+    "title": "Ab Initio Quantum & Classical Simulations of Materials",
+    "category": "Computational Physics",
+    "summary": "Ph.D. dissertation research at UMKC modeling structural, electronic, and mechanical properties of cement hydrates and intermetallic compounds.",
+    "description": "Performed extensive quantum mechanical density functional theory (DFT) calculations using Quantum Espresso and VASP to model complex crystal structures, vibrational density of states, and high-temperature oxidation mechanisms.",
+    "tech": ["Quantum Espresso", "VASP", "DFT", "Ab Initio Simulation", "Python", "Linux HPC"],
+    "institution": "University of Missouri - Kansas City",
+    "featured": true
+  },
+  {
+    "id": "telecom-churn-prediction",
+    "title": "Predictive Customer Churn Classification Model",
+    "category": "Applied Machine Learning & NLP",
+    "summary": "Supervised classification model evaluating customer retention indicators and identifying high-risk customer churn patterns.",
+    "tech": ["Scikit-Learn", "Pandas", "Seaborn", "Logistic Regression", "Random Forest"],
+    "github": "https://github.com/GitHub-ccd",
+    "featured": false
+  }
+]
