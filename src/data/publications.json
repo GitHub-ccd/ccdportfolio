@@ -1,6 +1,7 @@
 [
   {
     "id": "acta-mat-2020",
+    "type": "Journal Article",
     "title": "Reactive modeling of Mo3Si oxidation and resulting silica morphology",
     "authors": "Dharmawardhana CC, Zhou J, Taylor M, Miao J, Perepezko JH, Heinz H.",
     "journal": "Acta Materialia",
@@ -12,6 +13,7 @@
   },
   {
     "id": "const-build-mat-2018",
+    "type": "Journal Article",
     "title": "Theoretical investigations of C-(A)-S-H (I) cement hydrates",
     "authors": "Dharmawardhana CC, Misra A, Ching WY.",
     "journal": "Construction and Building Materials",
@@ -23,6 +25,7 @@
   },
   {
     "id": "nature-srep-2018",
+    "type": "Journal Article",
     "title": "Quantitative characterization of high temperature oxidation using electron tomography and energy-dispersive X-ray spectroscopy",
     "authors": "Zhou J, Taylor M, Melinte GA, Shahani AJ, Dharmawardhana CC, Heinz H, Voorhees P, Perepezko J, Ercius P, Bustillo K, Miao J.",
     "journal": "Scientific Reports (Nature)",
@@ -34,6 +37,7 @@
   },
   {
     "id": "jcp-2018",
+    "type": "Journal Article",
     "title": "Diffusion of Aqueous Solutions of Ionic, Zwitterionic, and Polar Solutes",
     "authors": "Teng X, Huang Q, Dharmawardhana CC, Ichiye T.",
     "journal": "Journal of Chemical Physics",
@@ -45,24 +49,263 @@
   },
   {
     "id": "jcp-2017",
-    "title": "The Shape of the Charge Distribution of Water Molecules and the Hydration of Ions",
+    "type": "Journal Article",
+    "title": "The Shape of the Charge Distribution of Water Molecules and the Unique Properties of Liquid Water",
     "authors": "Dharmawardhana CC, Ichiye T.",
     "journal": "Journal of Chemical Physics",
     "year": 2017,
     "volume": "147:194103",
-    "link": "https://aip.scitation.org/doi/abs/10.1063/1.5002162",
+    "link": "https://aip.scitation.org/doi/abs/10.1063/1.4986070",
     "figure": "/ccdportfolio/img/publications/JCP_147_2017_194103.png",
-    "bibtex": "@article{dharmawardhana2017shape,\n  title={The Shape of the Charge Distribution of Water Molecules and the Hydration of Ions},\n  author={Dharmawardhana, CC and Ichiye, T},\n  journal={The Journal of Chemical Physics},\n  volume={147},\n  number={19},\n  pages={194103},\n  year={2017},\n  publisher={AIP Publishing}\n}"
+    "bibtex": "@article{dharmawardhana2017shape,\n  title={The Shape of the Charge Distribution of Water Molecules and the Unique Properties of Liquid Water},\n  author={Dharmawardhana, CC and Ichiye, T},\n  journal={The Journal of Chemical Physics},\n  volume={147},\n  number={19},\n  pages={194103},\n  year={2017},\n  publisher={AIP Publishing}\n}"
   },
   {
-    "id": "cem-con-res-2013",
-    "title": "Ab initio calculation of mechanical and elastic properties of cement hydrates",
+    "id": "mol-sim-2017",
+    "type": "Journal Article",
+    "title": "Reliable computational design of biological-inorganic materials to the large nanometer scale using Interface-FF",
+    "authors": "Dharmawardhana CC, Kanhaiya K, Lin TJ, Garley A, Knecht MR, Zhou J, Miao J, Heinz H.",
+    "journal": "Molecular Simulation",
+    "year": 2017,
+    "volume": "00:1-12",
+    "link": "https://www.tandfonline.com/doi/abs/10.1080/08927022.2017.1332414",
+    "figure": "/ccdportfolio/img/publications/Interface_FF.png",
+    "bibtex": "@article{dharmawardhana2017reliable,\n  title={Reliable computational design of biological-inorganic materials to the large nanometer scale using Interface-FF},\n  author={Dharmawardhana, CC and Kanhaiya, K and Lin, TJ and Garley, A and Knecht, MR and Zhou, J and Miao, J and Heinz, H},\n  journal={Molecular Simulation},\n  pages={1--12},\n  year={2017},\n  publisher={Taylor \\& Francis}\n}"
+  },
+  {
+    "id": "jace-2017",
+    "type": "Journal Article",
+    "title": "Structure and properties of Hydrogrossular mineral series",
+    "authors": "Adhikari P, Dharmawardhana CC, Ching WY.",
+    "journal": "Journal of the American Ceramic Society",
+    "year": 2017,
+    "volume": "00:1-14",
+    "link": "https://ceramics.onlinelibrary.wiley.com/doi/abs/10.1111/jace.14970",
+    "figure": "/ccdportfolio/img/publications/Hydrogrouslar_2017.png",
+    "bibtex": "@article{adhikari2017structure,\n  title={Structure and properties of Hydrogrossular mineral series},\n  author={Adhikari, P and Dharmawardhana, CC and Ching, WY},\n  journal={Journal of the American Ceramic Society},\n  year={2017}\n}"
+  },
+  {
+    "id": "prb-2016",
+    "type": "Journal Article",
+    "title": "Ab initio calculation of thermo-mechanical properties and electronic structure of vitreloy 1 (Zr41.2Ti13.8Cu12.5Ni10Be22.5)",
+    "authors": "Hunca B, Dharmawardhana CC, Ching WY.",
+    "journal": "Physical Review B",
+    "year": 2016,
+    "volume": "94:144207",
+    "link": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.94.144207",
+    "figure": "/ccdportfolio/img/publications/PhysRevB_94_2016_144207.png",
+    "bibtex": "@article{hunca2016ab,\n  title={Ab initio calculation of thermo-mechanical properties and electronic structure of vitreloy 1},\n  author={Hunca, B and Dharmawardhana, CC and Ching, WY},\n  journal={Physical Review B},\n  volume={94},\n  pages={144207},\n  year={2016}\n}"
+  },
+  {
+    "id": "cjp-2016",
+    "type": "Journal Article",
+    "title": "Electronic Structure, Mechanical and Optical Properties of TiAl3 (L1_2 & D0_22) via First-Principles Calculations",
+    "authors": "Hussain A, Mehmood S, Rasool N, Li N, Dharmawardhana CC.",
+    "journal": "Chinese Journal of Physics",
+    "year": 2016,
+    "volume": "54:319-328",
+    "link": "https://www.sciencedirect.com/science/article/abs/pii/S0577907316000101",
+    "figure": "/ccdportfolio/img/publications/ChineseJournalofPhysics_54_2016_319.png",
+    "bibtex": "@article{hussain2016electronic,\n  title={Electronic Structure, Mechanical and Optical Properties of TiAl3 via First-Principles Calculations},\n  author={Hussain, A and Mehmood, S and Rasool, N and Li, N and Dharmawardhana, CC},\n  journal={Chinese Journal of Physics},\n  volume={54},\n  pages={319--328},\n  year={2016}\n}"
+  },
+  {
+    "id": "jace-2016",
+    "type": "Journal Article",
+    "title": "Nature of inter-atomic bonding in controlling the mechanical properties of Calcium Silicate Hydrates",
+    "authors": "Dharmawardhana CC, Bakare M, Misra A, Ching WY.",
+    "journal": "Journal of the American Ceramic Society",
+    "year": 2016,
+    "volume": "99:2120-2130",
+    "link": "https://ceramics.onlinelibrary.wiley.com/doi/abs/10.1111/jace.14214",
+    "figure": "/ccdportfolio/img/publications/JAmCeramSoc_99_2016_1551.png",
+    "bibtex": "@article{dharmawardhana2016nature,\n  title={Nature of inter-atomic bonding in controlling the mechanical properties of Calcium Silicate Hydrates},\n  author={Dharmawardhana, CC and Bakare, M and Misra, A and Ching, WY},\n  journal={Journal of the American Ceramic Society},\n  volume={99},\n  pages={2120--2130},\n  year={2016}\n}"
+  },
+  {
+    "id": "jncs-2015",
+    "type": "Journal Article",
+    "title": "Electronic structure and optical properties of amorphous GeO2 and in comparison to amorphous SiO2",
+    "authors": "Walker B, Dharmawardhana CC, Dari N, Rulis P, Ching WY.",
+    "journal": "Journal of Non-Crystalline Solids",
+    "year": 2015,
+    "volume": "428:176-183",
+    "link": "https://www.sciencedirect.com/science/article/abs/pii/S0022309315301551",
+    "figure": "/ccdportfolio/img/publications/JNonCrystallineSolids_428_2015_176.png",
+    "bibtex": "@article{walker2015electronic,\n  title={Electronic structure and optical properties of amorphous GeO2 and in comparison to amorphous SiO2},\n  author={Walker, B and Dharmawardhana, CC and Dari, N and Rulis, P and Ching, WY},\n  journal={Journal of Non-Crystalline Solids},\n  volume={428},\n  pages={176--183},\n  year={2015}\n}"
+  },
+  {
+    "id": "jallcom-2015",
+    "type": "Journal Article",
+    "title": "In search of zero thermal expansion anisotropy in Mo5Si3 by strategic alloying",
+    "authors": "Dharmawardhana CC, Sakidja R, Aryal S, Ching WY.",
+    "journal": "Journal of Alloys and Compounds",
+    "year": 2015,
+    "volume": "620:427-433",
+    "link": "https://www.sciencedirect.com/science/article/abs/pii/S0925838814023172",
+    "figure": "/ccdportfolio/img/publications/JAlloysandCompounds_620_2015_427.png",
+    "bibtex": "@article{dharmawardhana2015search,\n  title={In search of zero thermal expansion anisotropy in Mo5Si3 by strategic alloying},\n  author={Dharmawardhana, CC and Sakidja, R and Aryal, S and Ching, WY},\n  journal={Journal of Alloys and Compounds},\n  volume={620},\n  pages={427--433},\n  year={2015}\n}"
+  },
+  {
+    "id": "srep-2014",
+    "type": "Journal Article",
+    "title": "Quantum Mechanical Metric for Internal Cohesion in Cement Crystals",
     "authors": "Dharmawardhana CC, Misra A, Ching WY.",
+    "journal": "Scientific Reports (Nature)",
+    "year": 2014,
+    "volume": "4:7332",
+    "link": "https://mospace.umsystem.edu/xmlui/handle/10355/48336",
+    "figure": "/ccdportfolio/img/publications/SciRep_4_2014_7332.png",
+    "bibtex": "@article{dharmawardhana2014quantum,\n  title={Quantum Mechanical Metric for Internal Cohesion in Cement Crystals},\n  author={Dharmawardhana, CC and Misra, A and Ching, WY},\n  journal={Scientific Reports},\n  volume={4},\n  pages={7332},\n  year={2014}\n}"
+  },
+  {
+    "id": "cemconres-2013",
+    "type": "Journal Article",
+    "title": "Role of interatomic bonding in the mechanical anisotropy and interlayer cohesion of CSH crystals",
+    "authors": "Dharmawardhana CC, Misra A, Aryal S, Rulis P, Ching WY.",
     "journal": "Cement and Concrete Research",
     "year": 2013,
     "volume": "52:123-130",
-    "link": "https://www.sciencedirect.com/science/article/abs/pii/S000888461300154X",
+    "link": "https://www.sciencedirect.com/science/article/abs/pii/S0008884613001233",
     "figure": "/ccdportfolio/img/publications/CemConRes_52_2013_123.png",
-    "bibtex": "@article{dharmawardhana2013ab,\n  title={Ab initio calculation of mechanical and elastic properties of cement hydrates},\n  author={Dharmawardhana, CC and Misra, A and Ching, WY},\n  journal={Cement and Concrete Research},\n  volume={52},\n  pages={123--130},\n  year={2013},\n  publisher={Elsevier}\n}"
+    "bibtex": "@article{dharmawardhana2013role,\n  title={Role of interatomic bonding in the mechanical anisotropy and interlayer cohesion of CSH crystals},\n  author={Dharmawardhana, CC and Misra, A and Aryal, S and Rulis, P and Ching, WY},\n  journal={Cement and Concrete Research},\n  volume={52},\n  pages={123--130},\n  year={2013}\n}"
+  },
+  {
+    "id": "apl-mater-2013",
+    "type": "Journal Article",
+    "title": "Temperature dependent mechanical properties of Mo-Si-B compounds via ab initio molecular dynamics",
+    "authors": "Dharmawardhana CC, Sakidja R, Aryal S, Ching WY.",
+    "journal": "APL Materials",
+    "year": 2013,
+    "volume": "1(1):012106",
+    "link": "https://aip.scitation.org/doi/full/10.1063/1.4809539",
+    "figure": "/ccdportfolio/img/publications/APL_Mater_1_2013_012106.png",
+    "bibtex": "@article{dharmawardhana2013temperature,\n  title={Temperature dependent mechanical properties of Mo-Si-B compounds via ab initio molecular dynamics},\n  author={Dharmawardhana, CC and Sakidja, R and Aryal, S and Ching, WY},\n  journal={APL Materials},\n  volume={1},\n  number={1},\n  pages={012106},\n  year={2013}\n}"
+  },
+  {
+    "id": "ssc-2013",
+    "type": "Journal Article",
+    "title": "Theoretical characterization on intrinsic ferrimagnetic phase in nanoscale laminated Cr2GeC",
+    "authors": "Li N, Dharmawardhana CC, Yao K, Ching WY.",
+    "journal": "Solid State Communications",
+    "year": 2013,
+    "volume": "174:43-45",
+    "link": "https://www.sciencedirect.com/science/article/abs/pii/S0038109813004171",
+    "figure": "/ccdportfolio/img/publications/SolidStateCommunications_174_43_45.png",
+    "bibtex": "@article{li2013theoretical,\n  title={Theoretical characterization on intrinsic ferrimagnetic phase in nanoscale laminated Cr2GeC},\n  author={Li, N and Dharmawardhana, CC and Yao, K and Ching, WY},\n  journal={Solid State Communications},\n  volume={174},\n  pages={43--45},\n  year={2013}\n}"
+  },
+  {
+    "id": "talk-acs-2017",
+    "type": "Conference Talk",
+    "title": "Consistent multipole model for aqueous solvation of monovalent ions",
+    "authors": "Dharmawardhana CC, Ichiye T",
+    "journal": "254th American Chemical Society (ACS) National Meeting and Expo",
+    "year": 2017,
+    "volume": "Washington, D.C."
+  },
+  {
+    "id": "talk-rcbs-2017",
+    "type": "Conference Talk",
+    "title": "Shape and charge distribution of water molecules and its effect on liquid state properties",
+    "authors": "Dharmawardhana CC, Ichiye T",
+    "journal": "Regional Computational Biophysics Symposium",
+    "year": 2017,
+    "volume": "University of Maryland School of Pharmacy, Baltimore"
+  },
+  {
+    "id": "talk-acbm-2015",
+    "type": "Conference Talk",
+    "title": "Quantum Mechanical Metric for Internal Cohesion in Cement Crystals",
+    "authors": "Dharmawardhana CC, Misra A, Ching WY",
+    "journal": "6th Advances in Cement-based Materials",
+    "year": 2015,
+    "volume": "Manhattan, Kansas, USA"
+  },
+  {
+    "id": "talk-pacrim-2013",
+    "type": "Conference Talk",
+    "title": "Temperature dependent mechanical properties of Mo-Si-B compounds via ab-initio molecular dynamics",
+    "authors": "Dharmawardhana CC, Aryal SR, Sakidja R, Ching WY",
+    "journal": "10th Pacific-Rim Conference on Ceramic and Glass Technology",
+    "year": 2013,
+    "volume": "San Diego, California, USA"
+  },
+  {
+    "id": "talk-icac-2013",
+    "type": "Conference Talk",
+    "title": "Electronic Structure and Interatomic Bonding in Cement Crystals",
+    "authors": "Dharmawardhana CC, Misra A, Aryal SR, Rulis PM, Ching WY",
+    "journal": "37th International Conference & Exposition on Advanced Ceramics & Composites",
+    "year": 2013,
+    "volume": "Daytona Beach, Florida, USA"
+  },
+  {
+    "id": "talk-aps-2010",
+    "type": "Conference Talk",
+    "title": "DFT calculations of vibrational modes of AsxS(1-x) and PxS(1-x) glass",
+    "authors": "Dharmawardhana CC, Jackson KA",
+    "journal": "American Physical Society (APS) March Meeting 2010",
+    "year": 2010,
+    "volume": "Portland, Oregon, USA"
+  },
+  {
+    "id": "poster-muri-2016-1",
+    "type": "Conference Poster",
+    "title": "Reactive Modeling of Mo3Si Oxidation and Resulting Silica Morphology",
+    "authors": "Dharmawardhana CC, Perepezko J, Miao J, Heinz H",
+    "journal": "Annual MURI Review on Understanding Corrosion in 4D",
+    "year": 2016,
+    "volume": "University of Virginia"
+  },
+  {
+    "id": "poster-muri-2016-2",
+    "type": "Conference Poster",
+    "title": "MoSi2 Oxidation: Mechanism and Silica Growth",
+    "authors": "Dharmawardhana CC, Reinke P, Heinz H",
+    "journal": "Annual MURI Review on Understanding Corrosion in 4D",
+    "year": 2016,
+    "volume": "University of Virginia"
+  },
+  {
+    "id": "poster-grc-2014",
+    "type": "Conference Poster",
+    "title": "Bonding mechanism and Internal cohesion of calcium silicate hydrate (CSH) crystals",
+    "authors": "Dharmawardhana CC, Misra A, Ching WY",
+    "journal": "Gordon Research Conference on Ceramics, Solid State Studies",
+    "year": 2014,
+    "volume": "South Hadley, Massachusetts, USA"
+  },
+  {
+    "id": "poster-midwest-2013-1",
+    "type": "Conference Poster",
+    "title": "Classification of CSH Crystals via a Quantum Mechanical Metric",
+    "authors": "Dharmawardhana CC, Aryal SR, Misra A, Ching WY",
+    "journal": "57th Midwest Solid State Conference",
+    "year": 2013,
+    "volume": "Lawrence, Kansas, USA"
+  },
+  {
+    "id": "poster-midwest-2013-2",
+    "type": "Conference Poster",
+    "title": "Thermo-mechanical Properties of Mo5Si3 (T1 Phase)-based Alloys",
+    "authors": "Dharmawardhana CC, Sakidja R, Ching WY",
+    "journal": "57th Midwest Solid State Conference",
+    "year": 2013,
+    "volume": "Lawrence, Kansas, USA"
+  },
+  {
+    "id": "poster-acbm-2013",
+    "type": "Conference Poster",
+    "title": "Role of Interatomic Bonding in the Mechanical Anisotropy and Interlayer Cohesion of CSH Crystals",
+    "authors": "Dharmawardhana CC, Misra A, Aryal SR, Ching WY",
+    "journal": "4th Advances in Cement-based Materials",
+    "year": 2013,
+    "volume": "Urbana-Champaign, Illinois, USA"
+  },
+  {
+    "id": "poster-acs-2010",
+    "type": "Conference Poster",
+    "title": "Cluster approach to analyze Raman spectrum for GeSe2 system",
+    "authors": "Dharmawardhana CC, Jackson KA",
+    "journal": "ACS Midland Section 66th Annual Fall Scientific Meeting",
+    "year": 2010,
+    "volume": "Mt. Pleasant, Michigan, USA"
   }
 ]
