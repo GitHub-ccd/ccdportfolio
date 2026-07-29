@@ -28,27 +28,39 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* FULL BIOGRAPHY & DOWNLOAD CV */}
+        {/* FULL BIOGRAPHY WITH PROFILE PHOTO */}
         <section className="p-8 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
-            <h2 className="text-2xl font-bold text-slate-100">Professional Summary & Credentials</h2>
-            <a
-              href="/ccdportfolio/docs/linkedin_profile.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition-colors self-start"
-            >
-              <span>📄 Download LinkedIn PDF Profile</span>
-            </a>
-          </div>
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            <div className="shrink-0 mx-auto md:mx-0">
+              <img
+                src="/ccdportfolio/img/profile.jpg"
+                alt="Dr. Chamila Dharmawardhana"
+                className="w-44 h-44 sm:w-52 sm:h-52 rounded-2xl object-cover border-2 border-teal-500/30 shadow-xl"
+              />
+            </div>
 
-          <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
-            <p>
-              I am a Data Scientist and Computational Chemist with diverse experience building supervised/unsupervised machine learning models for real-world healthcare and industry applications. I earned my <strong>Ph.D. in Computational Physics</strong> from the University of Missouri - Kansas City concentrating on ab-initio quantum simulations and electronic structure calculations of complex materials.
-            </p>
-            <p>
-              My career spans data science positions at <strong>Nordic Global</strong>, <strong>Bon Secours Mercy Health</strong>, and <strong>Promoboxx</strong>, alongside postdoctoral research appointments at the Illinois Institute of Technology (FFT protein docking algorithms), Georgetown University (CHARMM biomolecular water models & NIH collaborations), and the University of Colorado Boulder (ONR MURI supercomputer simulations).
-            </p>
+            <div className="space-y-4 flex-1">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
+                <h2 className="text-2xl font-bold text-slate-100">Biography & Summary</h2>
+                <a
+                  href="/ccdportfolio/docs/linkedin_profile.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition-colors self-start"
+                >
+                  <span>📄 Download LinkedIn PDF Profile</span>
+                </a>
+              </div>
+
+              <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
+                <p>
+                  I am a Data Scientist and Computational Chemist with diverse experience building supervised/unsupervised machine learning models for real-world healthcare and industry applications. I earned my <strong>Ph.D. in Computational Physics</strong> from the University of Missouri - Kansas City concentrating on ab-initio quantum simulations and electronic structure calculations of complex materials.
+                </p>
+                <p>
+                  My career spans data science positions at <strong>Nordic Global</strong>, <strong>Bon Secours Mercy Health</strong>, and <strong>Promoboxx</strong>, alongside postdoctoral research appointments at the Illinois Institute of Technology (FFT protein docking algorithms), Georgetown University (CHARMM biomolecular water models & NIH collaborations), and the University of Colorado Boulder (ONR MURI supercomputer simulations).
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
