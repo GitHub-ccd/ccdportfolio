@@ -51,22 +51,34 @@ export default function ProjectGrid() {
           <div
             key={project.id}
             onClick={() => setSelectedProject(project)}
-            className="p-6 rounded-xl bg-slate-900/80 border border-slate-800/80 space-y-4 hover:border-teal-500/40 hover:bg-slate-900 transition-all cursor-pointer group flex flex-col justify-between"
+            className="rounded-xl bg-slate-900/80 border border-slate-800/80 hover:border-teal-500/40 hover:bg-slate-900 transition-all cursor-pointer group flex flex-col justify-between overflow-hidden shadow-lg"
           >
-            <div className="space-y-3">
-              <div className="inline-block px-2.5 py-1 rounded text-xs font-semibold bg-teal-500/10 text-teal-400 border border-teal-500/20">
-                {project.category}
+            <div>
+              {project.image && (
+                <div className="relative w-full h-48 sm:h-52 overflow-hidden border-b border-slate-800/60 bg-slate-950">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent" />
+                </div>
+              )}
+              <div className="p-6 space-y-3">
+                <div className="inline-block px-2.5 py-1 rounded text-xs font-semibold bg-teal-500/10 text-teal-400 border border-teal-500/20">
+                  {project.category}
+                </div>
+                <h3 className="text-xl font-bold text-slate-100 group-hover:text-teal-400 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">
+                  {project.summary}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-slate-100 group-hover:text-teal-400 transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">
-                {project.summary}
-              </p>
             </div>
 
-            <div className="space-y-3 pt-2 border-t border-slate-800/60">
-              <div className="flex flex-wrap gap-1.5 text-[11px] text-slate-400">
+            <div className="p-6 pt-0 space-y-3">
+              <div className="pt-3 border-t border-slate-800/60 flex flex-wrap gap-1.5 text-[11px] text-slate-400">
                 {project.tech.map((t) => (
                   <span key={t} className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800">
                     {t}
@@ -102,6 +114,16 @@ export default function ProjectGrid() {
                 ✕ Close
               </button>
             </div>
+
+            {selectedProject.image && (
+              <div className="w-full h-56 sm:h-64 overflow-hidden rounded-lg border border-slate-800 bg-slate-950">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
 
             <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
               <p>{selectedProject.description || selectedProject.summary}</p>
