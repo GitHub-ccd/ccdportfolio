@@ -151,7 +151,7 @@ export default function PublicationsList({ limit = null }) {
                 className="relative rounded-xl overflow-hidden bg-slate-950 border border-slate-800 cursor-pointer group max-w-2xl mx-auto shadow-xl"
               >
                 <video
-                  src={pub.video}
+                  src={getAssetPath(pub.video)}
                   autoPlay
                   loop
                   muted
@@ -168,7 +168,7 @@ export default function PublicationsList({ limit = null }) {
                 className="relative rounded-xl overflow-hidden bg-slate-950 border border-slate-800/80 p-4 cursor-pointer group max-w-2xl mx-auto shadow-lg hover:border-teal-500/40 transition-all"
               >
                 <img
-                  src={pub.figure}
+                  src={getAssetPath(pub.figure)}
                   alt={pub.title}
                   className="w-full max-h-[320px] object-contain mx-auto rounded group-hover:scale-[1.01] transition-transform duration-300"
                 />
