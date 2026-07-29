@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -8,16 +9,16 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-slate-950/85 border-b border-slate-800/80">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#hero" className="font-bold text-base sm:text-lg tracking-tight text-teal-400 hover:text-teal-300 transition-colors">
+        <Link href="/" className="font-bold text-base sm:text-lg tracking-tight text-teal-400 hover:text-teal-300 transition-colors">
           Dr. Chamila Dharmawardhana <span className="text-slate-400 font-normal text-xs ml-1 hidden sm:inline">Ph.D.</span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
-          <a href="#about" className="hover:text-teal-400 transition-colors">About</a>
-          <a href="#projects" className="hover:text-teal-400 transition-colors">Projects</a>
-          <a href="#publications" className="hover:text-teal-400 transition-colors">Publications</a>
-          <a href="#experience" className="hover:text-teal-400 transition-colors">Experience</a>
+          <Link href="/" className="hover:text-teal-400 transition-colors">Home</Link>
+          <Link href="/projects" className="hover:text-teal-400 transition-colors">Projects Catalog</Link>
+          <Link href="/publications" className="hover:text-teal-400 transition-colors">Publications Library</Link>
+          <Link href="/about" className="hover:text-teal-400 transition-colors">About & Resume</Link>
           <a href="#contact" className="hover:text-teal-400 transition-colors">Contact</a>
         </nav>
 
@@ -45,34 +46,34 @@ export default function Navbar() {
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <nav className="md:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 space-y-3 text-sm text-slate-200">
-          <a
-            href="#about"
+          <Link
+            href="/"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1.5 hover:text-teal-400 transition-colors"
           >
-            About
-          </a>
-          <a
-            href="#projects"
+            Home
+          </Link>
+          <Link
+            href="/projects"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1.5 hover:text-teal-400 transition-colors"
           >
-            Projects
-          </a>
-          <a
-            href="#publications"
+            Projects Catalog
+          </Link>
+          <Link
+            href="/publications"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1.5 hover:text-teal-400 transition-colors"
           >
-            Publications
-          </a>
-          <a
-            href="#experience"
+            Publications Library
+          </Link>
+          <Link
+            href="/about"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1.5 hover:text-teal-400 transition-colors"
           >
-            Experience & Education
-          </a>
+            About & Resume
+          </Link>
           <a
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
