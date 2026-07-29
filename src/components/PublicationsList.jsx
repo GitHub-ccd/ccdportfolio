@@ -12,8 +12,8 @@ export default function PublicationsList({ limit = null }) {
   const [activeBibtex, setActiveBibtex] = useState(null);
   const [activeMediaModal, setActiveMediaModal] = useState(null);
 
-  // If limited (e.g. landing page), select top 3 most cited key publications
-  const top3Ids = ["cemconres-2013", "nature-srep-2018", "acta-mat-2020"];
+  // Exact 3 Top Featured Papers chosen for landing page (Option A)
+  const top3Ids = ["acta-mat-2020", "srep-2014", "cemconres-2013"];
   
   let displayedPublications = publicationsData;
 
@@ -35,11 +35,11 @@ export default function PublicationsList({ limit = null }) {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">
-            {limit ? "Top Cited Publications" : "Publications & Conference Presentations"}
+            {limit ? "Featured Key Publications" : "Publications & Conference Presentations"}
           </h2>
           <p className="text-slate-400 text-sm mt-1">
             {limit
-              ? "Featured top-cited peer-reviewed research papers in computational physics and materials science."
+              ? "Selected key peer-reviewed research papers in computational physics, materials science, and biophysics."
               : "16 Peer-Reviewed Journal Articles, 6 Conference Talks, and 7 Conference Posters."}
           </p>
         </div>
