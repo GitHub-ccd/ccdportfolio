@@ -12,13 +12,16 @@ export default function PublicationsList({ limit = null }) {
   const [activeBibtex, setActiveBibtex] = useState(null);
   const [activeMediaModal, setActiveMediaModal] = useState(null);
 
-  // Exact 3 Top Featured Papers chosen for landing page (Option A)
-  const top3Ids = ["acta-mat-2020", "srep-2014", "cemconres-2013"];
+  // Exact 4 Top Featured Papers chosen for landing page based on Google Scholar citations & animations
+  const topFeaturedIds = ["srep-2014", "cemconres-2013", "jace-2016", "acta-mat-2020"];
   
   let displayedPublications = publicationsData;
 
   if (limit) {
-    displayedPublications = publicationsData.filter(p => top3Ids.includes(p.id));
+    // Preserve exact ordering as specified by user
+    displayedPublications = topFeaturedIds
+      .map(id => publicationsData.find(p => p.id === id))
+      .filter(Boolean);
   } else if (selectedType !== "All") {
     displayedPublications = publicationsData.filter((p) => p.type === selectedType);
   }
@@ -35,11 +38,11 @@ export default function PublicationsList({ limit = null }) {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">
-            {limit ? "Featured Key Publications" : "Publications & Conference Presentations"}
+            {limit ? "Featured Key Publications & Animations" : "Publications & Conference Presentations"}
           </h2>
           <p className="text-slate-400 text-sm mt-1">
             {limit
-              ? "Selected key peer-reviewed research papers in computational physics, materials science, and biophysics."
+              ? "Top-cited research papers in computational materials science and atomic-scale simulation animations."
               : "16 Peer-Reviewed Journal Articles, 6 Conference Talks, and 7 Conference Posters."}
           </p>
         </div>
@@ -89,12 +92,17 @@ export default function PublicationsList({ limit = null }) {
 
       {/* Publication Cards List */}
       <div className="space-y-6 text-sm text-slate-300">
-        {displayedPublications.map((pub) => (
+        {displayedPublications.map((pub, idx) => (
           <div key={pub.id} className="p-6 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-5 hover:border-slate-700 transition-all">
             
             <div className="space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
+                  {limit && (
+                    <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-teal-500 text-slate-950">
+                      #{idx + 1} Top Cited
+                    </span>
+                  )}
                   <span className={`px-2.5 py-0.5 rounded text-[11px] font-semibold border ${
                     pub.type === "Journal Article"
                       ? "bg-teal-500/10 text-teal-400 border-teal-500/20"
