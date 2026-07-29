@@ -1,0 +1,25 @@
+{
+  "personal": {
+    "name": "Dr. Chamila Chathuranga Dharmawardhana",
+    "title": "Healthcare Data Scientist & Computational Physicist",
+    "location": "United States",
+    "phd": "Ph.D. in Computational Physics (UMKC 2015)",
+    "email": "chamila.dharmawardhana@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/chamila-dharmawardhana/",
+    "github": "https://github.com/GitHub-ccd",
+    "scholar": "https://scholar.google.com/citations?hl=en&user=4g3-eUwAAAAJ"
+  },
+  "summary": "Ph.D. Computational Physicist & Lead Healthcare Data Scientist with 15+ years of combined experience in multi-scale computer simulations, machine learning, computer vision, and clinical analytics. Proven track record building end-to-end predictive models (Nordic Global, Bon Secours Mercy Health, Promoboxx) and authoring 16+ peer-reviewed computational physical chemistry publications.",
+  "skills": {
+    "machineLearning": ["Scikit-Learn", "XGBoost", "LightGBM", "Logistic Regression", "Random Forest", "A/B Testing", "SHAP", "Optuna"],
+    "deepLearningCV": ["PyTorch", "TensorFlow", "Keras", "OpenCV", "CNNs", "Transfer Learning", "Grad-CAM", "Affective Computing"],
+    "nlp": ["spaCy", "NLTK", "TF-IDF", "Sentiment Analysis", "Topic Modeling", "Text Classification"],
+    "computationalPhysics": ["Quantum Espresso", "VASP", "Density Functional Theory (DFT)", "Molecular Dynamics", "CHARMM", "FFT Algorithms", "Biopython", "HPC Linux Clusters"],
+    "programmingData": ["Python", "SQL", "Pandas", "NumPy", "SciPy", "Matplotlib", "Seaborn", "Plotly", "Django", "FastAPI", "Git"]
+  },
+  "cvFiles": {
+    "twoPageExecutivePdf": "/docs/chamila_dharmawardhana_2page_cv.pdf",
+    "fullAcademicPdf": "/docs/linkedin_profile.pdf"
+  },
+  "plainTextResume": "DR. CHAMILA CHATHURANGA DHARMAWARDHANA, Ph.D.\nHealthcare Data Scientist & Computational Physicist\nLinkedIn: https://www.linkedin.com/in/chamila-dharmawardhana/ | GitHub: https://github.com/GitHub-ccd\nGoogle Scholar: H-Index 9 | i10-Index 9\n\nSUMMARY\nPh.D. Computational Physicist & Healthcare Data Scientist with 15+ years of experience bridging multi-scale physics simulations, machine learning algorithms, computer vision, and clinical analytics. Track record developing predictive algorithms at Nordic Global, Bon Secours Mercy Health, and Promoboxx alongside postdoctoral research at Illinois Tech, Georgetown, and CU Boulder.\n\nEXPERIENCE\n- DATA SCIENTIST | Nordic Global (Jan 2024 - Present)\n  * Leading healthcare data science initiatives, advanced predictive modeling, supervised and unsupervised machine learning algorithms, and clinical analytics.\n\n- DATA SCIENTIST | Bon Secours Mercy Health (Jan 2022 - Dec 2023)\n  * Architected healthcare data pipelines, patient outcome modeling, statistical intelligence frameworks, and clinical machine learning models across major health system datasets.\n\n- ASSOCIATE DATA SCIENTIST | Promoboxx (Nov 2020 - Jan 2022)\n  * Built supervised/unsupervised ML models & XGBoost recommendation engines for digital retail marketing campaigns.\n  * Architected A/B testing frameworks and deployed spaCy/NLTK NLP sentiment analysis pipelines.\n\n- SENIOR RESEARCH ASSOCIATE | Illinois Institute of Technology (2019 - 2020)\n  * Developed Fast Fourier Transform (FFT) algorithms in Python/NumPy to evaluate protein-protein docking binding affinities across structural databases.\n\n- POSTDOCTORAL RESEARCHER | Georgetown University (2017 - 2019)\n  * Developed biomolecular simulation methods and ionic solution potential terms in CHARMM in collaboration with NIH Laboratory of Computational Biology.\n\n- POSTDOCTORAL FELLOW | University of Colorado Boulder (2016 - 2017)\n  * Constructed force fields for high-temperature Mo-Si-B super-alloys under ONR MURI grant, conducting multi-million atom supercomputer simulations on ALCF & NERSC.\n\nEDUCATION & HONORS\n- Ph.D. in Computational Physics | University of Missouri - Kansas City (2011 - 2015)\n- Data Science Credentials | Flatiron School (2020)\n- M.S. in Theoretical & Mathematical Physics | Central Michigan University (2006 - 2008)\n- B.S. in Physics & Mathematics | University of Colombo (2001 - 2005)\n- Lester Touby Kurtz & Wai-Yim Ching Physics Graduate Scholarships"
+}

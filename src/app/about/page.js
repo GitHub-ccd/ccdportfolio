@@ -43,14 +43,25 @@ export default function AboutPage() {
             <div className="space-y-4 flex-1">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
                 <h2 className="text-2xl font-bold text-slate-100">Biography & Summary</h2>
-                <a
-                  href={getAssetPath("/docs/linkedin_profile.pdf")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition-colors self-start"
-                >
-                  <span>📄 Download LinkedIn PDF Profile</span>
-                </a>
+                <div className="flex flex-wrap gap-2 text-xs font-semibold">
+                  <a
+                    href={getAssetPath("/docs/chamila_dharmawardhana_2page_cv.pdf")}
+                    download="Dr_Chamila_Dharmawardhana_Executive_CV.pdf"
+                    className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition-colors"
+                    title="Download 2-Page Executive Recruiter Summary PDF"
+                  >
+                    <span>📄 2-Page Executive CV</span>
+                  </a>
+                  <a
+                    href={getAssetPath("/docs/linkedin_profile.pdf")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-200 hover:text-white text-xs transition-colors"
+                    title="Download Full Academic / Technical CV PDF"
+                  >
+                    <span>📚 Full Academic CV</span>
+                  </a>
+                </div>
               </div>
 
               <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
