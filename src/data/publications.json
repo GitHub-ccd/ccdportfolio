@@ -7,6 +7,7 @@
     "year": 2020,
     "volume": "187, 93-102",
     "link": "https://www.sciencedirect.com/science/article/abs/pii/S1359645420300732",
+    "figure": "/ccdportfolio/img/publications/SciRep_8_2018_10239_SI.png",
     "bibtex": "@article{dharmawardhana2020reactive,\n  title={Reactive modeling of Mo3Si oxidation and resulting silica morphology},\n  author={Dharmawardhana, CC and Zhou, J and Taylor, M and Miao, J and Perepezko, JH and Heinz, H},\n  journal={Acta Materialia},\n  volume={187},\n  pages={93--102},\n  year={2020},\n  publisher={Elsevier}\n}"
   },
   {
@@ -17,6 +18,7 @@
     "year": 2018,
     "volume": "184:536-548",
     "link": "https://www.sciencedirect.com/science/article/abs/pii/S095006181831660X",
+    "figure": "/ccdportfolio/img/publications/ConstructionandBuildingMaterials_184_2018_536.png",
     "bibtex": "@article{dharmawardhana2018theoretical,\n  title={Theoretical investigations of C-(A)-S-H (I) cement hydrates},\n  author={Dharmawardhana, CC and Misra, A and Ching, WY},\n  journal={Construction and Building Materials},\n  volume={184},\n  pages={536--548},\n  year={2018},\n  publisher={Elsevier}\n}"
   },
   {
@@ -27,6 +29,7 @@
     "year": 2018,
     "volume": "8:10239",
     "link": "https://www.nature.com/articles/s41598-018-28348-3",
+    "figure": "/ccdportfolio/img/publications/SciRep_8_2018_10239_SI.png",
     "bibtex": "@article{zhou2018quantitative,\n  title={Quantitative characterization of high temperature oxidation using electron tomography},\n  author={Zhou, J and Taylor, M and Melinte, GA and Shahani, AJ and Dharmawardhana, CC and Heinz, H and Voorhees, P and Perepezko, J and Ercius, P and Bustillo, K and Miao, J},\n  journal={Scientific Reports},\n  volume={8},\n  number={1},\n  pages={10239},\n  year={2018},\n  publisher={Nature Publishing Group}\n}"
   },
   {
@@ -37,6 +40,7 @@
     "year": 2018,
     "volume": "148:222827",
     "link": "https://aip.scitation.org/doi/abs/10.1063/1.5023004",
+    "figure": "/ccdportfolio/img/publications/JCP_148_2018_222827.png",
     "bibtex": "@article{teng2018diffusion,\n  title={Diffusion of Aqueous Solutions of Ionic, Zwitterionic, and Polar Solutes},\n  author={Teng, X and Huang, Q and Dharmawardhana, CC and Ichiye, T},\n  journal={The Journal of Chemical Physics},\n  volume={148},\n  number={22},\n  pages={222827},\n  year={2018},\n  publisher={AIP Publishing}\n}"
   },
   {
@@ -47,6 +51,7 @@
     "year": 2017,
     "volume": "147:194103",
     "link": "https://aip.scitation.org/doi/abs/10.1063/1.5002162",
+    "figure": "/ccdportfolio/img/publications/JCP_147_2017_194103.png",
     "bibtex": "@article{dharmawardhana2017shape,\n  title={The Shape of the Charge Distribution of Water Molecules and the Hydration of Ions},\n  author={Dharmawardhana, CC and Ichiye, T},\n  journal={The Journal of Chemical Physics},\n  volume={147},\n  number={19},\n  pages={194103},\n  year={2017},\n  publisher={AIP Publishing}\n}"
   },
   {
@@ -57,6 +62,7 @@
     "year": 2013,
     "volume": "52:123-130",
     "link": "https://www.sciencedirect.com/science/article/abs/pii/S000888461300154X",
+    "figure": "/ccdportfolio/img/publications/CemConRes_52_2013_123.png",
     "bibtex": "@article{dharmawardhana2013ab,\n  title={Ab initio calculation of mechanical and elastic properties of cement hydrates},\n  author={Dharmawardhana, CC and Misra, A and Ching, WY},\n  journal={Cement and Concrete Research},\n  volume={52},\n  pages={123--130},\n  year={2013},\n  publisher={Elsevier}\n}"
   }
 ]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "naseer",
+    "name": "Naseer",
+    "role": "Lead Data Scientist at TruFactor",
+    "image": "/ccdportfolio/img/testimonials/Naseer.png",
+    "linkedin": "https://www.linkedin.com/in/naseerdari/",
+    "quote": "We were colleagues and even authored/published a paper together in our Physics PhD days. Quite frankly one of the hardest working people I've ever known. His knowledge on mathematics and simulations is impeccable. He always amazed me with his drive for research and relentless pursuit of solutions to whatever problem he’s interested in solving."
+  },
+  {
+    "id": "keith",
+    "name": "Keith",
+    "role": "Associate Director of Quality Assurance at Auxenta",
+    "image": "/ccdportfolio/img/testimonials/Keith.png",
+    "linkedin": "https://www.linkedin.com/in/keithabey/",
+    "quote": "Ever since we met at the NIBM, working on our first diploma in computer science and programming, we’ve been friends and colleagues. He did the diploma exceptionally well and we did our final project together. He could’ve gone to industry right after that except he wanted to be a physicist instead. Over the years it was amazing to see him achieve so much in computer simulation for material science problems. Whatever he does, the dedication is outstanding."
+  },
+  {
+    "id": "darshana",
+    "name": "Darshana",
+    "role": "Business Intelligence Analyst",
+    "image": "/ccdportfolio/img/testimonials/Darshana.png",
+    "linkedin": "https://www.linkedin.com/in/darshana-samaranayake-75313552/",
+    "quote": "I met Chamila in Delaware when he came for a talk. At that time he impressed upon me the power of AI and how it can influence life. As an analyst I’ve used some of these tools. Over the next few years we worked on several hobby projects as we both are so passionate about the subject. I’m always impressed with his ability to grasp complicated ideas and break it down to concise and intelligible pieces to uncover the whole."
+  }
+]

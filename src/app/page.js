@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import ProjectGrid from "../components/ProjectGrid";
 import PublicationsList from "../components/PublicationsList";
 import ExperienceTimeline from "../components/ExperienceTimeline";
+import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -112,8 +113,11 @@ export default function Home() {
         {/* FEATURED PROJECTS COMPONENT */}
         <ProjectGrid />
 
-        {/* PUBLICATIONS COMPONENT */}
+        {/* PUBLICATIONS COMPONENT (WITH ORIGINAL RESEARCH FIGURES) */}
         <PublicationsList />
+
+        {/* TESTIMONIALS COMPONENT */}
+        <Testimonials />
 
         {/* EXPERIENCE & EDUCATION TIMELINE COMPONENT */}
         <ExperienceTimeline />
