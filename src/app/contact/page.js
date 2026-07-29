@@ -30,7 +30,7 @@ export default function ContactPage() {
             Contact Dr. Chamila Dharmawardhana
           </h1>
           <p className="text-slate-400 text-base leading-relaxed">
-            Interested in healthcare data science collaborations, biophysics research, consulting, or technical advisory? Reach out directly!
+            Interested in healthcare data science collaborations, biophysics research, consulting, or technical advisory? Connect with me directly on LinkedIn or send a message.
           </p>
         </div>
 
@@ -39,13 +39,28 @@ export default function ContactPage() {
           
           {/* CONTACT INFO CARD */}
           <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-6">
-            <h2 className="text-lg font-bold text-slate-100">Contact Information</h2>
+            <h2 className="text-lg font-bold text-slate-100">Primary Contact Channels</h2>
+
+            {/* LinkedIn Prominent Box */}
+            <div className="p-4 rounded-xl bg-blue-600/10 border border-blue-500/30 space-y-2">
+              <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">Top Recommendation</span>
+              <h3 className="text-base font-bold text-slate-100">LinkedIn Profile</h3>
+              <p className="text-xs text-slate-300">My most active professional network for messaging and collaboration.</p>
+              <a
+                href="https://www.linkedin.com/in/chamila-dharmawardhana/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-all shadow-md shadow-blue-500/20"
+              >
+                Connect on LinkedIn ↗
+              </a>
+            </div>
 
             <div className="space-y-4 text-sm text-slate-300">
               <div className="flex items-start space-x-3">
                 <span className="text-teal-400 text-lg">📧</span>
                 <div>
-                  <h3 className="font-semibold text-slate-200">Email</h3>
+                  <h3 className="font-semibold text-slate-200">Direct Email</h3>
                   <a href="mailto:chathurangad@gmail.com" className="text-teal-400 hover:underline text-xs">
                     chathurangad@gmail.com
                   </a>
@@ -63,7 +78,7 @@ export default function ContactPage() {
               <div className="flex items-start space-x-3">
                 <span className="text-teal-400 text-lg">🌐</span>
                 <div>
-                  <h3 className="font-semibold text-slate-200">Academic & Social Profiles</h3>
+                  <h3 className="font-semibold text-slate-200">Other Profiles</h3>
                   <div className="flex flex-col space-y-1.5 pt-1 text-xs">
                     <a href="https://scholar.google.com/citations?hl=en&user=4g3-eUwAAAAJ" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:underline">
                       Google Scholar (H-Index 9) ↗
@@ -73,9 +88,6 @@ export default function ContactPage() {
                     </a>
                     <a href="https://github.com/GitHub-ccd" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:underline">
                       GitHub Profile ↗
-                    </a>
-                    <a href="https://www.linkedin.com/in/chamila-dharmawardhana/" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:underline">
-                      LinkedIn Profile ↗
                     </a>
                   </div>
                 </div>

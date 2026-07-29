@@ -47,7 +47,15 @@ export default function Home() {
           </div>
 
           {/* Action CTAs */}
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-wrap gap-4 pt-4 items-center">
+            <a
+              href="https://www.linkedin.com/in/chamila-dharmawardhana/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-500/25 flex items-center space-x-2"
+            >
+              <span>Connect on LinkedIn ↗</span>
+            </a>
             <a
               href="#projects"
               className="px-6 py-3 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-semibold text-sm transition-all shadow-lg shadow-teal-500/20"
@@ -56,18 +64,10 @@ export default function Home() {
             </a>
             <button
               onClick={() => setIsVideoOpen(true)}
-              className="px-6 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-sm font-medium transition-all flex items-center space-x-2"
+              className="px-5 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-medium transition-all flex items-center space-x-2"
             >
               <span>🎬 Watch PhD Defense</span>
             </button>
-            <a
-              href="https://www.youtube.com/watch?v=2wWTxRMEA2g"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-3 rounded-lg bg-slate-900/50 hover:bg-slate-800/50 border border-slate-800/60 text-slate-400 text-xs font-medium transition-all flex items-center"
-            >
-              YouTube Link ↗
-            </a>
           </div>
         </section>
 
@@ -87,8 +87,12 @@ export default function Home() {
               </p>
             </div>
             <div className="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4">
-              <h3 className="text-slate-100 font-semibold text-base">Quick Statistics</h3>
+              <h3 className="text-slate-100 font-semibold text-base">Quick Connections</h3>
               <ul className="space-y-3 text-xs text-slate-400">
+                <li className="flex justify-between border-b border-slate-800/60 pb-2">
+                  <span>LinkedIn (Primary)</span>
+                  <a href="https://www.linkedin.com/in/chamila-dharmawardhana/" target="_blank" rel="noopener noreferrer" className="text-blue-400 font-bold underline">Profile Link ↗</a>
+                </li>
                 <li className="flex justify-between border-b border-slate-800/60 pb-2">
                   <span>Google Scholar Citations</span>
                   <span className="text-teal-400 font-bold">H-Index 9 | i10-Index 9</span>
@@ -97,13 +101,9 @@ export default function Home() {
                   <span>Ph.D. Alma Mater</span>
                   <span className="text-slate-200 font-medium">UMKC (2015)</span>
                 </li>
-                <li className="flex justify-between border-b border-slate-800/60 pb-2">
-                  <span>Primary Stack</span>
-                  <span className="text-slate-200 font-medium">Python, PyTorch, SQL</span>
-                </li>
                 <li className="flex justify-between">
-                  <span>Research Gate</span>
-                  <a href="https://www.researchgate.net/profile/Chamila_Dharmawardhana" target="_blank" rel="noopener noreferrer" className="text-teal-400 underline">Profile Link</a>
+                  <span>GitHub</span>
+                  <a href="https://github.com/GitHub-ccd" target="_blank" rel="noopener noreferrer" className="text-teal-400 underline">GitHub-ccd ↗</a>
                 </li>
               </ul>
             </div>
@@ -113,8 +113,8 @@ export default function Home() {
         {/* FEATURED PROJECTS COMPONENT */}
         <ProjectGrid />
 
-        {/* TOP 3 MOST CITED PUBLICATIONS COMPONENT */}
-        <PublicationsList limit={3} />
+        {/* TOP CITED PUBLICATIONS COMPONENT */}
+        <PublicationsList limit={4} />
 
         {/* TESTIMONIALS COMPONENT */}
         <Testimonials />
@@ -126,12 +126,13 @@ export default function Home() {
         <section id="contact" className="space-y-6 pt-12 border-t border-slate-900 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">Let's Connect</h2>
           <p className="text-slate-400 text-sm max-w-xl mx-auto">
-            Interested in collaborating on Healthcare Data Science, Medical AI, or Computational Biology research? Reach out!
+            Interested in collaborating on Healthcare Data Science, Medical AI, or Computational Biology research? Connect with me directly on LinkedIn!
           </p>
           <div className="flex justify-center space-x-6 text-sm font-medium pt-2">
-            <a href="https://github.com/GitHub-ccd" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:underline">GitHub</a>
-            <a href="https://scholar.google.com/citations?hl=en&user=4g3-eUwAAAAJ" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:underline">Google Scholar</a>
-            <a href="https://www.researchgate.net/profile/Chamila_Dharmawardhana" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:underline">ResearchGate</a>
+            <a href="https://www.linkedin.com/in/chamila-dharmawardhana/" target="_blank" rel="noopener noreferrer" className="text-blue-400 font-bold hover:underline">LinkedIn ↗</a>
+            <a href="https://github.com/GitHub-ccd" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:underline">GitHub ↗</a>
+            <a href="https://scholar.google.com/citations?hl=en&user=4g3-eUwAAAAJ" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:underline">Google Scholar ↗</a>
+            <a href="https://www.researchgate.net/profile/Chamila_Dharmawardhana" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:underline">ResearchGate ↗</a>
           </div>
           <p className="text-slate-600 text-xs pt-8">
             © {new Date().getFullYear()} Dr. Chamila Chathuranga Dharmawardhana. All rights reserved.

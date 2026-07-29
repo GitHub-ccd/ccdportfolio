@@ -23,13 +23,23 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center space-x-3">
+          {/* Primary Professional LinkedIn Link */}
+          <a
+            href="https://www.linkedin.com/in/chamila-dharmawardhana/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3.5 py-1.5 text-xs font-bold rounded-full bg-blue-600 hover:bg-blue-500 text-white transition-all shadow-md shadow-blue-500/20 flex items-center space-x-1.5"
+          >
+            <span>LinkedIn Profile ↗</span>
+          </a>
+
           <a
             href="https://scholar.google.com/citations?hl=en&user=4g3-eUwAAAAJ"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex px-3.5 py-1.5 text-xs font-semibold rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/30 hover:bg-teal-500/20 transition-all"
+            className="hidden sm:inline-flex px-3 py-1.5 text-xs font-semibold rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/30 hover:bg-teal-500/20 transition-all"
           >
-            Google Scholar (H-9)
+            Scholar (H-9)
           </a>
 
           {/* Mobile Hamburger Button */}
@@ -81,6 +91,14 @@ export default function Navbar() {
           >
             Contact
           </Link>
+          <a
+            href="https://www.linkedin.com/in/chamila-dharmawardhana/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block py-2 text-center text-xs font-bold rounded bg-blue-600 text-white"
+          >
+            Connect on LinkedIn ↗
+          </a>
         </nav>
       )}
     </header>
