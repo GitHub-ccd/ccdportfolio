@@ -8,23 +8,9 @@ A modern, high-performance web application designed to showcase computational re
 - **Styling:** Tailwind CSS
 - **Deployment:** GitHub Pages (Automated CI/CD via GitHub Actions)
 
-## Local Development
+## Documentation
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-2. **Run local development server:**
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-3. **Build static production export:**
-   ```bash
-   npm run build
-   ```
+System architecture and maintenance documentation are maintained in the [`docs/`](./docs/) directory.
 
 ## License
 
