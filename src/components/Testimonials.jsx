@@ -2,6 +2,7 @@
 
 import React from "react";
 import testimonialsData from "../data/testimonials.json";
+import { getAssetPath } from "../utils/basePath";
 
 export default function Testimonials() {
   return (
@@ -26,7 +27,7 @@ export default function Testimonials() {
 
             <div className="pt-4 border-t border-slate-800/60 flex items-center space-x-3">
               <img
-                src={item.image}
+                src={getAssetPath(item.image)}
                 alt={item.name}
                 className="w-10 h-10 rounded-full object-cover border border-slate-700"
               />

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import projectsData from "../data/projects.json";
+import { getAssetPath } from "../utils/basePath";
 
 const categories = [
   "All",
@@ -57,7 +58,7 @@ export default function ProjectGrid() {
               {project.image && (
                 <div className="relative w-full h-48 sm:h-52 overflow-hidden border-b border-slate-800/60 bg-slate-950">
                   <img
-                    src={project.image}
+                    src={getAssetPath(project.image)}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                   />
@@ -118,7 +119,7 @@ export default function ProjectGrid() {
             {selectedProject.image && (
               <div className="w-full h-56 sm:h-64 overflow-hidden rounded-lg border border-slate-800 bg-slate-950">
                 <img
-                  src={selectedProject.image}
+                  src={getAssetPath(selectedProject.image)}
                   alt={selectedProject.title}
                   className="w-full h-full object-cover"
                 />

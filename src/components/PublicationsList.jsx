@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import publicationsData from "../data/publications.json";
+import { getAssetPath } from "../utils/basePath";
 
 const categories = ["All", "Journal Article", "Conference Talk", "Conference Poster"];
 
@@ -240,7 +241,7 @@ export default function PublicationsList({ limit = null }) {
             <div className="flex items-center justify-center bg-slate-950 rounded-lg p-2 max-h-[80vh] overflow-hidden">
               {activeMediaModal.type === 'video' ? (
                 <video
-                  src={activeMediaModal.src}
+                  src={getAssetPath(activeMediaModal.src)}
                   controls
                   autoPlay
                   loop
@@ -248,7 +249,7 @@ export default function PublicationsList({ limit = null }) {
                 />
               ) : (
                 <img
-                  src={activeMediaModal.src}
+                  src={getAssetPath(activeMediaModal.src)}
                   alt={activeMediaModal.title}
                   className="max-h-[75vh] w-auto max-w-full object-contain rounded"
                 />
