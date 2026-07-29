@@ -15,7 +15,7 @@ export default function PublicationsList({ limit = null }) {
 
   // Exact 4 Top Featured Papers chosen for landing page based on Google Scholar citations & animations
   const topFeaturedIds = ["srep-2014", "cemconres-2013", "jace-2016", "acta-mat-2020"];
-  
+
   let displayedPublications = publicationsData;
 
   if (limit) {
@@ -39,7 +39,7 @@ export default function PublicationsList({ limit = null }) {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">
-            {limit ? "Featured Key Publications & Animations" : "Publications & Conference Presentations"}
+            {limit ? "Featured Key Publications" : "Publications & Conference Presentations"}
           </h2>
           <p className="text-slate-400 text-sm mt-1">
             {limit
@@ -78,11 +78,10 @@ export default function PublicationsList({ limit = null }) {
               <button
                 key={cat}
                 onClick={() => setSelectedType(cat)}
-                className={`px-3.5 py-1.5 rounded-lg border transition-all ${
-                  selectedType === cat
-                    ? "bg-teal-500 text-slate-950 border-teal-400 font-bold"
-                    : "bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white"
-                }`}
+                className={`px-3.5 py-1.5 rounded-lg border transition-all ${selectedType === cat
+                  ? "bg-teal-500 text-slate-950 border-teal-400 font-bold"
+                  : "bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white"
+                  }`}
               >
                 {cat === "Journal Article" ? "Journal Articles" : cat === "Conference Talk" ? "Conference Talks" : cat === "Conference Poster" ? "Conference Posters" : "All Publications"} ({count})
               </button>
@@ -95,7 +94,7 @@ export default function PublicationsList({ limit = null }) {
       <div className="space-y-6 text-sm text-slate-300">
         {displayedPublications.map((pub, idx) => (
           <div key={pub.id} className="p-6 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-5 hover:border-slate-700 transition-all">
-            
+
             <div className="space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
@@ -104,13 +103,12 @@ export default function PublicationsList({ limit = null }) {
                       #{idx + 1} Top Cited
                     </span>
                   )}
-                  <span className={`px-2.5 py-0.5 rounded text-[11px] font-semibold border ${
-                    pub.type === "Journal Article"
-                      ? "bg-teal-500/10 text-teal-400 border-teal-500/20"
-                      : pub.type === "Conference Talk"
+                  <span className={`px-2.5 py-0.5 rounded text-[11px] font-semibold border ${pub.type === "Journal Article"
+                    ? "bg-teal-500/10 text-teal-400 border-teal-500/20"
+                    : pub.type === "Conference Talk"
                       ? "bg-amber-500/10 text-amber-400 border-amber-500/20"
                       : "bg-purple-500/10 text-purple-400 border-purple-500/20"
-                  }`}>
+                    }`}>
                     {pub.type}
                   </span>
                   <span className="text-xs text-slate-400 font-mono">({pub.year})</span>
