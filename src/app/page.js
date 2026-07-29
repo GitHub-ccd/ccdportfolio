@@ -6,6 +6,7 @@ import ProjectGrid from "../components/ProjectGrid";
 import PublicationsList from "../components/PublicationsList";
 import ExperienceTimeline from "../components/ExperienceTimeline";
 import Testimonials from "../components/Testimonials";
+import { getAssetPath } from "../utils/basePath";
 
 export default function Home() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -66,7 +67,7 @@ export default function Home() {
             <div className="relative shrink-0 mx-auto md:mx-0">
               <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden border-2 border-teal-500/40 shadow-2xl shadow-teal-500/10 p-1 bg-slate-900">
                 <img
-                  src="/ccdportfolio/img/profile.jpg"
+                  src={getAssetPath("/img/profile.jpg")}
                   alt="Dr. Chamila Dharmawardhana"
                   className="w-full h-full object-cover rounded-full"
                 />
