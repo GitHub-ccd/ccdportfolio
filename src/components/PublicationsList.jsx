@@ -9,6 +9,7 @@ export default function PublicationsList() {
   const [selectedType, setSelectedType] = useState("All");
   const [copiedId, setCopiedId] = useState(null);
   const [activeBibtex, setActiveBibtex] = useState(null);
+  const [activeMediaModal, setActiveMediaModal] = useState(null);
 
   const filteredPublications = selectedType === "All"
     ? publicationsData
@@ -60,15 +61,15 @@ export default function PublicationsList() {
         })}
       </div>
 
-      {/* List */}
-      <div className="space-y-4 text-sm text-slate-300">
+      {/* Publication Cards List */}
+      <div className="space-y-6 text-sm text-slate-300">
         {filteredPublications.map((pub) => (
-          <div key={pub.id} className="p-6 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-4 hover:border-slate-700 transition-all">
+          <div key={pub.id} className="p-6 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-5 hover:border-slate-700 transition-all">
             
-            <div className="flex flex-col md:flex-row gap-6 items-start justify-between">
-              <div className="space-y-2 flex-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className={`px-2 py-0.5 rounded text-[11px] font-semibold border ${
+            <div className="space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <span className={`px-2.5 py-0.5 rounded text-[11px] font-semibold border ${
                     pub.type === "Journal Article"
                       ? "bg-teal-500/10 text-teal-400 border-teal-500/20"
                       : pub.type === "Conference Talk"
@@ -80,71 +81,137 @@ export default function PublicationsList() {
                   <span className="text-xs text-slate-400 font-mono">({pub.year})</span>
                 </div>
 
-                <h3 className="font-bold text-slate-100 text-base">{pub.title}</h3>
-
-                <p className="text-xs text-slate-400">
-                  {pub.authors.split("Dharmawardhana CC").map((part, index, array) => (
-                    <React.Fragment key={index}>
-                      {part}
-                      {index < array.length - 1 && <u className="text-slate-200 font-semibold">Dharmawardhana CC</u>}
-                    </React.Fragment>
-                  ))}
-                </p>
-
-                <p className="text-xs text-slate-400 italic">
-                  {pub.journal} {pub.volume && `— ${pub.volume}`}
-                </p>
-
-                <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-medium">
-                  {pub.link && (
-                    <a
-                      href={pub.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-teal-400 hover:underline flex items-center gap-1"
-                    >
-                      View Publication Link ↗
-                    </a>
-                  )}
-                  {pub.bibtex && (
-                    <>
-                      <button
-                        onClick={() => handleCopyBibtex(pub)}
-                        className="px-3 py-1 rounded bg-slate-950 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs transition-colors"
-                      >
-                        {copiedId === pub.id ? "✓ BibTeX Copied!" : "📋 Copy BibTeX"}
-                      </button>
-                      <button
-                        onClick={() => setActiveBibtex(activeBibtex === pub.id ? null : pub.id)}
-                        className="text-slate-400 hover:text-slate-200 text-xs"
-                      >
-                        {activeBibtex === pub.id ? "Hide Citation" : "Show Citation"}
-                      </button>
-                    </>
-                  )}
-                </div>
+                {pub.link && (
+                  <a
+                    href={pub.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-teal-400 hover:underline flex items-center gap-1 font-semibold"
+                  >
+                    View Journal Link ↗
+                  </a>
+                )}
               </div>
 
-              {/* Original Publication Figure */}
-              {pub.figure && (
-                <div className="w-full md:w-48 h-32 rounded-lg overflow-hidden bg-slate-950 border border-slate-800 shrink-0 flex items-center justify-center p-2">
-                  <img
-                    src={pub.figure}
-                    alt={pub.title}
-                    className="max-h-full max-w-full object-contain rounded"
-                  />
+              <h3 className="font-bold text-slate-100 text-lg sm:text-xl leading-snug">{pub.title}</h3>
+
+              <p className="text-xs sm:text-sm text-slate-400">
+                {pub.authors.split("Dharmawardhana CC").map((part, index, array) => (
+                  <React.Fragment key={index}>
+                    {part}
+                    {index < array.length - 1 && <u className="text-slate-100 font-bold decoration-teal-400">Dharmawardhana CC</u>}
+                  </React.Fragment>
+                ))}
+              </p>
+
+              <p className="text-xs text-slate-400 italic">
+                {pub.journal} {pub.volume && `— ${pub.volume}`}
+              </p>
+            </div>
+
+            {/* FEATURED MEDIA: PROMINENT VIDEO OR RESEARCH DIAGRAM */}
+            {pub.video ? (
+              <div
+                onClick={() => setActiveMediaModal({ type: 'video', src: pub.video, title: pub.title })}
+                className="relative rounded-xl overflow-hidden bg-slate-950 border border-slate-800 cursor-pointer group max-w-2xl mx-auto shadow-xl"
+              >
+                <video
+                  src={pub.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full max-h-[380px] object-cover group-hover:opacity-90 transition-opacity"
+                />
+                <div className="absolute bottom-3 right-3 px-3 py-1 rounded bg-slate-950/80 text-teal-400 text-xs font-semibold backdrop-blur border border-slate-800">
+                  🔍 Click to Enlarge Video Simulation
                 </div>
+              </div>
+            ) : pub.figure ? (
+              <div
+                onClick={() => setActiveMediaModal({ type: 'image', src: pub.figure, title: pub.title })}
+                className="relative rounded-xl overflow-hidden bg-slate-950 border border-slate-800/80 p-4 cursor-pointer group max-w-2xl mx-auto shadow-lg hover:border-teal-500/40 transition-all"
+              >
+                <img
+                  src={pub.figure}
+                  alt={pub.title}
+                  className="w-full max-h-[320px] object-contain mx-auto rounded group-hover:scale-[1.01] transition-transform duration-300"
+                />
+                <div className="absolute bottom-3 right-3 px-3 py-1 rounded bg-slate-950/90 text-teal-400 text-xs font-semibold backdrop-blur border border-slate-800">
+                  🔍 Expand Figure
+                </div>
+              </div>
+            ) : null}
+
+            {/* ACTION BUTTONS & CITATION */}
+            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-medium border-t border-slate-800/60">
+              {pub.bibtex && (
+                <>
+                  <button
+                    onClick={() => handleCopyBibtex(pub)}
+                    className="px-3.5 py-1.5 rounded bg-slate-950 border border-slate-800 hover:bg-slate-800 text-slate-200 text-xs font-semibold transition-colors"
+                  >
+                    {copiedId === pub.id ? "✓ BibTeX Copied!" : "📋 Copy BibTeX Citation"}
+                  </button>
+                  <button
+                    onClick={() => setActiveBibtex(activeBibtex === pub.id ? null : pub.id)}
+                    className="text-slate-400 hover:text-slate-200 text-xs"
+                  >
+                    {activeBibtex === pub.id ? "Hide BibTeX" : "Show BibTeX"}
+                  </button>
+                </>
               )}
             </div>
 
             {activeBibtex === pub.id && pub.bibtex && (
-              <pre className="mt-3 p-3 rounded-lg bg-slate-950 text-[11px] font-mono text-slate-400 overflow-x-auto border border-slate-800 select-all">
+              <pre className="mt-3 p-4 rounded-lg bg-slate-950 text-[11px] font-mono text-slate-300 overflow-x-auto border border-slate-800 select-all">
                 {pub.bibtex}
               </pre>
             )}
           </div>
         ))}
       </div>
+
+      {/* FULLSCREEN HIGH-RES MEDIA MODAL */}
+      {activeMediaModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/95 backdrop-blur-md"
+          onClick={() => setActiveMediaModal(null)}
+        >
+          <div
+            className="relative max-w-5xl w-full bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-6 space-y-4 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between">
+              <h4 className="text-sm font-bold text-slate-200 line-clamp-1">{activeMediaModal.title}</h4>
+              <button
+                onClick={() => setActiveMediaModal(null)}
+                className="px-3 py-1 text-xs font-semibold rounded bg-slate-800 hover:bg-slate-700 text-slate-300"
+              >
+                ✕ Close
+              </button>
+            </div>
+
+            <div className="flex items-center justify-center bg-slate-950 rounded-lg p-2 max-h-[80vh] overflow-hidden">
+              {activeMediaModal.type === 'video' ? (
+                <video
+                  src={activeMediaModal.src}
+                  controls
+                  autoPlay
+                  loop
+                  className="max-h-[75vh] w-auto max-w-full rounded"
+                />
+              ) : (
+                <img
+                  src={activeMediaModal.src}
+                  alt={activeMediaModal.title}
+                  className="max-h-[75vh] w-auto max-w-full object-contain rounded"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
