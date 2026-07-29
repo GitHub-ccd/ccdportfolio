@@ -113,8 +113,8 @@ export default function Home() {
         {/* FEATURED PROJECTS COMPONENT */}
         <ProjectGrid />
 
-        {/* PUBLICATIONS COMPONENT (WITH ORIGINAL RESEARCH FIGURES) */}
-        <PublicationsList />
+        {/* TOP 3 MOST CITED PUBLICATIONS COMPONENT */}
+        <PublicationsList limit={3} />
 
         {/* TESTIMONIALS COMPONENT */}
         <Testimonials />

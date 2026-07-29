@@ -1,19 +1,27 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import publicationsData from "../data/publications.json";
 
 const categories = ["All", "Journal Article", "Conference Talk", "Conference Poster"];
 
-export default function PublicationsList() {
+export default function PublicationsList({ limit = null }) {
   const [selectedType, setSelectedType] = useState("All");
   const [copiedId, setCopiedId] = useState(null);
   const [activeBibtex, setActiveBibtex] = useState(null);
   const [activeMediaModal, setActiveMediaModal] = useState(null);
 
-  const filteredPublications = selectedType === "All"
-    ? publicationsData
-    : publicationsData.filter((p) => p.type === selectedType);
+  // If limited (e.g. landing page), select top 3 most cited key publications
+  const top3Ids = ["cemconres-2013", "nature-srep-2018", "acta-mat-2020"];
+  
+  let displayedPublications = publicationsData;
+
+  if (limit) {
+    displayedPublications = publicationsData.filter(p => top3Ids.includes(p.id));
+  } else if (selectedType !== "All") {
+    displayedPublications = publicationsData.filter((p) => p.type === selectedType);
+  }
 
   const handleCopyBibtex = (pub) => {
     if (!pub.bibtex) return;
@@ -26,44 +34,62 @@ export default function PublicationsList() {
     <section id="publications" className="space-y-6 pt-12 border-t border-slate-900">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">Publications & Conference Presentations</h2>
-          <p className="text-slate-400 text-sm mt-1">16 Peer-Reviewed Journal Articles, 6 Conference Talks, and 7 Conference Posters.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">
+            {limit ? "Top Cited Publications" : "Publications & Conference Presentations"}
+          </h2>
+          <p className="text-slate-400 text-sm mt-1">
+            {limit
+              ? "Featured top-cited peer-reviewed research papers in computational physics and materials science."
+              : "16 Peer-Reviewed Journal Articles, 6 Conference Talks, and 7 Conference Posters."}
+          </p>
         </div>
-        <a
-          href="https://scholar.google.com/citations?hl=en&user=4g3-eUwAAAAJ"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-teal-400 font-semibold hover:underline self-start sm:self-auto"
-        >
-          Google Scholar Profile (H-9, i10-9) →
-        </a>
+        <div className="flex items-center space-x-4 self-start sm:self-auto">
+          {limit && (
+            <Link
+              href="/publications"
+              className="text-xs text-teal-400 font-semibold hover:underline bg-teal-500/10 border border-teal-500/20 px-3 py-1.5 rounded-lg"
+            >
+              View All 29 Publications →
+            </Link>
+          )}
+          <a
+            href="https://scholar.google.com/citations?hl=en&user=4g3-eUwAAAAJ"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-slate-400 hover:text-teal-400 font-semibold"
+          >
+            Google Scholar (H-9) ↗
+          </a>
+        </div>
       </div>
 
-      {/* Filter Tabs */}
-      <div className="flex flex-wrap gap-2 text-xs font-medium pt-2">
-        {categories.map((cat) => {
-          const count = cat === "All"
-            ? publicationsData.length
-            : publicationsData.filter(p => p.type === cat).length;
-          return (
-            <button
-              key={cat}
-              onClick={() => setSelectedType(cat)}
-              className={`px-3.5 py-1.5 rounded-lg border transition-all ${
-                selectedType === cat
-                  ? "bg-teal-500 text-slate-950 border-teal-400 font-bold"
-                  : "bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white"
-              }`}
-            >
-              {cat === "Journal Article" ? "Journal Articles" : cat === "Conference Talk" ? "Conference Talks" : cat === "Conference Poster" ? "Conference Posters" : "All Publications"} ({count})
-            </button>
-          );
-        })}
-      </div>
+      {/* Filter Tabs (Only show if not limited) */}
+      {!limit && (
+        <div className="flex flex-wrap gap-2 text-xs font-medium pt-2">
+          {categories.map((cat) => {
+            const count = cat === "All"
+              ? publicationsData.length
+              : publicationsData.filter(p => p.type === cat).length;
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedType(cat)}
+                className={`px-3.5 py-1.5 rounded-lg border transition-all ${
+                  selectedType === cat
+                    ? "bg-teal-500 text-slate-950 border-teal-400 font-bold"
+                    : "bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white"
+                }`}
+              >
+                {cat === "Journal Article" ? "Journal Articles" : cat === "Conference Talk" ? "Conference Talks" : cat === "Conference Poster" ? "Conference Posters" : "All Publications"} ({count})
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {/* Publication Cards List */}
       <div className="space-y-6 text-sm text-slate-300">
-        {filteredPublications.map((pub) => (
+        {displayedPublications.map((pub) => (
           <div key={pub.id} className="p-6 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-5 hover:border-slate-700 transition-all">
             
             <div className="space-y-3">
@@ -171,6 +197,17 @@ export default function PublicationsList() {
           </div>
         ))}
       </div>
+
+      {limit && (
+        <div className="text-center pt-4">
+          <Link
+            href="/publications"
+            className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-teal-400 font-semibold text-sm transition-all"
+          >
+            <span>Explore All 29 Publications & Presentations →</span>
+          </Link>
+        </div>
+      )}
 
       {/* FULLSCREEN HIGH-RES MEDIA MODAL */}
       {activeMediaModal && (
