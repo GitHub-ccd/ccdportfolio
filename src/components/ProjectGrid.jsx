@@ -34,11 +34,10 @@ export default function ProjectGrid() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
-                selectedCategory === cat
+              className={`px-3 py-1.5 rounded-lg border transition-all ${selectedCategory === cat
                   ? "bg-teal-500 text-slate-950 border-teal-400 font-semibold"
                   : "bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white"
-              }`}
+                }`}
             >
               {cat}
             </button>
