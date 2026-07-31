@@ -114,12 +114,36 @@
   },
   {
     "id": "telecom-churn-prediction",
-    "title": "Predictive Customer Churn Classification Model",
-    "category": "Applied Machine Learning & NLP",
+    "title": "Telecom Churn Risk Classifier & SHAP Diagnostic Engine",
+    "category": "Applied Machine Learning & Explainable AI",
     "image": "/img/projects/customer_churn_banner.png",
-    "summary": "Supervised classification model evaluating customer retention indicators and identifying high-risk customer churn patterns.",
-    "tech": ["Scikit-Learn", "Pandas", "Seaborn", "Logistic Regression", "Random Forest"],
-    "github": "https://github.com/GitHub-ccd",
-    "featured": false
+    "summary": "XGBoost gradient boosting classifier with Optuna hyperparameter optimization (Recall=82.5%, ROC-AUC=0.865), TreeSHAP explainability diagnostics, and a live interactive Streamlit risk calculator.",
+    "description": "Predicting and mitigating customer churn is vital for telecommunication revenue retention. Using the Telco Customer Churn dataset (~7,040 customers), this project upgrades legacy baseline models to a modern XGBoost classification pipeline tuned with Optuna hyperparameter optimization.\n\nTo address severe class imbalance and prioritize high-risk retention targets, the pipeline optimizes directly for Recall and ROC-AUC (achieving 82.5% Recall on churners and 0.865 ROC-AUC). Integrated with SHAP (SHapley Additive exPlanations) to quantify individual feature contributions (such as contract commitment, monthly charges, and technical support add-ons). Paired with an interactive Streamlit micro-app allowing users to evaluate customer profiles in real time.",
+    "tech": [
+      "Python",
+      "XGBoost",
+      "Optuna",
+      "SHAP",
+      "Streamlit",
+      "Scikit-Learn",
+      "Pandas",
+      "Feature Engineering"
+    ],
+    "github": "https://github.com/GitHub-ccd/Customer_churn_classification_MOD_3",
+    "liveDemoUrl": "https://telecom-churn-risk-calculator.streamlit.app",
+    "keyMetrics": [
+      { "label": "Baseline Recall", "value": "52.1%" },
+      { "label": "XGBoost Recall", "value": "82.5%" },
+      { "label": "ROC-AUC Score", "value": "0.865" },
+      { "label": "Key Drivers", "value": "Contract, Monthly Bill, Tech Support" }
+    ],
+    "highlights": [
+      "Upgraded 2020 baseline Random Forest model to an Optuna-tuned XGBoost gradient boosting classifier.",
+      "Achieved 82.5% Recall on churn class and 0.865 ROC-AUC across 5-fold cross validation.",
+      "Incorporated TreeSHAP beeswarm, waterfall, and dependence diagnostic plots explaining top retention drivers.",
+      "Built a live interactive Streamlit churn risk calculator web application with real-time SHAP explanations."
+    ],
+    "storyBadge": "Track B Bootcamp Project (Modernized 2026)",
+    "featured": true
   }
 ]
