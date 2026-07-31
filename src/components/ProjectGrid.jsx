@@ -126,8 +126,35 @@ export default function ProjectGrid() {
             )}
 
             <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
-              <p>{selectedProject.description || selectedProject.summary}</p>
+              <p className="whitespace-pre-line">{selectedProject.description || selectedProject.summary}</p>
             </div>
+
+            {/* Key Metrics Grid */}
+            {selectedProject.keyMetrics && (
+              <div className="space-y-2">
+                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Performance & Model Metrics</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  {selectedProject.keyMetrics.map((m, idx) => (
+                    <div key={idx} className="p-3 rounded-lg bg-slate-950 border border-slate-800 text-center space-y-1">
+                      <div className="text-xs text-slate-400 font-medium">{m.label}</div>
+                      <div className="text-sm sm:text-base font-extrabold text-teal-400">{m.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Highlights List */}
+            {selectedProject.highlights && (
+              <div className="space-y-2">
+                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Key Technical Highlights</h4>
+                <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm text-slate-300">
+                  {selectedProject.highlights.map((h, idx) => (
+                    <li key={idx} className="leading-relaxed">{h}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <div className="space-y-2">
               <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Technologies Used</h4>
@@ -141,15 +168,25 @@ export default function ProjectGrid() {
             </div>
 
             {/* External Links */}
-            <div className="flex flex-wrap gap-4 pt-4 border-t border-slate-800 text-xs font-medium">
+            <div className="flex flex-wrap gap-3 pt-4 border-t border-slate-800 text-xs font-medium">
+              {selectedProject.liveDemoUrl && (
+                <a
+                  href={selectedProject.liveDemoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-lg bg-teal-500 text-slate-950 font-bold hover:bg-teal-400 transition-all shadow-md flex items-center gap-1.5"
+                >
+                  <span>🚀 Launch Live Streamlit Demo ↗</span>
+                </a>
+              )}
               {selectedProject.github && (
                 <a
                   href={selectedProject.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-teal-500 text-slate-950 font-bold hover:bg-teal-400 transition-colors"
+                  className="px-4 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold transition-colors flex items-center gap-1.5"
                 >
-                  GitHub Repository ↗
+                  <span>GitHub Repository ↗</span>
                 </a>
               )}
               {selectedProject.blog && (
@@ -157,9 +194,9 @@ export default function ProjectGrid() {
                   href={selectedProject.blog}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition-colors"
+                  className="px-4 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold transition-colors flex items-center gap-1.5"
                 >
-                  Read Detailed Blog Post ↗
+                  <span>Read Detailed Blog Post ↗</span>
                 </a>
               )}
             </div>

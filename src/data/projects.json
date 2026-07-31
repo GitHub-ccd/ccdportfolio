@@ -22,6 +22,40 @@
     "featured": true
   },
   {
+    "id": "king-county-housing-price-prediction",
+    "title": "King County Housing Price Prediction & Streamlit Micro-App",
+    "category": "Applied Machine Learning & NLP",
+    "image": "/img/projects/king_county_housing_banner.png",
+    "summary": "Multivariate regression & gradient boosting framework (LightGBM R²=0.875) with an interactive Streamlit web micro-app estimating residential real estate values across King County, WA.",
+    "description": "In real estate markets, accurately valuing residential properties is critical for homebuyers, sellers, and financial underwriters. Using the King County House Sales dataset (~21,600 homes), this project combines classical OLS regression diagnostics with modern regularized regression (Ridge, Lasso) and Gradient Boosting (LightGBM) to deliver accurate price estimates (LightGBM R² = 0.875).\n\nFeatures extensive EDA, Haversine spatial distance calculations to central Seattle, log-normal feature scaling, and Variance Inflation Factor (VIF) multicollinearity pruning. Paired with a live interactive Streamlit micro-app allowing recruiters to adjust property specs (living area sqft, grade, bedrooms, zipcode) and receive real-time price predictions.",
+    "tech": [
+      "Python",
+      "LightGBM",
+      "Scikit-Learn",
+      "Statsmodels",
+      "Streamlit",
+      "Feature Engineering",
+      "Multivariate Regression",
+      "Geo-spatial Analysis"
+    ],
+    "github": "https://github.com/GitHub-ccd/king-county-housing-price-prediction",
+    "liveDemoUrl": "https://king-county-housing-prediction.streamlit.app",
+    "keyMetrics": [
+      { "label": "Baseline OLS R²", "value": "0.751" },
+      { "label": "LightGBM R²", "value": "0.875" },
+      { "label": "Dataset Size", "value": "21,597 Homes" },
+      { "label": "Key Drivers", "value": "Grade, Sqft, Geo-Location" }
+    ],
+    "highlights": [
+      "Exploratory Data Analysis across 19 physical, temporal, and spatial features in Seattle & King County.",
+      "Engineered log-transformed continuous variables, one-hot encoded categorical factors, and Haversine distance metrics to central Seattle.",
+      "Multi-model benchmark comparing Statsmodels OLS, Ridge, Lasso, and LightGBM regressors.",
+      "Built a live interactive Streamlit web micro-app enabling real-time property price evaluations."
+    ],
+    "storyBadge": "Track B Bootcamp Project (Modernized 2026)",
+    "featured": true
+  },
+  {
     "id": "pneumonia-cnn",
     "title": "Pneumonia Detection from Chest X-Rays via Deep CNNs",
     "category": "Health AI & Medical Imaging",
