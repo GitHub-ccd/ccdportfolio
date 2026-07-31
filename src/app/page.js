@@ -73,7 +73,7 @@ export default function Home() {
                 />
               </div>
               <div className="absolute bottom-2 right-2 px-3 py-1 rounded-full bg-slate-950/90 text-teal-400 border border-teal-500/30 text-[11px] font-semibold backdrop-blur">
-                Dr. Chamila, Ph.D.
+                Dr. Chamila Dharmawardhana, PhD
               </div>
             </div>
           </div>
@@ -88,21 +88,34 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ABOUT SECTION */}
+        {/* ABOUT SECTION (Trimmed & polished for Landing Page) */}
         <section id="about" className="space-y-6 pt-12 border-t border-slate-900">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">About Me</h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">About Me</h2>
+              <p className="text-slate-400 text-sm mt-1">Bridging computational physics, machine learning, and healthcare innovation.</p>
+            </div>
+            <a
+              href="/about"
+              className="inline-flex items-center text-xs font-semibold text-teal-400 hover:text-teal-300 transition-colors space-x-1"
+            >
+              <span>Read Full Story & Resume ➔</span>
+            </a>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8 text-slate-300 text-sm leading-relaxed">
             <div className="md:col-span-2 space-y-4">
               <p>
-                All my life I have been passionate about mathematical modeling and working rigorously to solve complex real-world problems. I earned my <strong>Ph.D. in Physics</strong> (minor in Geosciences) from the University of Missouri - Kansas City under Prof. Wai-Yim Ching, concentrating on quantum and classical atomic simulations of materials.
+                I am a <strong>Healthcare Data Scientist & Computational Physicist (Ph.D., UMKC)</strong> with 15+ years of experience transforming complex physical, biological, and clinical data into predictive machine learning solutions.
               </p>
               <p>
-                Following postdoctoral appointments at the University of Colorado Boulder, Georgetown University, and the Illinois Institute of Technology, I expanded into modern Machine Learning and Data Science (completing the Flatiron School Data Science program). 
+                My career bridges industry and academia—from leading clinical analytics and predictive modeling at <strong>Nordic Global</strong> and <strong>Bon Secours Mercy Health</strong>, to engineering FFT protein-docking algorithms at Illinois Tech, CHARMM biomolecular models at Georgetown/NIH, and supercomputer simulations at CU Boulder.
               </p>
-              <p>
-                My work spans building FFT-based protein docking algorithms for biological complexes, chest X-ray deep learning classification models, emotion-recognition neural networks, and retail recommendation engines.
+              <p className="text-slate-400 text-xs pt-1">
+                💡 <em>Beyond algorithms, I am a husband, father, and software builder passionate about creating practical tools that solve real-world problems.</em>
               </p>
             </div>
+
             <div className="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4">
               <h3 className="text-slate-100 font-semibold text-base">Quick Connections</h3>
               <ul className="space-y-3 text-xs text-slate-400">

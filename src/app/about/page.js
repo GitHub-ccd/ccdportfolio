@@ -42,7 +42,10 @@ export default function AboutPage() {
 
             <div className="space-y-4 flex-1">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
-                <h2 className="text-2xl font-bold text-slate-100">Biography & Summary</h2>
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-100">Biography & Personal Journey</h2>
+                  <p className="text-xs text-slate-400 mt-0.5">Computational Physicist • Healthcare Data Scientist • Software Builder</p>
+                </div>
                 <div className="flex flex-wrap gap-2 text-xs font-semibold">
                   <a
                     href={getAssetPath("/docs/chamila_dharmawardhana_2page_cv.pdf")}
@@ -66,10 +69,16 @@ export default function AboutPage() {
 
               <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
                 <p>
-                  I am a Data Scientist and Computational Chemist with diverse experience building supervised/unsupervised machine learning models for real-world healthcare and industry applications. I earned my <strong>Ph.D. in Computational Physics</strong> from the University of Missouri - Kansas City concentrating on ab-initio quantum simulations and electronic structure calculations of complex materials.
+                  I am a <strong>Healthcare Data Scientist and Computational Physicist</strong> with over 15 years of combined experience bridging quantum physics, multi-scale biomolecular simulations, machine learning, and clinical analytics. I earned my <strong>Ph.D. in Computational Physics</strong> (minor in Geosciences) from the University of Missouri - Kansas City under Prof. Wai-Yim Ching, focusing on ab-initio density functional theory (DFT) calculations of complex crystal structures, electronic properties, and high-temperature material oxidation.
                 </p>
                 <p>
-                  My career spans data science positions at <strong>Nordic Global</strong>, <strong>Bon Secours Mercy Health</strong>, and <strong>Promoboxx</strong>, alongside postdoctoral research appointments at the Illinois Institute of Technology (FFT protein docking algorithms), Georgetown University (CHARMM biomolecular water models & NIH collaborations), and the University of Colorado Boulder (ONR MURI supercomputer simulations).
+                  My post-doctoral research spans prominent academic institutions: constructing force fields for high-temperature alloys at the <strong>University of Colorado Boulder</strong> (under an ONR MURI grant), developing biomolecular solution potential terms for CHARMM at <strong>Georgetown University</strong> in collaboration with the NIH Laboratory of Computational Biology, and engineering Fast Fourier Transform (FFT) binding affinity algorithms for protein-protein docking at the <strong>Illinois Institute of Technology</strong>.
+                </p>
+                <p>
+                  Transitioning my quantitative skills into industrial data science, I served as Associate Data Scientist at <strong>Promoboxx</strong> (XGBoost recommendation models and spaCy/NLTK sentiment analysis) and Data Scientist at <strong>Bon Secours Mercy Health</strong> (clinical outcome modeling and health system data pipelines). Currently, as a Data Scientist at <strong>Nordic Global</strong>, I lead healthcare data science initiatives, advanced predictive modeling, and clinical intelligence frameworks.
+                </p>
+                <p>
+                  Beyond formal algorithms and peer-reviewed research, I view data science as a deeply human pursuit. Whether building a mobile edtech flashcard engine to study for my US citizenship test, scraping Sinhalese name origins into an interactive voting app with my wife to name our second-born child, or designing commercial web platforms, I am passionate about applying software and data to simplify life, empower people, and deliver meaningful real-world impact.
                 </p>
               </div>
             </div>
