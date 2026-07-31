@@ -1,5 +1,27 @@
 [
   {
+    "id": "movie-industry-market-analysis",
+    "title": "Microsoft Film Studio: Box Office Market Intelligence & ML Engine",
+    "category": "Applied Machine Learning & NLP",
+    "image": "/img/projects/movie-industry-market-analysis.png",
+    "summary": "Executive consulting study and machine learning suite combining box office financial analytics, Random Forest revenue prediction (R²=0.74), and NLP critic sentiment mining (AUC=0.81).",
+    "description": "When Microsoft leadership evaluated entering the original video content market alongside tech industry peers, they required empirical market intelligence and predictive analytics to navigate an unfamiliar domain. This project delivers an end-to-end data science consultation paired with active Machine Learning and Natural Language Processing models.\n\nTo overcome severe missing-data limitations in baseline public datasets, an advanced multi-source ETL pipeline was built. This included a custom JavaScript DOM auto-scroller and BeautifulSoup HTML parsing engine to scrape over 14,000 IMDbPro records, paired with REST API integration targeting TMDB to ingest popularity indices across 26,500+ movies.\n\nGoing beyond exploratory data analysis, the repository implements a Supervised Random Forest Regressor predicting worldwide box office gross (R²=0.74, MAE=$52M) based on production budgets, release timing, and genre combinations. Additionally, an NLP sentiment classifier trained on 54,400+ Rotten Tomatoes critic reviews uses TF-IDF vectorization and Logistic Regression (AUC=0.81) to predict review freshness and extract key thematic sentiment drivers.",
+    "tech": [
+      "Python",
+      "Pandas",
+      "Scikit-Learn",
+      "Random Forest",
+      "NLP",
+      "TF-IDF",
+      "Web Scraping",
+      "TMDB API",
+      "Jupyter"
+    ],
+    "github": "https://github.com/GitHub-ccd/Movie-Industry-Market-Analysis",
+    "storyBadge": "Bootcamp Featured Project",
+    "featured": true
+  },
+  {
     "id": "pneumonia-cnn",
     "title": "Pneumonia Detection from Chest X-Rays via Deep CNNs",
     "category": "Health AI & Medical Imaging",
