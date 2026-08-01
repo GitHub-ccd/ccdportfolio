@@ -10,6 +10,7 @@ const categories = [
   "Health AI & Medical Imaging",
   "Bioinformatics & Computational Biology",
   "Applied Machine Learning & NLP",
+  "Applied Machine Learning & Explainable AI",
   "Computational Physics"
 ];
 
