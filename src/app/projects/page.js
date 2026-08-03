@@ -227,7 +227,12 @@ export default function ProjectsPage() {
                     rel="noopener noreferrer"
                     className="px-4 py-2.5 rounded-lg bg-teal-500 text-slate-950 font-bold hover:bg-teal-400 transition-all shadow-md flex items-center gap-1.5"
                   >
-                    <span>🚀 Launch Live Streamlit Demo ↗</span>
+                    <span>
+                      {selectedProject.liveDemoLabel ||
+                        (selectedProject.liveDemoUrl.includes("huggingface")
+                          ? "🚀 Launch Live Gradio Demo ↗"
+                          : "🚀 Launch Live Streamlit Demo ↗")}
+                    </span>
                   </a>
                 )}
                 {selectedProject.github && (
