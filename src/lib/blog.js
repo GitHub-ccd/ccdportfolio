@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
 import hljs from "highlight.js";
+import { getAssetPath } from "@/utils/basePath";
 
 const postsDirectory = path.join(process.cwd(), "content/blog");
 
@@ -18,6 +19,13 @@ function slugify(text) {
  * Configure marked renderer for styled headings & code blocks with copy metadata
  */
 const customRenderer = {
+  image(href, title, text) {
+    const assetUrl = getAssetPath(href);
+    return `<figure class="my-8 space-y-2">
+      <img src="${assetUrl}" alt="${text || ""}" title="${title || ""}" class="w-full rounded-2xl border border-slate-800 shadow-2xl" />
+      ${text ? `<figcaption class="text-center text-xs text-slate-400 font-mono">${text}</figcaption>` : ""}
+    </figure>`;
+  },
   heading(text, level) {
     const cleanText = typeof text === "string" ? text.replace(/<[^>]*>/g, "") : String(text);
     const id = slugify(cleanText);

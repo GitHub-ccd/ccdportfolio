@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { getAssetPath } from "@/utils/basePath";
 
 export default function BlogGrid({ posts = [], allTags = [] }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -114,7 +114,7 @@ export default function BlogGrid({ posts = [], allTags = [] }) {
               {/* Cover Image Header */}
               <div className="relative h-48 w-full bg-slate-950 overflow-hidden">
                 <img
-                  src={post.coverImage}
+                  src={getAssetPath(post.coverImage)}
                   alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                 />

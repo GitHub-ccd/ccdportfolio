@@ -5,7 +5,7 @@ summary: "Upgrading a legacy 2020 classification pipeline into an Optuna-tuned X
 tags: ["Explainable AI", "Machine Learning", "XGBoost", "SHAP", "Streamlit", "Optuna"]
 coverImage: "/img/projects/customer_churn_banner.png"
 author: "Chamila Dharmawardhana, Ph.D."
-originalBloggerUrl: "https://findingdata.blogspot.com/"
+originalBloggerUrl: "https://findingdata.blogspot.com/2020/08/new-post.html"
 originalDate: "2020-07-15"
 ---
 

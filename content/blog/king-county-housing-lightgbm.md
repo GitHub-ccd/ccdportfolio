@@ -5,7 +5,7 @@ summary: "Predicting King County housing prices using LightGBM ($R^2 = 0.875$), 
 tags: ["Machine Learning", "LightGBM", "Geo-Spatial", "Streamlit", "Regression"]
 coverImage: "/img/projects/king_county_housing_banner.png"
 author: "Chamila Dharmawardhana, Ph.D."
-originalBloggerUrl: "https://findingdata.blogspot.com/"
+originalBloggerUrl: "https://findingdata.blogspot.com/2020/05/get-best-price-for-your-seattle-house_11.html"
 originalDate: "2020-06-20"
 ---
 

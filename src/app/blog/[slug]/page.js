@@ -7,6 +7,7 @@ import CodeCopyButton from "@/components/blog/CodeCopyButton";
 import ArticleReactions from "@/components/blog/ArticleReactions";
 import GiscusComments from "@/components/blog/GiscusComments";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { getAssetPath } from "@/utils/basePath";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -62,7 +63,7 @@ export default async function BlogPostPage({ params }) {
         <header className="relative rounded-3xl bg-slate-900/80 border border-slate-800/80 overflow-hidden shadow-2xl">
           <div className="relative h-64 sm:h-96 w-full bg-slate-950">
             <img
-              src={post.coverImage}
+              src={getAssetPath(post.coverImage)}
               alt={post.title}
               className="w-full h-full object-cover opacity-80"
             />

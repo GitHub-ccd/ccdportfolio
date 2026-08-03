@@ -5,7 +5,7 @@ summary: "Architecting a multi-source web scraping ETL pipeline across 26,500+ t
 tags: ["Machine Learning", "NLP", "ETL & Scraping", "Random Forest", "Sentiment Analysis"]
 coverImage: "/img/projects/movie-industry-market-analysis.png"
 author: "Chamila Dharmawardhana, Ph.D."
-originalBloggerUrl: "https://findingdata.blogspot.com/"
+originalBloggerUrl: "https://findingdata.blogspot.com/2020/04/oops-i-did-it-again-little-wisdom-from.html"
 originalDate: "2020-05-10"
 ---
 
