@@ -19,22 +19,29 @@ function slugify(text) {
  * Configure marked renderer for styled headings & code blocks with copy metadata
  */
 const customRenderer = {
-  image(href, title, text) {
+  image(token) {
+    const href = token.href || "";
+    const title = token.title || "";
+    const text = token.text || "";
     const assetUrl = getAssetPath(href);
     return `<figure class="my-8 space-y-2">
-      <img src="${assetUrl}" alt="${text || ""}" title="${title || ""}" class="w-full rounded-2xl border border-slate-800 shadow-2xl" />
+      <img src="${assetUrl}" alt="${text}" title="${title}" class="w-full rounded-2xl border border-slate-800 shadow-2xl" />
       ${text ? `<figcaption class="text-center text-xs text-slate-400 font-mono">${text}</figcaption>` : ""}
     </figure>`;
   },
-  heading(text, level) {
-    const cleanText = typeof text === "string" ? text.replace(/<[^>]*>/g, "") : String(text);
+  heading(token) {
+    const text = this.parser.parseInline(token.tokens || []);
+    const level = token.depth || 2;
+    const cleanText = (token.text || "").replace(/<[^>]*>/g, "");
     const id = slugify(cleanText);
     const sizeClasses = level === 1 ? "text-3xl font-extrabold text-white mt-10 mb-5" :
                         level === 2 ? "text-2xl font-bold text-slate-100 mt-10 mb-4 pb-2 border-b border-slate-800/80" :
                         "text-xl font-semibold text-teal-300 mt-8 mb-3";
     return `<h${level} id="${id}" class="scroll-mt-24 ${sizeClasses}">${text}</h${level}>`;
   },
-  code(code, language) {
+  code(token) {
+    const code = token.text || "";
+    const language = token.lang || "";
     const validLang = language && hljs.getLanguage(language) ? language : "plaintext";
     let highlighted;
     try {
@@ -60,22 +67,43 @@ const customRenderer = {
       <pre class="p-4 overflow-x-auto text-sm leading-relaxed font-mono text-slate-200"><code class="hljs language-${validLang}">${highlighted}</code></pre>
     </div>`;
   },
-  paragraph(text) {
+  paragraph(token) {
+    const text = this.parser.parseInline(token.tokens || []);
     return `<p class="text-slate-300 leading-relaxed my-5 text-base sm:text-lg">${text}</p>`;
   },
-  blockquote(quote) {
+  blockquote(token) {
+    const quote = this.parser.parse(token.tokens || []);
     return `<blockquote class="my-6 pl-4 border-l-4 border-teal-500 bg-teal-500/5 py-3 pr-4 text-slate-200 italic rounded-r-lg">${quote}</blockquote>`;
   },
-  list(body, ordered) {
-    const type = ordered ? "ol" : "ul";
-    const listClasses = ordered ? "list-decimal" : "list-disc";
+  list(token) {
+    const type = token.ordered ? "ol" : "ul";
+    const listClasses = token.ordered ? "list-decimal" : "list-disc";
+    const body = token.items
+      ? token.items
+          .map((item) => `<li class="my-1">${this.parser.parse(item.tokens)}</li>`)
+          .join("")
+      : "";
     return `<${type} class="${listClasses} pl-6 my-5 space-y-2 text-slate-300 text-base sm:text-lg">${body}</${type}>`;
   },
-  table(header, body) {
+  table(token) {
+    const headerCells = (token.header || [])
+      .map((cell) => `<th class="px-4 py-3 font-semibold">${this.parser.parseInline(cell.tokens || [])}</th>`)
+      .join("");
+    const headerRow = `<tr>${headerCells}</tr>`;
+
+    const bodyRows = (token.rows || [])
+      .map((row) => {
+        const cells = row
+          .map((cell) => `<td class="px-4 py-3">${this.parser.parseInline(cell.tokens || [])}</td>`)
+          .join("");
+        return `<tr>${cells}</tr>`;
+      })
+      .join("");
+
     return `<div class="my-6 overflow-x-auto rounded-xl border border-slate-800">
       <table class="w-full text-left text-sm text-slate-300">
-        <thead class="bg-slate-900 text-xs uppercase text-teal-400 font-semibold border-b border-slate-800">${header}</thead>
-        <tbody class="divide-y divide-slate-800/60 bg-slate-950/50">${body}</tbody>
+        <thead class="bg-slate-900 text-xs uppercase text-teal-400 font-semibold border-b border-slate-800">${headerRow}</thead>
+        <tbody class="divide-y divide-slate-800/60 bg-slate-950/50">${bodyRows}</tbody>
       </table>
     </div>`;
   }
