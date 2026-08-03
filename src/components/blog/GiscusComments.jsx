@@ -1,0 +1,49 @@
+"use client";
+
+import React, { useEffect, useRef } from "react";
+
+export default function GiscusComments({ slug }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    ref.current.innerHTML = "";
+
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute("data-repo", "GitHub-ccd/ccdportfolio");
+    script.setAttribute("data-repo-id", "R_kgDORX"); // Configurable repo ID
+    script.setAttribute("data-category", "General");
+    script.setAttribute("data-category-id", "DIC_kwDORX");
+    script.setAttribute("data-mapping", "pathname");
+    script.setAttribute("data-strict", "0");
+    script.setAttribute("data-reactions-enabled", "1");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-input-position", "top");
+    script.setAttribute("data-theme", "dark_dimmed");
+    script.setAttribute("data-lang", "en");
+    script.setAttribute("data-loading", "lazy");
+    script.crossOrigin = "anonymous";
+    script.async = true;
+
+    ref.current.appendChild(script);
+  }, [slug]);
+
+  return (
+    <section className="mt-16 pt-8 border-t border-slate-800/80">
+      <div className="flex items-center gap-2 mb-6">
+        <div className="p-2 rounded-lg bg-teal-500/10 text-teal-400 border border-teal-500/20">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        </div>
+        <div>
+          <h3 className="text-lg font-bold text-slate-100">Discussion & Feedback</h3>
+          <p className="text-xs text-slate-400">Powered by GitHub Discussions (Sign in with GitHub to participate)</p>
+        </div>
+      </div>
+      
+      <div ref={ref} className="giscus-wrapper min-h-[160px] rounded-xl bg-slate-900/30 p-4 border border-slate-800/60" />
+    </section>
+  );
+}

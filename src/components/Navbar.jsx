@@ -17,6 +17,7 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
           <Link href="/" className="hover:text-teal-400 transition-colors">Home</Link>
           <Link href="/projects" className="hover:text-teal-400 transition-colors">Projects Catalog</Link>
+          <Link href="/blog" className="hover:text-teal-400 transition-colors">Blog & Writing</Link>
           <Link href="/publications" className="hover:text-teal-400 transition-colors">Publications Library</Link>
           <Link href="/about" className="hover:text-teal-400 transition-colors">About & Resume</Link>
           <Link href="/contact" className="hover:text-teal-400 transition-colors">Contact</Link>
@@ -59,6 +60,13 @@ export default function Navbar() {
             className="block py-1.5 hover:text-teal-400 transition-colors"
           >
             Projects Catalog
+          </Link>
+          <Link
+            href="/blog"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1.5 hover:text-teal-400 transition-colors"
+          >
+            Blog & Writing
           </Link>
           <Link
             href="/publications"
