@@ -1,106 +1,63 @@
 ---
-title: "Box Office Market Intelligence: Multi-Source ETL, Random Forest Gross Regressor & Critic Sentiment NLP"
-date: "2026-08-03"
-summary: "Architecting a multi-source web scraping ETL pipeline across 26,500+ titles, predicting box office revenue with Random Forest ($R^2 = 0.74$), and analyzing Rotten Tomatoes critic sentiment with TF-IDF."
-tags: ["Machine Learning", "NLP", "ETL & Scraping", "Random Forest", "Sentiment Analysis"]
+title: "Movie Industry Market Analysis: A 2020 Bootcamp Project, Rebuilt Six Years Later"
+date: "TBD — set at actual publish time, per the dating convention. Do not guess."
+summary: "A Flatiron Mod 1 project from 2020, rebuilt in 2026 with a Random Forest revenue regressor and a TF-IDF critic-sentiment classifier — plus what the rebuild got wrong the first time, and what I owe a classmate credit for."
+tags: ["Machine Learning", "NLP", "Random Forest", "Retrofit", "Track B"]
 coverImage: "/img/projects/movie-industry-market-analysis.png"
 author: "Chamila Dharmawardhana, Ph.D."
 originalBloggerUrl: "https://findingdata.blogspot.com/2020/04/oops-i-did-it-again-little-wisdom-from.html"
 originalDate: "2020-04-10"
 ---
 
-## Executive Summary & Strategic Scope
+## What this was
 
-When tech giants evaluate entering the theatrical distribution market, strategic decisions must be guided by empirical historical analysis rather than artistic intuition. This project presents a data-driven market intelligence engine designed to identify optimal budget allocation strategies, high-performing genre combinations, and sentiment-driven revenue correlation factors.
+The assignment — Flatiron Mod 1, 2020 — used a fictional business case: pretend a company (the brief used Microsoft) wants to get into original film production and needs help figuring out what to make. Four questions came with it: which genres do best at the box office, what runtime works per genre, when's the best time of year to release, and which genre *pairs* do best. That's a real assignment premise, not something I'm claiming actually happened — worth being explicit about, because the first pass at rebuilding this in 2026 blurred it into something that read like a real consulting engagement.
 
-The system combines a **multi-source automated ETL pipeline** (crawling IMDbPro and querying the TMDB REST API for 26,500+ titles) with a **Random Forest Revenue Regressor ($R^2 = 0.74$)** and an **NLP Critic Sentiment Classifier ($AUC = 0.81$)**.
+The real work was EDA: pull IMDb's title/ratings/crew tables, Box Office Mojo's gross figures, Rotten Tomatoes reviews, and TMDB's metadata, then merge, clean, and chart. The provided datasets had big missing-data gaps, and a classmate — Jesse Numan — had an idea for closing them: scrape IMDbPro directly. I adapted his scraper (a JavaScript console auto-scroller plus BeautifulSoup HTML parsing to get past the login lazy-loading) and pulled about 14,000 additional records with it. That collaboration is the reason the dataset was usable at all.
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│               MULTI-SOURCE MOVIE MARKET ANALYSIS PIPELINE              │
-├───────────────────────┬───────────────────────┬────────────────────────┤
-│ Automated ETL Engine  │ Revenue Forecasting   │ Critic Sentiment NLP   │
-│ IMDbPro + TMDB API    │ Random Forest ($R^2=0.74$)│ TF-IDF + Logistic Reg  │
-└───────────────────────┴───────────────────────┴────────────────────────┘
-```
+Multi-label genre data was a mess — a film could carry three or four genre tags, and most standard analysis falls apart once you're not looking at one clean category. My fix was to keep only the first two genre tags per film and call the result a "binary genre." That's my own term, coined for this project.
 
----
+## What changed in the 2026 rebuild
 
-## Automated Multi-Source Data Ingestion (ETL)
+The 2020 project stopped at EDA — charts, a genre-profit breakdown, a written recommendation. No predictive model, no NLP. The rebuild added both, and neither is a refactor of something that already existed — they're new work on top of the original analysis.
 
-To assemble a comprehensive historical record spanning box office performance, production budgets, genre tags, and critic reviews, we engineered a multi-stage ingestion pipeline:
+**Revenue regressor.** A Random Forest trained on production budget, release month, TMDB popularity/vote metrics, and the binary-genre one-hot flags, across the 1,976 titles that survive the merge and cleaning. I picked a tree ensemble on purpose: budget doesn't map to revenue linearly — a $200M film doesn't earn ten times what a $20M film earns — and budget interacts with genre, since $50M buys a lot in horror and almost nothing in a VFX action film. A tree ensemble picks up both without me specifying either, and it doesn't assume anything about the shape of the residuals, which matters because revenue is heavily right-skewed.
 
-1. **IMDbPro DOM Auto-Scraper**: JavaScript DOM scraping scripts collecting financial metadata across 26,500+ theatrical releases.
-2. **TMDB REST API Enrichment**: REST API integration to fetch detailed cast metadata, release window dates, and runtime metrics.
-3. **Rotten Tomatoes Scraping**: Web scraper extracting 54,400+ professional critic review snippets.
+With TMDB's `popularity`, `vote_average`, and `vote_count` included, $R^2 = 0.7385$. Those three features accumulate *after* a film releases and are partly driven by how well it actually did — so I re-ran the identical model without them:
 
 ```python
-import requests
-import pandas as pd
-
-def fetch_tmdb_movie_details(api_key, movie_id):
-    """Enrich movie record via TMDB REST API."""
-    url = f"https://api.themoviedb.org/3/movie/{movie_id}"
-    params = {'api_key': api_key, 'append_to_response': 'credits,keywords'}
-    response = requests.get(url, params=params)
-    
-    if response.status_code == 200:
-        data = response.json()
-        return {
-            'budget': data.get('budget'),
-            'revenue': data.get('revenue'),
-            'runtime': data.get('runtime'),
-            'vote_average': data.get('vote_average'),
-            'genres': [g['name'] for g in data.get('genres', [])]
-        }
-    return None
+ablated_cols = ['production_budget', 'release_month'] + [f'genre_{g}' for g in genre_map.values()]
+X_ablated = merged[ablated_cols]
+# same RandomForestRegressor, same random_state=42, three fewer columns
 ```
 
----
+$R^2$ drops to **0.5287**. I'm reporting 0.5287 as the number that means something — it's what the model can actually see before a film comes out. 0.7385 stays in, as the comparison that shows the leak, not as the headline.
 
-## Box Office Gross Regression Engine
+**Sentiment classifier.** TF-IDF (2,500 n-gram features) into a Logistic Regression classifier on Rotten Tomatoes critic reviews, predicting Fresh vs. Rotten. The source file has 54,432 reviews; 48,869 have both review text and a label, and the model trains on all of them — accuracy 75.3%, ROC-AUC 0.8233.
 
-Predicting worldwide theatrical gross revenue ($Y$) is heavily skewed by blockbuster outliers. We applied log-normal target transformations:
+**Two claims an earlier rebuild pass made that weren't true:** a Gradient Boosting Regressor compared against Random Forest — imported, never fit. Naive Bayes compared against Logistic Regression — never trained. Both are gone. A "2,380+ enriched titles" figure was also wrong — that was the pre-deduplication merge count, not the actual training set (1,976).
 
-$$\log(Y) = \beta_0 + \beta_1 \log(\text{Budget}) + \beta_2 (\text{Runtime}) + \sum \gamma_j (\text{Genre}_j)$$
+Baseline: [`baseline-pre-rebuild`](https://github.com/GitHub-ccd/Movie-Industry-Market-Analysis/tree/baseline-pre-rebuild-branch) — the repo exactly as it stood before any of this.
 
-### Model Evaluation:
+## What I think the original got wrong
 
-| Model Candidate | $R^2$ Score | MAE ($ Million) |
-| :--- | :--- | :--- |
-| **OLS Linear Model** | 0.58 | $84.2M |
-| **Decision Tree Regressor** | 0.62 | $76.5M |
-| **Gradient Boosting Regressor** | 0.71 | $58.9M |
-| **Random Forest Regressor (Modernized)** | **0.74** | **$52.1M** |
+The assignment asked for insights to guide a capital-allocation decision, and 2020-me delivered bar charts, pie charts, and a narrative conclusion — not anything that quantifies a prediction. For a business case explicitly about where to put money, "Family-SciFi genre does well at box office" is an observation, not a decision-ready answer. I don't think that gap was obvious to me at the time — EDA felt like the deliverable because EDA was what Mod 1 taught.
 
----
+## What the original got right
 
-## NLP Critic Sentiment Analysis (TF-IDF)
+The core questions — genre, runtime, seasonality, genre pairing — are still exactly what the 2026 models answer, just with a regressor and a classifier instead of a bar chart. The binary-genre taxonomy survived unchanged — a crude simplification, but the same one the 2026 feature engineering still uses. The four-source data pipeline plus the IMDbPro scrape is still the foundation everything else sits on.
 
-To assess how critical reception influences theatrical longevity, we trained an NLP sentiment classifier on 54,400+ Rotten Tomatoes review snippets.
+## Roads not taken
 
-```python
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import Pipeline
+| Approach | Why it was dropped |
+|---|---|
+| Reporting $R^2 = 0.7385$ as the headline number | Re-ran without `popularity`, `vote_average`, `vote_count` and it dropped to 0.5287 — those features are downstream of the box-office outcome, so they inflate the score without providing real pre-release signal. |
+| A genre-profit table from the earlier rebuild (Animation+Adventure at $310M+, and similar) | Doesn't trace to the original 2020 EDA notebook, and contradicts that notebook's own written conclusion. Removed rather than rebuilt. |
 
-# Build TF-IDF + Logistic Regression Sentiment Pipeline
-sentiment_pipeline = Pipeline([
-    ('tfidf', TfidfVectorizer(max_features=10000, ngram_range=(1, 2), stop_words='english')),
-    ('clf', LogisticRegression(C=1.5, max_iter=1000))
-])
-
-sentiment_pipeline.fit(X_train_reviews, y_train_sentiment)
-```
-
-- **Validation ROC-AUC**: **0.81**
-- **Insight**: Action-Animation hybrids with positive critic sentiment score 3.2x higher worldwide ROI compared to solo action titles.
-
----
-
-## Key Strategic Takeaways for Studio Planning
-
-1. **Optimal Budget Sweet Spot**: Mid-range budgets ($40M - $75M) allocated to Animation/Sci-Fi hybrids yield the highest median Return on Investment (ROI).
-2. **Release Timing**: Summer blockbusters (May-July) benefit from a 22% gross uplift independent of production budget.
+This rebuild otherwise went in close to a straight line — Random Forest and TF-IDF picked up front, no benchmark against XGBoost, LightGBM, or a transformer embedding. That comparison work isn't done.
 
 🔗 **GitHub Repository**: [Movie-Industry-Market-Analysis](https://github.com/GitHub-ccd/Movie-Industry-Market-Analysis)
+
+---
+
+*The 2026 rebuild was agent-assisted: I set the direction and the methodology, an AI agent did much of the implementation and drafting, and I've kept the pre-rebuild baseline so the change is readable.*
