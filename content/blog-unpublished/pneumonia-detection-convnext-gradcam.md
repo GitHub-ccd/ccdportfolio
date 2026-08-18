@@ -6,7 +6,7 @@ tags: ["Health AI", "Medical Computer Vision", "PyTorch", "ConvNeXt", "Vision Tr
 coverImage: "/img/projects/pneumonia_cnn_banner.png"
 author: "Chamila Dharmawardhana, Ph.D."
 originalBloggerUrl: "https://findingdata.blogspot.com/2020/08/new-post.html"
-originalDate: "2020-08-01"
+originalDate: "2020-07-08"
 ---
 
 ## Executive Overview & Clinical Rationale
