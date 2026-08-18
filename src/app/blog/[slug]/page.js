@@ -124,7 +124,7 @@ export default async function BlogPostPage({ params }) {
               >
                 Read Original {post.originalDate || "2020"} Post on findingdata.blogspot.com ↗
               </a>
-              . This version has been fully rewritten with modern 2026 machine learning architectures, updated codebases, Optuna hyperparameter optimization, and interactive diagnostic micro-apps.
+              .
             </p>
           </div>
         )}
