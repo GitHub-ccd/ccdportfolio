@@ -18,6 +18,7 @@
       "Jupyter"
     ],
     "github": "https://github.com/GitHub-ccd/Movie-Industry-Market-Analysis",
+    "blog": "https://findingdata.blogspot.com/2020/04/oops-i-did-it-again-little-wisdom-from.html",
     "storyBadge": "Bootcamp Featured Project",
     "featured": true
   },
@@ -57,37 +58,15 @@
   },
   {
     "id": "pneumonia-detection-convnext-gradcam",
-    "title": "Chest X-Ray Pneumonia Diagnostic AI & Grad-CAM Visualizer",
+    "title": "Chest X-Ray Pneumonia Detection (Rebuild, Retrofit Pending)",
     "category": "Health AI & Medical Imaging",
     "image": "/img/projects/pneumonia_cnn_banner.png",
-    "summary": "Production-grade medical computer vision system refactored to PyTorch 2.x, ConvNeXt, and Albumentations. Features Grad-CAM explainability heatmaps and a Gradio web application for real-time chest X-ray diagnostic assistance.",
-    "description": "Pneumonia remains a leading cause of pediatric and geriatric acute respiratory failure globally. In emergency clinical triage, missing a true positive infection (false negative) can lead to rapid pulmonary decline.\n\nThis project modernizes a legacy TensorFlow CNN into a PyTorch 2.x system engineered specifically for high diagnostic sensitivity (98.45% Recall) and explainability. Using Grad-CAM (Gradient-weighted Class Activation Mapping), the model renders color-mapped visual attention overlays to verify that predictions are driven by actual pulmonary opacities rather than artifactual background patterns.",
-    "tech": [
-      "PyTorch 2.x",
-      "ConvNeXt",
-      "Vision Transformer (ViT)",
-      "Albumentations",
-      "Grad-CAM",
-      "Gradio",
-      "Healthcare AI"
-    ],
+    "summary": "A 2020 bootcamp CNN pneumonia classifier, rebuilt in 2026. This is the last repo in the Track B retrofit queue — the rebuild's specifics haven't been verified against the code yet, so no metrics or architecture claims are stated here until that review is done.",
+    "description": "The original 2020 project trained a CNN to classify chest X-rays for pneumonia. A 2026 rebuild exists in this repository, but unlike the other Track B repos it has not yet gone through lineage verification — the diff between what was actually built and what any writeup claims hasn't been checked. Until that archaeology happens, this entry deliberately states no specific architecture, tooling, or performance numbers, rather than repeat claims that can't yet be confirmed.",
+    "tech": ["Python", "Deep Learning", "Computer Vision", "Healthcare AI"],
     "github": "https://github.com/GitHub-ccd/chest-xray-pneumonia-detection",
-    "liveDemoUrl": "https://huggingface.co/spaces",
-    "liveDemoLabel": "🚀 Launch Live Gradio Demo ↗",
     "blog": "https://findingdata.blogspot.com/2020/08/new-post.html",
-    "keyMetrics": [
-      { "label": "Baseline Recall", "value": "90.0%" },
-      { "label": "Model Recall", "value": "98.45%" },
-      { "label": "ROC-AUC Score", "value": "97.86%" },
-      { "label": "Test Accuracy", "value": "93.39%" }
-    ],
-    "highlights": [
-      "Upgraded legacy TensorFlow/Keras CNN to PyTorch 2.x with ConvNeXt (convnext_tiny) and Vision Transformer (DeiT) backbones.",
-      "Achieved 98.45% Recall and 97.86% ROC-AUC on clinical test set using class-weighted Cross-Entropy loss optimization.",
-      "Engineered real-time Grad-CAM gradient activation heatmaps overlaying visual attention on pulmonary opacities.",
-      "Built interactive Gradio web application for real-time chest X-ray diagnostic assistance and transparency adjustment."
-    ],
-    "storyBadge": "Track B Bootcamp Project (Modernized 2026)",
+    "storyBadge": "Track B Bootcamp Project (Rebuilt 2026)",
     "featured": true
   },
   {
