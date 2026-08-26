@@ -1,6 +1,6 @@
 ---
 title: "Movie Industry Market Analysis: A 2020 Bootcamp Project, Rebuilt Six Years Later"
-date: "TBD — set at actual publish time, per the dating convention. Do not guess."
+date: "2026-08-18"
 summary: "A Flatiron Mod 1 project from 2020, rebuilt in 2026 with a Random Forest revenue regressor and a TF-IDF critic-sentiment classifier — plus what the rebuild got wrong the first time, and what I owe a classmate credit for."
 tags: ["Machine Learning", "NLP", "Random Forest", "Retrofit", "Track B"]
 coverImage: "/img/projects/movie-industry-market-analysis.png"
