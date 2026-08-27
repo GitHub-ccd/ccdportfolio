@@ -23,15 +23,15 @@ The 2020 project stopped at EDA — charts, a genre-profit breakdown, a written 
 
 **Revenue regressor.** A Random Forest trained on production budget, release month, TMDB popularity/vote metrics, and the binary-genre one-hot flags, across the 1,976 titles that survive the merge and cleaning. I picked a tree ensemble on purpose: budget doesn't map to revenue linearly — a $200M film doesn't earn ten times what a $20M film earns — and budget interacts with genre, since $50M buys a lot in horror and almost nothing in a VFX action film. A tree ensemble picks up both without me specifying either, and it doesn't assume anything about the shape of the residuals, which matters because revenue is heavily right-skewed.
 
-With TMDB's `popularity`, `vote_average`, and `vote_count` included, $R^2 = 0.7385$. Those three features accumulate *after* a film releases and are partly driven by how well it actually did — so I re-ran the identical model without them:
+Trained with TMDB's `popularity`, `vote_average`, and `vote_count` included, the model reports $R^2 = 0.7385$ — but those three features accumulate *after* a film releases and are partly driven by how well it actually did, which inflates the score without providing real pre-release signal. The notebook fits on pre-release features only:
 
 ```python
-ablated_cols = ['production_budget', 'release_month'] + [f'genre_{g}' for g in genre_map.values()]
-X_ablated = merged[ablated_cols]
-# same RandomForestRegressor, same random_state=42, three fewer columns
+feature_cols = ['production_budget', 'release_month'] + [f'genre_{g}' for g in genre_map.values()]
+X = merged[feature_cols]
+# same RandomForestRegressor, same random_state=42
 ```
 
-$R^2$ drops to **0.5287**. I'm reporting 0.5287 as the number that means something — it's what the model can actually see before a film comes out. 0.7385 stays in, as the comparison that shows the leak, not as the headline.
+$R^2 = 0.5287$ (MAE $72.89M, RMSE $138.75M). **0.5287 is the number I'm reporting** — it's what the model can actually see before a film comes out. 0.7385 is stated here for context on why the ablation happened; the notebook fits the ablated feature set only, it doesn't compute both side by side anymore.
 
 **Sentiment classifier.** TF-IDF (2,500 n-gram features) into a Logistic Regression classifier on Rotten Tomatoes critic reviews, predicting Fresh vs. Rotten. The source file has 54,432 reviews; 48,869 have both review text and a label, and the model trains on all of them — accuracy 75.3%, ROC-AUC 0.8233.
 
@@ -52,6 +52,7 @@ The core questions — genre, runtime, seasonality, genre pairing — are still 
 | Approach | Why it was dropped |
 |---|---|
 | Reporting $R^2 = 0.7385$ as the headline number | Re-ran without `popularity`, `vote_average`, `vote_count` and it dropped to 0.5287 — those features are downstream of the box-office outcome, so they inflate the score without providing real pre-release signal. |
+| Computing both the leaky and ablated $R^2$ side by side in-notebook | Briefly implemented as a separate leakage-check cell; superseded once the ablated feature set became the only fitting cell. 0.7385 is stated here for context but isn't a number the notebook computes anymore. |
 | A genre-profit table from the earlier rebuild (Animation+Adventure at $310M+, and similar) | Doesn't trace to the original 2020 EDA notebook, and contradicts that notebook's own written conclusion. Removed rather than rebuilt. |
 
 This rebuild otherwise went in close to a straight line — Random Forest and TF-IDF picked up front, no benchmark against XGBoost, LightGBM, or a transformer embedding. That comparison work isn't done.
