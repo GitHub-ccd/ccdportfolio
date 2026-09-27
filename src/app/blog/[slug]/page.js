@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import TableOfContents from "@/components/blog/TableOfContents";
 import CodeCopyButton from "@/components/blog/CodeCopyButton";
-import ArticleReactions from "@/components/blog/ArticleReactions";
 import GiscusComments from "@/components/blog/GiscusComments";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { getAssetPath } from "@/utils/basePath";
@@ -125,7 +124,7 @@ export default async function BlogPostPage({ params }) {
               >
                 Read Original {post.originalDate || "2020"} Post on findingdata.blogspot.com ↗
               </a>
-              . This version has been fully rewritten with modern 2026 machine learning architectures, updated codebases, Optuna hyperparameter optimization, and interactive diagnostic micro-apps.
+              .
             </p>
           </div>
         )}
@@ -141,9 +140,6 @@ export default async function BlogPostPage({ params }) {
 
             {/* Client Copy Code Component */}
             <CodeCopyButton />
-
-            {/* Reactions / Claps & View Counter Widget */}
-            <ArticleReactions slug={post.slug} />
 
             {/* Giscus Comments Section */}
             <GiscusComments slug={post.slug} />

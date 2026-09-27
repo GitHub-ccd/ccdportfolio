@@ -18,6 +18,7 @@
       "Jupyter"
     ],
     "github": "https://github.com/GitHub-ccd/Movie-Industry-Market-Analysis",
+    "blog": "https://findingdata.blogspot.com/2020/04/oops-i-did-it-again-little-wisdom-from.html",
     "storyBadge": "Bootcamp Featured Project",
     "featured": true
   },
@@ -57,37 +58,15 @@
   },
   {
     "id": "pneumonia-detection-convnext-gradcam",
-    "title": "Chest X-Ray Pneumonia Diagnostic AI & Grad-CAM Visualizer",
+    "title": "Pneumonia Detection from Chest X-Rays via Deep CNNs",
     "category": "Health AI & Medical Imaging",
     "image": "/img/projects/pneumonia_cnn_banner.png",
-    "summary": "Production-grade medical computer vision system refactored to PyTorch 2.x, ConvNeXt, and Albumentations. Features Grad-CAM explainability heatmaps and a Gradio web application for real-time chest X-ray diagnostic assistance.",
-    "description": "Pneumonia remains a leading cause of pediatric and geriatric acute respiratory failure globally. In emergency clinical triage, missing a true positive infection (false negative) can lead to rapid pulmonary decline.\n\nThis project modernizes a legacy TensorFlow CNN into a PyTorch 2.x system engineered specifically for high diagnostic sensitivity (98.45% Recall) and explainability. Using Grad-CAM (Gradient-weighted Class Activation Mapping), the model renders color-mapped visual attention overlays to verify that predictions are driven by actual pulmonary opacities rather than artifactual background patterns.",
-    "tech": [
-      "PyTorch 2.x",
-      "ConvNeXt",
-      "Vision Transformer (ViT)",
-      "Albumentations",
-      "Grad-CAM",
-      "Gradio",
-      "Healthcare AI"
-    ],
+    "summary": "A 2020 Flatiron bootcamp CNN project, rebuilt in 2026. Retrofit — verifying what the rebuild actually did — is still pending.",
+    "description": "Diagnosing pneumonia from chest X-rays with a convolutional neural network, originally built for a 2020 Flatiron Data Science bootcamp project. Rebuilt in 2026; the technical specifics of that rebuild haven't been verified against the code yet, so they aren't listed here until they have been.",
+    "tech": ["Healthcare AI"],
     "github": "https://github.com/GitHub-ccd/chest-xray-pneumonia-detection",
-    "liveDemoUrl": "https://huggingface.co/spaces",
-    "liveDemoLabel": "🚀 Launch Live Gradio Demo ↗",
     "blog": "https://findingdata.blogspot.com/2020/08/new-post.html",
-    "keyMetrics": [
-      { "label": "Baseline Recall", "value": "90.0%" },
-      { "label": "Model Recall", "value": "98.45%" },
-      { "label": "ROC-AUC Score", "value": "97.86%" },
-      { "label": "Test Accuracy", "value": "93.39%" }
-    ],
-    "highlights": [
-      "Upgraded legacy TensorFlow/Keras CNN to PyTorch 2.x with ConvNeXt (convnext_tiny) and Vision Transformer (DeiT) backbones.",
-      "Achieved 98.45% Recall and 97.86% ROC-AUC on clinical test set using class-weighted Cross-Entropy loss optimization.",
-      "Engineered real-time Grad-CAM gradient activation heatmaps overlaying visual attention on pulmonary opacities.",
-      "Built interactive Gradio web application for real-time chest X-ray diagnostic assistance and transparency adjustment."
-    ],
-    "storyBadge": "Track B Bootcamp Project (Modernized 2026)",
+    "storyBadge": "Track B Bootcamp Project (Rebuilt 2026)",
     "featured": true
   },
   {
