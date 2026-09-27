@@ -186,6 +186,67 @@ export function getAllPosts() {
 }
 
 /**
+ * Preprocess markdown content for footnotes [^1], footnote definitions [^1]: ...,
+ * and escape approximation tildes (~$0.34, ~2,048) so marked doesn't parse them as GFM strikethrough <del>.
+ */
+function preprocessFootnotes(content) {
+  // 1. Replace approximation tildes like ~$0.34, ~2,048, ~$850 with HTML entity &#126; so marked doesn't parse them as GFM strikethrough <del>
+  let processed = content.replace(/~(?=\$|\d)/g, "&#126;");
+
+  // 2. Extract footnote definitions: [^1]: Text...
+  const footnoteDefs = [];
+  const fnDefRegex = /^\[\^([a-zA-Z0-9_-]+)\]:\s*(.+)$/gm;
+
+  processed = processed.replace(fnDefRegex, (match, id, text) => {
+    footnoteDefs.push({ id, text });
+    return "";
+  });
+
+  // 3. Replace inline footnote citations: [^1]
+  processed = processed.replace(/\[\^([a-zA-Z0-9_-]+)\]/g, (match, id) => {
+    return `<sup class="font-semibold text-teal-400 font-mono ml-0.5"><a href="#fn-${id}" id="fnref-${id}" class="hover:underline">[${id}]</a></sup>`;
+  });
+
+  return { processed: processed.trim(), footnoteDefs };
+}
+
+/**
+ * Render structured References & External Citations section at bottom of article
+ */
+function renderFootnotesSection(footnoteDefs, markedInstance) {
+  if (!footnoteDefs || footnoteDefs.length === 0) return "";
+
+  const itemsHtml = footnoteDefs
+    .map((def) => {
+      const parsedText = markedInstance.parseInline(def.text);
+      return `<li id="fn-${def.id}" class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 text-sm text-slate-300 leading-relaxed scroll-mt-24 flex items-start gap-3">
+        <span class="font-bold text-teal-400 font-mono text-xs mt-0.5 min-w-[20px]">[${def.id}]</span>
+        <div class="flex-1 space-y-1">
+          <div>${parsedText}</div>
+        </div>
+        <a href="#fnref-${def.id}" class="text-teal-400 hover:text-teal-300 transition-colors font-mono text-xs underline font-semibold ml-2" title="Jump back to article text">
+          ↩
+        </a>
+      </li>`;
+    })
+    .join("");
+
+  return `<section id="references" class="mt-12 pt-8 border-t border-slate-800/80 space-y-4">
+    <div class="flex items-center gap-2 mb-4">
+      <div class="p-2 rounded-lg bg-teal-500/10 text-teal-400 border border-teal-500/20">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-slate-100">References & External Citations</h3>
+    </div>
+    <ol class="space-y-3">
+      ${itemsHtml}
+    </ol>
+  </section>`;
+}
+
+/**
  * Get single blog post by slug
  */
 export function getPostBySlug(slug) {
@@ -203,8 +264,18 @@ export function getPostBySlug(slug) {
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
-  const htmlContent = marked.parse(content);
+  
+  const { processed, footnoteDefs } = preprocessFootnotes(content);
+  let htmlContent = marked.parse(processed);
+  if (footnoteDefs.length > 0) {
+    htmlContent += renderFootnotesSection(footnoteDefs, marked);
+  }
+
   const toc = extractToc(content);
+  if (footnoteDefs.length > 0 && !toc.some((item) => item.id === "references")) {
+    toc.push({ id: "references", text: "References & External Citations", level: 2 });
+  }
+
   const readingTime = calculateReadingTime(content);
 
   return {
