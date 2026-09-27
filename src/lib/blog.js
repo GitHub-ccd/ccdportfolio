@@ -202,11 +202,6 @@ function preprocessFootnotes(content) {
     return "";
   });
 
-  // 3. Replace inline footnote citations: [^1]
-  processed = processed.replace(/\[\^([a-zA-Z0-9_-]+)\]/g, (match, id) => {
-    return `<sup class="font-semibold text-teal-400 font-mono ml-0.5"><a href="#fn-${id}" id="fnref-${id}" class="hover:underline">[${id}]</a></sup>`;
-  });
-
   return { processed: processed.trim(), footnoteDefs };
 }
 
@@ -218,7 +213,9 @@ function renderFootnotesSection(footnoteDefs, markedInstance) {
 
   const itemsHtml = footnoteDefs
     .map((def) => {
-      const parsedText = markedInstance.parseInline(def.text);
+      let parsedText = markedInstance.parseInline(def.text);
+      // Clean inline footnote markers inside def text if present
+      parsedText = parsedText.replace(/\[\^([a-zA-Z0-9_-]+)\]/g, (m, id) => `[${id}]`);
       return `<li id="fn-${def.id}" class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 text-sm text-slate-300 leading-relaxed scroll-mt-24 flex items-start gap-3">
         <span class="font-bold text-teal-400 font-mono text-xs mt-0.5 min-w-[20px]">[${def.id}]</span>
         <div class="flex-1 space-y-1">
@@ -267,6 +264,12 @@ export function getPostBySlug(slug) {
   
   const { processed, footnoteDefs } = preprocessFootnotes(content);
   let htmlContent = marked.parse(processed);
+  
+  // Post-process inline footnote markers [^1] in generated HTML so marked never HTML-escapes injected <sup> tags
+  htmlContent = htmlContent.replace(/\[\^([a-zA-Z0-9_-]+)\]/g, (match, id) => {
+    return `<sup class="font-semibold text-teal-400 font-mono ml-0.5"><a href="#fn-${id}" id="fnref-${id}" class="hover:underline">[${id}]</a></sup>`;
+  });
+
   if (footnoteDefs.length > 0) {
     htmlContent += renderFootnotesSection(footnoteDefs, marked);
   }
