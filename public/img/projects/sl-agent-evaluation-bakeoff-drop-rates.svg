@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" style="background:#090d16; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <radialGradient id="emeraldGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#090d16" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="emeraldBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="slateBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <linearGradient id="roseBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <filter id="swdShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="#090d16"/>
+  <circle cx="550" cy="240" r="300" fill="url(#emeraldGlow)"/>
+
+  <!-- Top Title Header -->
+  <g transform="translate(60, 42)">
+    <rect x="0" y="0" width="220" height="24" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="0.8"/>
+    <text x="12" y="16" font-size="11" font-weight="700" fill="#34d399" letter-spacing="1.5">EVALUATION METRICS</text>
+    <text x="0" y="54" font-size="26" font-weight="800" fill="#f8fafc" letter-spacing="-0.5">The Evaluation Mirage: Naive vs. Real Failure Rates</text>
+    <text x="0" y="78" font-size="14" fill="#94a3b8">Why a simple substring check crowned the least reliable model (Decluttered SWD Horizontal Bar)</text>
+  </g>
+
+  <!-- Legend / Metric Indicator -->
+  <g transform="translate(730, 48)">
+    <rect x="0" y="0" width="16" height="16" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="24" y="13" font-size="12" fill="#94a3b8">Naive Drop Rate (Quote-on-page)</text>
+    <rect x="235" y="0" width="16" height="16" rx="3" fill="url(#emeraldBar)"/>
+    <text x="259" y="13" font-size="12" font-weight="600" fill="#e2e8f0">Real Failure Rate (Deterministic)</text>
+  </g>
+
+  <!-- Chart Area:
+       Left margin: 240 (Model names), Right: 880 (bars end at 840, labels to 1140)
+       Y-rows:
+       Row 1: 8B Model (Y = 160) - WINNER
+       Row 2: 14B Model (Y = 285)
+       Row 3: 3B Model (Y = 410)
+       Max bar width: 560px for 100% => 5.6 px per %
+       8B: Naive 25.7% = 144px, Real 44.3% = 248px
+       14B: Naive 22.2% = 124px, Real 72.4% = 405px
+       3B: Naive 19.6% = 110px, Real 87.4% = 489px
+  -->
+
+  <!-- ROW 1: 8B Model (HERO / WINNER) -->
+  <g transform="translate(60, 155)">
+    <!-- Model Label -->
+    <text x="0" y="24" font-size="18" font-weight="800" fill="#34d399">Llama 3.1 8B</text>
+    <text x="0" y="42" font-size="12" fill="#94a3b8">Remote RTX 4090</text>
+    <rect x="0" y="52" width="160" height="22" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="8" y="67" font-size="11" font-weight="700" fill="#a7f3d0">★ 0 Entity Errors · 78 Kept</text>
+
+    <!-- Bar container (starts at x=190) -->
+    <!-- Naive Bar (Hollow / Dashed) -->
+    <rect x="190" y="12" width="144" height="18" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <text x="342" y="26" font-size="11" fill="#64748b">Naive: 25.7%</text>
+
+    <!-- Real Failure Bar (Solid Emerald) -->
+    <rect x="190" y="38" width="248" height="32" rx="6" fill="url(#emeraldBar)" filter="url(#swdShadow)"/>
+    <text x="450" y="60" font-size="19" font-weight="800" fill="#34d399">44.3% Real Failure</text>
+    <text x="635" y="60" font-size="13" font-weight="600" fill="#f8fafc">78 Verified Facts Kept <tspan fill="#94a3b8">(Lowest real failure rate)</tspan></text>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="60" y1="265" x2="1140" y2="265" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- ROW 2: 14B Model -->
+  <g transform="translate(60, 285)">
+    <!-- Model Label -->
+    <text x="0" y="24" font-size="17" font-weight="700" fill="#f1f5f9">Qwen 2.5 14B</text>
+    <text x="0" y="42" font-size="12" fill="#94a3b8">Remote RTX 4090</text>
+    <text x="0" y="65" font-size="11" fill="#f59e0b">60 Entity Mismatches</text>
+
+    <!-- Naive Bar -->
+    <rect x="190" y="12" width="124" height="18" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <text x="322" y="26" font-size="11" fill="#64748b">Naive: 22.2%</text>
+
+    <!-- Real Failure Bar (Slate/Amber) -->
+    <rect x="190" y="38" width="405" height="32" rx="6" fill="url(#slateBar)"/>
+    <text x="607" y="60" font-size="18" font-weight="700" fill="#cbd5e1">72.4% Real Failure</text>
+    <text x="785" y="60" font-size="13" fill="#94a3b8">51 Kept <tspan fill="#f59e0b">(Guessed when ambiguous)</tspan></text>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="60" y1="395" x2="1140" y2="395" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- ROW 3: 3B Model (THE TRAP) -->
+  <g transform="translate(60, 415)">
+    <!-- Model Label -->
+    <text x="0" y="24" font-size="17" font-weight="700" fill="#f1f5f9">Llama 3.2 3B</text>
+    <text x="0" y="42" font-size="12" fill="#94a3b8">Local GTX 1060</text>
+    <text x="0" y="65" font-size="11" fill="#f87171">89 Entity Errors · 67 Leaks</text>
+
+    <!-- Naive Bar -->
+    <rect x="190" y="12" width="110" height="18" rx="4" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+    <text x="308" y="26" font-size="11" font-weight="700" fill="#34d399">Naive: 19.6% (Appeared to win!)</text>
+
+    <!-- Real Failure Bar (Rose/Red) -->
+    <rect x="190" y="38" width="489" height="32" rx="6" fill="url(#roseBar)"/>
+    <text x="691" y="60" font-size="18" font-weight="800" fill="#f87171">87.4% Real Failure</text>
+    <text x="865" y="60" font-size="13" fill="#fca5a5">Only 29 Kept <tspan fill="#94a3b8">(201 of 230 dropped)</tspan></text>
+  </g>
+
+  <!-- Bottom Callout Footer Cards -->
+  <g transform="translate(60, 545)">
+    <!-- Left Card: The Defect -->
+    <rect x="0" y="0" width="520" height="85" rx="8" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="24" font-size="11" font-weight="700" fill="#f59e0b" letter-spacing="1">THE PROMPT-LEAK ILLUSION</text>
+    <text x="20" y="46" font-size="13.5" font-weight="600" fill="#f8fafc">Naive metrics only checked if the quote existed on the page.</text>
+    <text x="20" y="66" font-size="11.5" fill="#94a3b8">The 3B copied example text from the prompt and welded it to unrelated real sentences.</text>
+
+    <!-- Right Card: The Strategic Takeaway -->
+    <rect x="545" y="0" width="535" height="85" rx="8" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+    <text x="565" y="24" font-size="11" font-weight="700" fill="#34d399" letter-spacing="1">THE HONEST MODEL ADVANTAGE</text>
+    <text x="565" y="46" font-size="13.5" font-weight="600" fill="#f8fafc">The 8B won because it preferred returning null over hallucinating.</text>
+    <text x="565" y="66" font-size="11.5" fill="#94a3b8">Zero entity misattributions across the entire corpus. Truthful abstention beats size.</text>
+  </g>
+</svg>
