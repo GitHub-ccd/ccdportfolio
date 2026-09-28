@@ -1,10 +1,11 @@
+
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import TableOfContents from "@/components/blog/TableOfContents";
 import CodeCopyButton from "@/components/blog/CodeCopyButton";
-import GiscusComments from "@/components/blog/GiscusComments";
+import BlogMediaModal from "@/components/blog/BlogMediaModal";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { getAssetPath } from "@/utils/basePath";
 
@@ -141,8 +142,11 @@ export default async function BlogPostPage({ params }) {
             {/* Client Copy Code Component */}
             <CodeCopyButton />
 
+            {/* Client Figure Expansion Modal Component */}
+            <BlogMediaModal />
+
             {/* Giscus Comments Section */}
-            <GiscusComments slug={post.slug} />
+            {/* <UpstashComments slug={post.slug} /> */}
           </article>
 
           {/* Sidebar */}

@@ -24,9 +24,20 @@ const customRenderer = {
     const title = token.title || "";
     const text = token.text || "";
     const assetUrl = getAssetPath(href);
-    return `<figure class="my-8 space-y-2">
-      <img src="${assetUrl}" alt="${text}" title="${title}" class="w-full rounded-2xl border border-slate-800 shadow-2xl" />
-      ${text ? `<figcaption class="text-center text-xs text-slate-400 font-mono">${text}</figcaption>` : ""}
+    const captionText = text || title;
+
+    return `<figure class="relative my-8 group cursor-pointer overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/90 shadow-2xl hover:border-teal-500/40 transition-all" data-expand-figure="${assetUrl}" data-figure-caption="${captionText}">
+      <div class="relative overflow-hidden bg-slate-950 p-2 sm:p-4">
+        <img src="${assetUrl}" alt="${text}" title="${title}"
+             class="w-full max-h-[500px] object-contain mx-auto rounded-xl group-hover:scale-[1.005] transition-transform duration-300" />
+        <div class="absolute bottom-4 right-4 px-3 py-1.5 rounded-lg bg-slate-950/90 text-teal-400 text-xs font-semibold backdrop-blur border border-slate-800/90 shadow-xl flex items-center gap-1.5 group-hover:border-teal-500/50 transition-colors pointer-events-none">
+          <svg class="w-3.5 h-3.5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+          </svg>
+          <span>Expand Figure</span>
+        </div>
+      </div>
+      ${text ? `<figcaption class="text-center text-xs text-slate-400 font-mono p-3 bg-slate-900/80 border-t border-slate-800/80">${text}</figcaption>` : ""}
     </figure>`;
   },
   heading(token) {
