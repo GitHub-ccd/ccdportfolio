@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" style="background:#090d16; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <radialGradient id="breakEvenGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="swdShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="#090d16"/>
+
+  <!-- Top Title Header (SWD Direct & Minimal) -->
+  <g transform="translate(60, 42)">
+    <rect x="0" y="0" width="220" height="24" rx="4" fill="#451a03" stroke="#f59e0b" stroke-width="0.8"/>
+    <text x="12" y="16" font-size="11" font-weight="700" fill="#fbbf24" letter-spacing="1.5">CAPEX VS. OPEX ECONOMICS</text>
+    <text x="0" y="54" font-size="26" font-weight="800" fill="#f8fafc" letter-spacing="-0.5">The 20-Year Break-Even: Dedicated AI Rig vs. Cloud Rentals</text>
+    <text x="0" y="78" font-size="14" fill="#94a3b8">Cumulative cost trajectory at 15 GPU-hours/month side-project cadence (Decluttered SWD design)</text>
+  </g>
+
+  <!-- 
+       Chart Layout:
+       Y-range: $0 (Y=490) to $2,000 (Y=150). Total height = 340px => 0.17 px / $
+       $1,700 => 490 - (1700 * 0.17) = 201
+       $1,000 => 490 - (1000 * 0.17) = 320
+       $500   => 490 - (500 * 0.17) = 405
+       
+       X-range: Year 0 (X=110) to Year 22 (X=810). Total width = 700px => 31.82 px / Year
+       Month 241.1 (20.09 yrs) => 110 + (20.09 * 31.82) = 749.3
+       Month 153.1 (12.76 yrs) => 110 + (12.76 * 31.82) = 516.0
+  -->
+
+  <!-- Y-Axis Ticks & Labels -->
+  <g transform="translate(100, 0)" font-size="12" fill="#64748b" text-anchor="end" font-weight="500">
+    <text x="-12" y="494">$0</text>
+    <text x="-12" y="409">$500</text>
+    <text x="-12" y="324">$1,000</text>
+    <text x="-12" y="205" font-weight="700" fill="#f8fafc">$1,700</text>
+    <text x="-12" y="154">$2,000</text>
+  </g>
+
+  <!-- Clean Base Axes (Subtle, no clutter) -->
+  <line x1="110" y1="490" x2="840" y2="490" stroke="#334155" stroke-width="1.5"/>
+  <line x1="110" y1="145" x2="110" y2="490" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- X-Axis Labels (Time in Years) -->
+  <g transform="translate(0, 512)" font-size="12" fill="#94a3b8" text-anchor="middle" font-weight="500">
+    <text x="110">0</text>
+    <line x1="110" y1="-22" x2="110" y2="-16" stroke="#475569" stroke-width="1.5"/>
+    
+    <text x="269">5 Yrs</text>
+    <line x1="269" y1="-22" x2="269" y2="-16" stroke="#475569" stroke-width="1.5"/>
+    
+    <text x="428">10 Yrs</text>
+    <line x1="428" y1="-22" x2="428" y2="-16" stroke="#475569" stroke-width="1.5"/>
+    
+    <text x="587">15 Yrs</text>
+    <line x1="587" y1="-22" x2="587" y2="-16" stroke="#475569" stroke-width="1.5"/>
+    
+    <text x="749" font-weight="700" fill="#fbbf24">20.1 Yrs</text>
+    <line x1="749" y1="-22" x2="749" y2="-16" stroke="#fbbf24" stroke-width="2"/>
+  </g>
+  <text x="840" y="512" font-size="12" fill="#64748b" text-anchor="start">Project Timeline</text>
+
+  <!-- LINE 1: Dedicated Desktop Build (Flat $1,700 CapEx Line) -->
+  <line x1="110" y1="201" x2="840" y2="201" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+  <!-- Direct Label for Build Line (Placed to the right, cleanly vertically aligned) -->
+  <g transform="translate(855, 192)">
+    <text x="0" y="0" font-size="14" font-weight="700" fill="#f8fafc">Dedicated AI Rig: $1,700</text>
+    <text x="0" y="16" font-size="11" fill="#94a3b8">Used RTX 3090 24GB + AM5 Platform</text>
+    <text x="0" y="30" font-size="11" fill="#64748b">Fixed CapEx · Zero recurring monthly fees</text>
+  </g>
+
+  <!-- LINE 2: RunPod Secure Cloud ($0.74/hr = $11.10/mo = $133.20/yr) -->
+  <!-- Crosses $1700 at X=516.0, Y=201. Reaches Y=150 ($2,000) at X=588 -->
+  <path d="M 110 490 L 516 201 L 588 150" fill="none" stroke="#818cf8" stroke-width="2" stroke-dasharray="6,4" stroke-linecap="round"/>
+  <!-- Dot at RunPod intersection -->
+  <circle cx="516" cy="201" r="5" fill="#818cf8"/>
+  <text x="500" y="185" font-size="11" font-weight="600" fill="#c7d2fe" text-anchor="end">RunPod Secure (12.8 Yrs · $11.10/mo)</text>
+
+  <!-- LINE 3: Vast.ai Cloud GPU ($0.47/hr = $7.05/mo = $84.60/yr) - HERO COMPARISON -->
+  <!-- Starts at (110, 490). Reaches $1700 at Month 241.1 (Year 20.09) => (749.3, 201). Continues to (810, 158) -->
+  <path d="M 110 490 L 749.3 201 L 810 158" fill="none" stroke="#06b6d4" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Direct Label for Vast.ai (Positioned above its slope end) -->
+  <g transform="translate(825, 145)">
+    <text x="0" y="0" font-size="14" font-weight="700" fill="#22d3ee">Vast.ai ($0.47/hr · $7.05/mo)</text>
+    <text x="0" y="16" font-size="11" fill="#94a3b8">At 15 GPU-hrs/month side-project cadence</text>
+    <text x="0" y="30" font-size="11" fill="#0891b2">$84.60/year total operational outlay</text>
+  </g>
+
+  <!-- FOCAL POINT: The 20.1-Year Break-Even Marker -->
+  <!-- Glowing Ripple Circles at (749.3, 201) -->
+  <circle cx="749.3" cy="201" r="32" fill="url(#breakEvenGlow)"/>
+  <circle cx="749.3" cy="201" r="13" fill="#451a03" stroke="#f59e0b" stroke-width="2.5"/>
+  <circle cx="749.3" cy="201" r="5" fill="#fbbf24"/>
+
+  <!-- Amber Callout Box (Pointing to the Focal Point) -->
+  <g transform="translate(480, 245)" filter="url(#swdShadow)">
+    <rect width="265" height="105" rx="10" fill="#1c1917" stroke="#f59e0b" stroke-width="1.8"/>
+    <!-- Connecting pointer line -->
+    <path d="M 235 0 L 269 -44" fill="none" stroke="#f59e0b" stroke-width="1.8"/>
+    <circle cx="269" cy="-44" r="3" fill="#fbbf24"/>
+
+    <text x="16" y="24" font-size="12.5" font-weight="800" fill="#fbbf24" letter-spacing="1">★ BREAK-EVEN: 20.1 YEARS</text>
+    <text x="16" y="45" font-size="12" font-weight="700" fill="#f8fafc">241 Months · 3,617 GPU-Hours</text>
+    <text x="16" y="65" font-size="11" fill="#fed7aa" font-family="monospace">$1,700 ÷ (15 hrs/mo × $0.47) = 241 mo</text>
+    <text x="16" y="85" font-size="10.5" fill="#94a3b8">At $7.05/mo, a custom rig takes over two decades to amortize.</text>
+  </g>
+
+  <!-- Bottom Callout Footer Cards (Correctly separated, no overlap!) -->
+  <g transform="translate(60, 545)">
+    <!-- Left Card: Actual Project Spend -->
+    <rect x="0" y="0" width="460" height="85" rx="8" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="24" font-size="11" font-weight="700" fill="#38bdf8" letter-spacing="1">ACTUAL PROJECT SPEND TO DATE</text>
+    <text x="20" y="48" font-size="18" font-weight="800" fill="#f8fafc">&lt; $0.62 Total <tspan font-size="12" font-weight="500" fill="#94a3b8">($0.165 active compute · 21 mins)</tspan></text>
+    <text x="20" y="68" font-size="11" fill="#64748b">Remaining ~$0.45 covered container setup and idle configuration.</text>
+
+    <!-- Right Card: Strategic Insight (Shifted to x=480, text at x=500) -->
+    <rect x="480" y="0" width="600" height="85" rx="8" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+    <text x="500" y="24" font-size="11" font-weight="700" fill="#fbbf24" letter-spacing="1">TAKEAWAY: THE HARDWARE BUYING FALLACY</text>
+    <text x="500" y="47" font-size="13" font-weight="600" fill="#f1f5f9">Buying hardware only makes economic sense for data sovereignty.</text>
+    <text x="500" y="68" font-size="11" fill="#94a3b8">Claiming a $1,700 desktop "saves money" ignores real-world side-project utilization.</text>
+  </g>
+</svg>

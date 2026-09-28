@@ -69,6 +69,10 @@ const customRenderer = {
   },
   paragraph(token) {
     const text = this.parser.parseInline(token.tokens || []);
+    const trimmed = text.trim();
+    if (trimmed.startsWith("<figure") || trimmed.startsWith("<div")) {
+      return text;
+    }
     return `<p class="text-slate-300 leading-relaxed my-5 text-base sm:text-lg">${text}</p>`;
   },
   blockquote(token) {

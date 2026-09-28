@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" style="background:#090d16; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <radialGradient id="bgGlow1" cx="25%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#090d16" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bgGlow2" cx="75%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#083344" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#090d16" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background Glows -->
+  <rect width="1200" height="675" fill="#090d16"/>
+  <rect width="1200" height="675" fill="url(#bgGlow1)"/>
+  <rect width="1200" height="675" fill="url(#bgGlow2)"/>
+
+  <!-- Top Title Header -->
+  <g transform="translate(60, 42)">
+    <rect x="0" y="0" width="220" height="24" rx="4" fill="#134e4a" stroke="#2dd4bf" stroke-width="0.8"/>
+    <text x="12" y="16" font-size="11" font-weight="700" fill="#2dd4bf" letter-spacing="1.5">HARDWARE MECHANISM</text>
+    <text x="0" y="54" font-size="26" font-weight="800" fill="#f8fafc" letter-spacing="-0.5">VRAM Placement &amp; The PCIe Bus Bottleneck</text>
+    <text x="0" y="78" font-size="14" fill="#94a3b8">Why an 8B model balloons from seconds to minutes when consumer VRAM runs out</text>
+  </g>
+
+  <!-- Left Card: Local Laptop (GTX 1060 6GB) -->
+  <g transform="translate(60, 142)" filter="url(#cardShadow)">
+    <rect width="525" height="430" rx="14" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+    
+    <!-- Header Chip & Title -->
+    <rect x="24" y="24" width="112" height="22" rx="4" fill="#3b0764"/>
+    <text x="32" y="39" font-size="10" font-weight="700" fill="#d8b4fe" letter-spacing="1">LOCAL HARDWARE</text>
+    <text x="24" y="72" font-size="19" font-weight="700" fill="#f1f5f9">Dell G7 7588 Laptop (Local)</text>
+    <text x="24" y="93" font-size="13" fill="#94a3b8">GTX 1060 Max-Q 6GB (~5GB Usable) + 32GB DDR4 System RAM</text>
+
+    <!-- Sub-Box 1: On-Card VRAM -->
+    <g transform="translate(24, 115)">
+      <rect width="477" height="74" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="16" y="24" font-size="13" font-weight="600" fill="#cbd5e1">On-Card VRAM (GDDR5 ~192 GB/s)</text>
+      <!-- Bar Container -->
+      <rect x="16" y="34" width="445" height="26" rx="4" fill="#1e293b"/>
+      <!-- Filled Portion (76% = 338px) -->
+      <rect x="16" y="34" width="338" height="26" rx="4" fill="url(#tealGrad)"/>
+      <text x="28" y="51" font-size="11" font-weight="700" fill="#f0fdfa">3.8 GB Model Weights Resident (76%)</text>
+      <text x="364" y="51" font-size="10" font-weight="600" fill="#64748b">1.2 GB Margin</text>
+    </g>
+
+    <!-- Middle Connector: The Bottleneck Spillover Arrow -->
+    <g transform="translate(24, 198)">
+      <rect width="477" height="44" rx="6" fill="#451a03" stroke="#f59e0b" stroke-width="1.2"/>
+      <text x="16" y="20" font-size="12" font-weight="700" fill="#fbbf24">⚠ PCIe 3.0 x8 Interconnect (~7.8 GB/s)</text>
+      <text x="16" y="35" font-size="10.5" fill="#fde68a">25× Bandwidth Drop · Every token generated must traverse this bus to read KV-cache</text>
+      <path d="M 445 14 L 452 22 L 459 14" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 445 24 L 452 32 L 459 24" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Sub-Box 2: System RAM Spill -->
+    <g transform="translate(24, 251)">
+      <rect width="477" height="74" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="16" y="24" font-size="13" font-weight="600" fill="#cbd5e1">Host System RAM (32GB DDR4 ~25 GB/s)</text>
+      <rect x="16" y="34" width="445" height="26" rx="4" fill="#1e293b"/>
+      <rect x="16" y="34" width="107" height="26" rx="4" fill="url(#amberGrad)"/>
+      <text x="132" y="51" font-size="11" font-weight="700" fill="#fbbf24">1.2 GB Weights + 8k KV-Cache (24% Spillover)</text>
+    </g>
+
+    <!-- Bottom Latency Warning Box -->
+    <g transform="translate(24, 337)">
+      <rect width="477" height="70" rx="8" fill="#1c1917" stroke="#b45309" stroke-width="1"/>
+      <text x="16" y="22" font-size="11" font-weight="700" fill="#f59e0b" letter-spacing="1">THE LATENCY PENALTY</text>
+      <text x="16" y="42" font-size="13" font-weight="600" fill="#f3f4f6">Warm single sentence: 1.6s · Real 12k-char page: ~589s (9.8 min)</text>
+      <text x="16" y="60" font-size="11" fill="#a8a29e">8-page run: 4,709.64s (~78.5 min). A latency penalty, not capability failure.</text>
+    </g>
+  </g>
+
+  <!-- Right Card: Rented Cloud 4090 -->
+  <g transform="translate(615, 142)" filter="url(#cardShadow)">
+    <rect width="525" height="430" rx="14" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+    
+    <!-- Header Chip & Title -->
+    <rect x="24" y="24" width="92" height="22" rx="4" fill="#064e3b"/>
+    <text x="32" y="39" font-size="10" font-weight="700" fill="#6ee7b7" letter-spacing="1">CLOUD GPU</text>
+    <text x="24" y="72" font-size="19" font-weight="700" fill="#f1f5f9">Rented Cloud GPU (Vast.ai / RunPod)</text>
+    <text x="24" y="93" font-size="13" fill="#94a3b8">NVIDIA GeForce RTX 4090 24GB GDDR6X · Zero Host Offload</text>
+
+    <!-- Sub-Box 1: Dedicated VRAM Allocation -->
+    <g transform="translate(24, 115)">
+      <rect width="477" height="125" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="16" y="24" font-size="13" font-weight="600" fill="#cbd5e1">Dedicated VRAM (GDDR6X ~1,008 GB/s — 5× faster than GDDR5)</text>
+      
+      <!-- Bar 1: Llama 3.1 8B -->
+      <text x="16" y="47" font-size="11" font-weight="500" fill="#94a3b8">Llama 3.1 8B (16k context window):</text>
+      <rect x="16" y="53" width="445" height="20" rx="4" fill="#1e293b"/>
+      <rect x="16" y="53" width="130" height="20" rx="4" fill="url(#emeraldGrad)"/>
+      <text x="156" y="68" font-size="11" font-weight="700" fill="#34d399">7.0 GB (100% on GPU · 0% Spill)</text>
+      
+      <!-- Bar 2: Qwen 2.5 14B -->
+      <text x="16" y="91" font-size="11" font-weight="500" fill="#94a3b8">Qwen 2.5 14B (16k context window):</text>
+      <rect x="16" y="97" width="445" height="20" rx="4" fill="#1e293b"/>
+      <rect x="16" y="97" width="222" height="20" rx="4" fill="url(#cyanGrad)"/>
+      <text x="248" y="112" font-size="11" font-weight="700" fill="#38bdf8">12.0 GB (100% on GPU · 12.0 GB Free)</text>
+    </g>
+
+    <!-- Sub-Box 2: Zero Bottleneck Indicator -->
+    <g transform="translate(24, 251)">
+      <rect width="477" height="44" rx="6" fill="#042f2e" stroke="#14b8a6" stroke-width="1.2"/>
+      <text x="16" y="20" font-size="12" font-weight="700" fill="#2dd4bf">✓ ZERO PCIE BUS OFF-LOAD</text>
+      <text x="16" y="35" font-size="10.5" fill="#99f6e4">All model parameters &amp; entire 16,384-token KV cache remain in GDDR6X</text>
+      <circle cx="452" cy="22" r="11" fill="#0f766e"/>
+      <path d="M 446 22 L 450 26 L 458 18" fill="none" stroke="#f0fdfa" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Bottom Speed Benefit Box -->
+    <g transform="translate(24, 307)">
+      <rect width="477" height="100" rx="8" fill="#082f49" stroke="#0284c7" stroke-width="1"/>
+      <text x="16" y="22" font-size="11" font-weight="700" fill="#38bdf8" letter-spacing="1">THE SPEED BENEFIT</text>
+      <text x="16" y="44" font-size="13" font-weight="600" fill="#f0f9ff">Cloud 8-page run finished in 534.80s (~8.9 min) vs 4,709.64s locally</text>
+      <text x="16" y="64" font-size="11" fill="#7dd3fc">* Mandatory Caveat: Runs differ in extractor (v2/16k vs v3/8k) with opposing confounds.</text>
+      <text x="16" y="80" font-size="11" fill="#94a3b8">The qualitative regime change (minutes vs seconds per page) is the real finding.</text>
+    </g>
+  </g>
+
+  <!-- Bottom Global Takeaway Banner (2 Lines, clean margins) -->
+  <g transform="translate(60, 588)">
+    <rect width="1080" height="54" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="24" font-size="12" font-weight="700" fill="#38bdf8">Mechanism Summary:</text>
+    <text x="160" y="24" font-size="12" fill="#cbd5e1">The slowdown is driven by memory bus physics rather than raw compute FLOPS.</text>
+    <text x="20" y="42" font-size="11.5" fill="#94a3b8">Once the KV cache exceeds on-card VRAM, every autoregressive token forces PCIe host memory transfers, ballooning runtime from seconds to minutes.</text>
+  </g>
+</svg>
