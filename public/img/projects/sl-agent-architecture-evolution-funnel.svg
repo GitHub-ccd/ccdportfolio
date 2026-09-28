@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" style="background:#090d16; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <radialGradient id="scrapingGlow" cx="25%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#450a0a" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#090d16" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="funnelGlow" cx="75%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#090d16" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="redBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="emeraldBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="#090d16"/>
+  <rect width="1200" height="675" fill="url(#scrapingGlow)"/>
+  <rect width="1200" height="675" fill="url(#funnelGlow)"/>
+
+  <!-- Top Title Header -->
+  <g transform="translate(60, 38)">
+    <rect x="0" y="0" width="220" height="24" rx="4" fill="#1e1b4b" stroke="#6366f1" stroke-width="0.8"/>
+    <text x="12" y="16" font-size="11" font-weight="700" fill="#a5b4fc" letter-spacing="1.5">PIVOT ARCHITECTURE</text>
+    <text x="0" y="52" font-size="25" font-weight="800" fill="#f8fafc" letter-spacing="-0.5">Architectural Evolution: Scraping Trap vs. Inverted Funnel</text>
+    <text x="0" y="74" font-size="13.5" fill="#94a3b8">Replacing noisy 22%-yield open web crawling with deterministic place_id identity anchoring</text>
+  </g>
+
+  <!-- Left Panel: Original Approach (The Scraping Trap) -->
+  <g transform="translate(60, 130)" filter="url(#cardShadow)">
+    <rect width="525" height="440" rx="14" fill="#111827" stroke="#b91c1c" stroke-width="1.5"/>
+    
+    <!-- Chip & Title -->
+    <rect x="24" y="20" width="160" height="22" rx="4" fill="#450a0a"/>
+    <text x="32" y="35" font-size="10.5" font-weight="700" fill="#f87171" letter-spacing="1">ORIGINAL APPROACH</text>
+    <text x="24" y="66" font-size="18" font-weight="700" fill="#f87171">The Open Scraping Pipeline (22% Yield)</text>
+    <text x="24" y="86" font-size="12" fill="#94a3b8">Unseeded web search → HTTP fetch → extraction (Milestones 2–4)</text>
+
+    <!-- Flow Steps -->
+    <g transform="translate(24, 105)">
+      <!-- Step 1: Search -->
+      <rect width="477" height="42" rx="6" fill="#1c1917" stroke="#374151"/>
+      <text x="14" y="26" font-size="12" font-weight="600" fill="#e2e8f0">5 Tavily Search Queries → 40 Discovered URLs</text>
+      <text x="375" y="26" font-size="11" fill="#94a3b8">36 Unique</text>
+
+      <!-- Step 2: The Block Wall Breakdown -->
+      <g transform="translate(0, 52)">
+        <rect width="477" height="152" rx="8" fill="#1e1315" stroke="#7f1d1d" stroke-width="1"/>
+        <text x="14" y="22" font-size="11" font-weight="700" fill="#fca5a5" letter-spacing="1">THE DATA WALL COLLAPSE (28 DROPPED / 36)</text>
+        
+        <text x="14" y="44" font-size="12" fill="#fecaca">• 8 TripAdvisor Pages</text>
+        <text x="220" y="44" font-size="12" font-weight="700" fill="#ef4444">→ HTTP 403 (Cloudflare WAF Block)</text>
+
+        <text x="14" y="68" font-size="12" fill="#fecaca">• 9 Social Links (FB / IG)</text>
+        <text x="220" y="68" font-size="12" font-weight="700" fill="#f97316">→ Authentication Wall (Login Gate)</text>
+
+        <text x="14" y="92" font-size="12" fill="#fecaca">• 10 Aggregator / Error Sites</text>
+        <text x="220" y="92" font-size="12" fill="#ef4444">→ 403 / 404 / SSL Handshake Error</text>
+
+        <text x="14" y="116" font-size="12" fill="#fecaca">• 1 Modern Travel Blog</text>
+        <text x="220" y="116" font-size="12" fill="#fbbf24">→ HTTP 200 (Empty JS Shell · 0 chars)</text>
+
+        <line x1="14" y1="128" x2="463" y2="128" stroke="#7f1d1d" stroke-width="1"/>
+        <text x="14" y="144" font-size="12" font-weight="700" fill="#34d399">• Only 8 Travel Blogs Survived</text>
+        <text x="220" y="144" font-size="12" font-weight="800" fill="#34d399">→ 22.2% Yield (105k chars prose)</text>
+      </g>
+
+      <!-- Step 3: Consequence -->
+      <g transform="translate(0, 216)">
+        <rect width="477" height="98" rx="8" fill="#1f1816" stroke="#b45309" stroke-width="1"/>
+        <text x="14" y="22" font-size="11" font-weight="700" fill="#fbbf24" letter-spacing="1">THE DOWNSTREAM DEFECT</text>
+        <text x="14" y="44" font-size="12.5" font-weight="600" fill="#fef3c7">No canonical entity IDs. Lodging names extracted as fuzzy strings.</text>
+        <text x="14" y="64" font-size="11.5" fill="#fed7aa">"Heritance Tea Factory" vs "Tea Factory Hotel" created an intractable</text>
+        <text x="14" y="82" font-size="11.5" fill="#fca5a5">de-duplication nightmare across unseeded web documents.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right Panel: Post-Pivot Inverted Funnel -->
+  <g transform="translate(615, 130)" filter="url(#cardShadow)">
+    <rect width="525" height="440" rx="14" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+    
+    <!-- Chip & Title -->
+    <rect x="24" y="20" width="160" height="22" rx="4" fill="#064e3b"/>
+    <text x="32" y="35" font-size="10.5" font-weight="700" fill="#34d399" letter-spacing="1">POST-PIVOT ARCHITECTURE</text>
+    <text x="24" y="66" font-size="18" font-weight="700" fill="#34d399">The Inverted Places Funnel (High Precision)</text>
+    <text x="24" y="86" font-size="12" fill="#94a3b8">Enumerate wide and free → filter → enrich survivors (Milestone 5)</text>
+
+    <!-- Funnel Stages -->
+    <g transform="translate(24, 105)">
+      <!-- Stage 1: Enumerate ($0 SKU) -->
+      <rect width="477" height="60" rx="8" fill="#042f2e" stroke="#10b981" stroke-width="1.2"/>
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#34d399">STAGE 1: GEOGRAPHIC GRID ENUMERATION ($0 SKU)</text>
+      <text x="14" y="44" font-size="12" fill="#e2e8f0">Google Places API (Text Search New) · Field mask: <tspan fill="#facc15" font-family="monospace">places.id ONLY</tspan></text>
+      <text x="380" y="44" font-size="11" font-weight="700" fill="#a7f3d0">FREE TIER</text>
+
+      <!-- Stage 2: Canonical Anchor -->
+      <g transform="translate(0, 68)">
+        <rect width="477" height="50" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+        <text x="14" y="22" font-size="12" font-weight="700" fill="#38bdf8">CANONICAL ANCHOR: place_id PRIMARY KEY</text>
+        <text x="14" y="38" font-size="11" fill="#94a3b8">Globally unique Google ID eliminates entity de-duplication permanently.</text>
+      </g>
+
+      <!-- Stage 3: Low-Cost Filtering -->
+      <g transform="translate(0, 126)">
+        <rect width="477" height="48" rx="8" fill="#0f172a" stroke="#334155"/>
+        <text x="14" y="20" font-size="11.5" font-weight="600" fill="#cbd5e1">STAGE 2 &amp; 3: FILTER BY OPERATING STATUS &amp; RATINGS</text>
+        <text x="14" y="36" font-size="11" fill="#94a3b8">Drop permanently closed places; filter to family-relevant categories.</text>
+      </g>
+
+      <!-- Stage 4: Sanctioned Deep APIs -->
+      <g transform="translate(0, 182)">
+        <rect width="477" height="52" rx="8" fill="#0f172a" stroke="#334155"/>
+        <text x="14" y="20" font-size="11.5" font-weight="600" fill="#cbd5e1">STAGE 4: ENRICH SURVIVORS VIA SANCTIONED APIS</text>
+        <text x="14" y="38" font-size="11" fill="#94a3b8">SerpApi for hotel room rates · TripAdvisor Content API for 5 reviews/photos.</text>
+      </g>
+
+      <!-- Stage 5: Targeted LLM Extraction -->
+      <g transform="translate(0, 242)">
+        <rect width="477" height="72" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.2"/>
+        <text x="14" y="22" font-size="12" font-weight="700" fill="#34d399">STAGE 5: TARGETED LLM EXTRACTION (Post 2 Extractor)</text>
+        <text x="14" y="42" font-size="12" fill="#f0fdf4">Run extract_v3 ONLY on verified high-priority candidate pages.</text>
+        <text x="14" y="60" font-size="11" fill="#a7f3d0">31% more facts · 0 entity errors · &lt; 50 pages total instead of scraping thousands.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Global Banner -->
+  <g transform="translate(60, 588)">
+    <rect width="1080" height="52" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="23" font-size="12" font-weight="700" fill="#38bdf8">The Strategic Shift:</text>
+    <text x="160" y="23" font-size="12" fill="#cbd5e1">Deleted 2,085 lines of brittle web scraping code (commit 76210cb).</text>
+    <text x="20" y="41" font-size="11.5" fill="#94a3b8">Instead of scraping unstructured text to discover identity, anchor on a free canonical ID first, then enrich only surviving candidates.</text>
+  </g>
+</svg>

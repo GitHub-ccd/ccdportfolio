@@ -1,5 +1,5 @@
 ---
-title: "The 62-Cent Agent: Friction, Not Compute, Is What a Personal AI Project Actually Costs"
+title: "Part 1: The 62-Cent Agent: Friction, Not Compute, Is What a Personal AI Project Actually Costs"
 date: "2026-09-27" # Publication date (YYYY-MM-DD)
 summary: "A full cloud run of a personal AI agent cost under 62 cents — and only 17 of them were compute. Why friction, fragility, and setup, not price, are the real cost of building small agents on local and rented GPUs."
 tags: ["Agentic AI", "Local LLMs", "Cloud GPUs", "MLOps"] # Category/Topic filter pills
@@ -7,7 +7,7 @@ coverImage: "/img/projects/sl-agent-62-cent-agent.png" # Widescreen cover image 
 author: "Chamila Dharmawardhana, Ph.D."
 ---
 
-# The 62-Cent Agent: Friction, Not Compute, Is What a Personal AI Project Actually Costs
+# Part 1: The 62-Cent Agent: Friction, Not Compute, Is What a Personal AI Project Actually Costs
 
 *A full cloud run of my agent cost under 62 cents. The GPU compute inside it was $0.165. Everything else — setup, fumbling, a leaked key, price drift, idle time — was the other ~70%. On a personal agentic project in 2026, the money was never the constraint. The friction was.*
 
@@ -103,7 +103,7 @@ The catch is scale. At 589 seconds per page:
 
 Eight pages overnight is real. A thousand pages is a week of a machine you also need for everything else — and the direction this project eventually pivots, toward enumerating an entire region's worth of candidates, needs orders of magnitude more coverage than eight blog posts. **That's the exact point where "it finished" stops being a good enough answer.**
 
-And the real wall was never the GPU. It's the data, the metered APIs, and the subscriptions you already pay for and still can't call from code — which is the next post.
+And the real wall was never the GPU. In [Post 2: The Smallest Honest Model](/blog/sl-agent_post-02), we look at model evaluation and hallucination — why a naive metric crowned the wrong model, and why an 8B beat a 14B. And in [Post 3: The AI I Already Pay For Can't Be Called From Code](/blog/sl-agent_post-03), we hit the hardest wall of all: the data, the metered APIs, and the subscriptions you already pay for and still can't call from code.
 
 ---
 
@@ -116,111 +116,4 @@ And the real wall was never the GPU. It's the data, the metered APIs, and the su
 [^5]: **Desktop Build Component Estimates**: Sourced from PCPartPicker and secondary GPU marketplaces (eBay, r/hardwareswap) for a dedicated 24GB AI inference workstation: used RTX 3090 24GB (~$850–$950), AMD Ryzen 5 7600 (~$200), B650 motherboard (~$160), 64 GB DDR5-6000 RAM (~$170), 2 TB NVMe PCIe 4.0 SSD (~$130), 850W 80+ Gold PSU (~$120), case and dual-tower cooler (~$130); total ~$1,615–$1,765 ($1,700 typical). See [PCPartPicker System Builder](https://pcpartpicker.com/).
 [^6]: **Thunderbolt 3 PCIe Bandwidth Constraints**: Thunderbolt 3 provides 40 Gbps theoretical PHY bandwidth, but its controller caps data tunneling at PCIe 3.0 x4 (32 Gbps gross, yielding ~2.5–2.75 GB/s net throughput after packet overhead), compared to 15.75 GB/s on native desktop PCIe 3.0 x16 or 31.5 GB/s on PCIe 4.0 x16. While in-VRAM token inference is unimpeded once resident, model loading and CPU-offload memory traffic over a 2.5 GB/s link incur significant bus latency. See [Intel Thunderbolt 3 Technology Brief](https://www.intel.com/content/www/us/en/architecture-and-technology/thunderbolt/thunderbolt-3-technology-brief.html) and [PCI-SIG PCIe Base Specifications](https://pcisig.com/specifications).
 
----
 
-## Appendix — Claims & Sources Ledger
-
-Every factual claim in the draft, with its pack provenance tag, source file(s), and whether it still needs an external source before publication.
-
-**Tag key:** `[MEASURED]` / `[LOGGED]` / `[DOCUMENTED]` = stated as fact. `[INFERENCE]` = reasoning, math shown. `[EXTERNAL-CLAIM]` = about the outside world, verified and cited via footnotes `[^1]`–`[^6]`.
-
-**Scope note (per author):** the developer's own first-hand experience is `[DOCUMENTED — developer confirmation]`, not an external claim. That covers the $0.47/hr paid, the $0.37→$0.47 price jump observed, the Vast.ai UI friction, the `llama3.1:14b` pull error, the $2,000 reserved budget, and the 15 GPU-hrs/month estimate. Citations (`[^1]`–`[^6]`) are provided for claims about the outside world (RunPod policy/prices, desktop component prices, TB3/eGPU reasoning, Ollama default behavior).
-
----
-
-### Setup / innocence
-
-| # | Claim | Tag | Source file(s) | External source needed? |
-|---|---|---|---|---|
-| 1 | Full cloud run billed under $0.62 total; $0.165 was active compute | DOCUMENTED (logged total, not itemized) + INFERENCE (compute) | sl-agent_09, sl-agent_13 | No — but $0.62 is a logged figure, **not** an audited invoice; itemized breakdown is a known GAP, do not fill |
-| 2 | Test case: agent reading travel blogs for amenities (a family trip abroad) | DOCUMENTED | sl-agent_01, sl-agent_08 | No |
-| 3 | Stack: Python 3.12, LangGraph, LangChain, SQLite (WAL), Trafilatura, Ollama | DOCUMENTED | sl-agent_01, sl-agent_02 | No |
-| 4 | Hardware: Dell G7 7588, Intel i9, 32 GB RAM, GTX 1060 6 GB VRAM (~5 usable) | DOCUMENTED (developer confirmation) | sl-agent_03, sl-agent_13 | No |
-| 5 | Warm single-sentence smoke: `llama3.1:8b` ~1.62 s, `qwen3` ~1.90 s | MEASURED | sl-agent_02, sl-agent_03 | No |
-| 6 | The 1.9 s warm figure is explicitly not representative of real extraction | DOCUMENTED | sl-agent_03 | No |
-
-### Hardware wall
-
-| # | Claim | Tag | Source file(s) | External source needed? |
-|---|---|---|---|---|
-| 7 | Extraction chunks were 12,000 characters | DOCUMENTED | sl-agent_01, sl-agent_03 (`config.yaml` per pack) | No |
-| 8 | `llama3.1:8b`: 83% GPU / 17% CPU, 5.6 GB allocated | MEASURED | sl-agent_02, sl-agent_03 | No |
-| 9 | `phi4`: 55% spilled to CPU; demoted to tiebreaker | MEASURED / DOCUMENTED | sl-agent_02, sl-agent_03 | No |
-| 10 | Ollama's default context window silently truncates input past its limit | EXTERNAL-CLAIM | sl-agent_03 | **Sourced** — see Footnote [^1] (Ollama `num_ctx` default truncation behavior) |
-| 11 | `num_ctx` set explicitly: 8,192 local / 16,384 remote | DOCUMENTED | sl-agent_03, sl-agent_05 | No |
-| 12 | Local run (`extract_v3`, `num_ctx` 8,192): 4,709.64 s (~78.5 min), ~589 s/page | MEASURED | sl-agent_02, sl-agent_03, sl-agent_04 | No |
-| 13 | Remote run (`extract_v2`, `num_ctx` 16,384): 534.80 s | MEASURED | sl-agent_02, sl-agent_04, sl-agent_05 | No |
-| 14 | 8.8× ratio (4,709.64 / 534.80 = 8.81) | INFERENCE | sl-agent_01, sl-agent_03 | No — **must carry the caveat: runs differ in extractor version and `num_ctx`; confounds push in opposite directions; net direction unknown; not a clean hardware ratio** |
-| 15 | `extract_v3` generated 154 obs / 102 verified-kept vs `extract_v2` 140 / 78 | MEASURED | sl-agent_04 | No |
-
-### Renting a GPU
-
-| # | Claim | Tag | Source file(s) | External source needed? |
-|---|---|---|---|---|
-| 16 | RunPod Community 4090 target ~$0.34/hr | EXTERNAL-CLAIM | sl-agent_05, sl-agent_09 | **Sourced** — see Footnote [^2] (RunPod pricing page) |
-| 17 | RunPod Community host onboarding closed (early 2026) | EXTERNAL-CLAIM | sl-agent_02, sl-agent_05, sl-agent_13 | **Sourced** — see Footnote [^3] (RunPod host documentation) |
-| 18 | RunPod Secure 4090 ~$0.74/hr | EXTERNAL-CLAIM | sl-agent_05, sl-agent_09 | **Sourced** — see Footnote [^4] (RunPod Secure pricing) |
-| 19 | Coding agent printed the API key 6× and wrote it into 4 config files (guardrail failure) | DOCUMENTED (developer confirmation) | sl-agent_02, sl-agent_05, sl-agent_13, sl-agent_14 | No |
-| 20 | Developer check: 2 of 4 paths don't exist; the 2 that exist have no RunPod entries; key rotated; copies persist only in the agent's session logs | DOCUMENTED (developer check) | sl-agent_09, sl-agent_13, sl-agent_14 | No — use developer-check wording only; never "reverted/wiped"; no paths, key value, or file contents |
-| 21 | Switched to Vast.ai | DOCUMENTED (developer) | sl-agent_05 | No |
-| 22 | Vast.ai listing drifted $0.37 → $0.47/hr before checkout | DOCUMENTED (developer, first-hand) | sl-agent_05, sl-agent_09 | No |
-| 23 | Vast.ai search UI friction | DOCUMENTED (developer, first-hand) | sl-agent_05 | No |
-| 24 | `llama3.1:14b` pull errored; `qwen2.5:14b` substituted | DOCUMENTED (developer, first-hand) | sl-agent_02, sl-agent_05 | No |
-
-### The clean win
-
-| # | Claim | Tag | Source file(s) | External source needed? |
-|---|---|---|---|---|
-| 25 | `get_chat_model()` abstraction; swap to `base_url: localhost:11435` via SSH tunnel to remote `:11434`; zero pipeline code changes | DOCUMENTED | sl-agent_05, sl-agent_10, sl-agent_11 | No |
-| 26 | Remote `ollama ps`: `llama3.1:8b` 7.0 GB, `qwen2.5:14b` 12.0 GB, 100% GPU at `num_ctx` 16,384 | MEASURED | sl-agent_05, sl-agent_11 | No |
-
-### Friction over dollars
-
-| # | Claim | Tag | Source file(s) | External source needed? |
-|---|---|---|---|---|
-| 27 | Active compute = 534.80 + 733.29 = 1,268.09 s (~21 min) | MEASURED | sl-agent_04, sl-agent_05, sl-agent_09, sl-agent_10 | No |
-| 28 | Rate paid: $0.47/hr | DOCUMENTED (developer) | sl-agent_09 | No |
-| 29 | Active compute cost = (1,268.09 / 3,600) × $0.47 = $0.165 | INFERENCE (formula shown) | sl-agent_09, sl-agent_10, sl-agent_13 | No |
-| 30 | Total session under $0.62 (logged, not itemized) | DOCUMENTED (developer) + GAP (itemization) | sl-agent_09, sl-agent_13 | No — itemized breakdown is a GAP, do not fill |
-| 31 | ~$0.45 / ~70% of the session was non-compute | INFERENCE | sl-agent_09, sl-agent_10 | No |
-
-### Build vs. rent
-
-| # | Claim | Tag | Source file(s) | External source needed? |
-|---|---|---|---|---|
-| 32 | $2,000 reserved budget | DOCUMENTED (developer) | sl-agent_06, sl-agent_09 | No |
-| 33 | Desktop build ~$1,700 (used RTX 3090, etc.; pack range $1,615–1,765) | EXTERNAL-CLAIM (component prices) | sl-agent_06, sl-agent_09 | **Sourced** — see Footnote [^5] (PCPartPicker / market estimates) |
-| 34 | ~15 GPU-hrs/month steady-state usage | DOCUMENTED (developer estimate) | sl-agent_06, sl-agent_09 | No |
-| 35 | 15 × $0.47 = $7.05/month | INFERENCE | sl-agent_06, sl-agent_09 | No |
-| 36 | $1,700 / $7.05 = 241 months ≈ 20.1 years break-even | INFERENCE (formula shown) | sl-agent_01, sl-agent_06, sl-agent_09 | No |
-| 37 | eGPU rejected; Thunderbolt 3 ~2.5 GB/s bottleneck | EXTERNAL-CLAIM | sl-agent_06 | **Sourced** — see Footnote [^6] (Intel TB3 specs / PCIe 3.0 x4) |
-| 38 | Buying justified only for data sovereignty, not cost | INFERENCE | sl-agent_06, sl-agent_09 | No |
-
-### What "it finished" is worth
-
-| # | Claim | Tag | Source file(s) | External source needed? |
-|---|---|---|---|---|
-| 39 | `extract_v3` run exited cleanly (exit code 0) | LOGGED | sl-agent_04, sl-agent_10 | No |
-| 40 | 154 observations generated, 102 verified facts kept (33.8% drop) | MEASURED | sl-agent_04, sl-agent_10 | No |
-| 41 | Zero entity-misattribution errors | MEASURED | sl-agent_04, sl-agent_10 | No |
-| 42 | The penalty was latency, not capability | INFERENCE | sl-agent_10 | No |
-| 43 | ~589 s/page → ~164 hours for 1,000 pages (589 × 1,000 / 3,600) | INFERENCE (formula shown) | sl-agent_03, sl-agent_04 | No |
-| 44 | The project's later pivot needs orders-of-magnitude more coverage than 8 pages | INFERENCE / DOCUMENTED | sl-agent_08 | No |
-
----
-
-### Summary
-
-- **Total claims:** 44
-- **External claims verified & sourced (`[^1]`–`[^6]`):** 6 — rows 10, 16, 17, 18, 33, 37 (all 6 now fully sourced)
-- **Remaining unsourced claims:** 0
-- **Depend on a logged-but-not-itemized figure (handle with care, do not present as audited):** rows 1, 30
-- **Carry a mandatory caveat that must never be dropped:** row 14 (the 8.8× comparison)
-
-#### The three mandatory checks, as resolved in this draft
-1. **8.8× is not a clean comparison** (row 14). Local `extract_v3`/8,192 vs remote `extract_v2`/16,384; confounds run in opposite directions; net bias direction stated as unknown.
-2. **<$0.62 is a logged session total, not an itemized invoice** (rows 1, 30). Draft says so explicitly; $0.165 is the hard compute number.
-3. **RunPod config files: developer-check wording only** (row 20). No "reverted/wiped"; no paths, key value, or file contents.
-
-#### Needs from source pack
-None — every claim used in Post 1 is supported by the pack, and the `num_ctx` confound is fully documented, so mandatory check #1 resolves from the pack itself.

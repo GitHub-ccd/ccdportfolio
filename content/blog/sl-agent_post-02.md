@@ -1,5 +1,5 @@
 ---
-title: "The Smallest Honest Model: Why an 8B Beat a 14B by Knowing When to Say Null"
+title: "Part 2: The Smallest Honest Model: Why an 8B Beat a 14B by Knowing When to Say Null"
 date: "2026-09-27" # Publication date (YYYY-MM-DD)
 summary: "A naive metric said my smallest model was winning. A deterministic check said it was the least trustworthy — real failure of 87%, not 20%. The fix for hallucination wasn't a bigger model; it was fifty lines of Python and a model humble enough to return null."
 tags: ["Agentic AI", "LLM Evaluation", "Hallucination", "Prompt Engineering"] # Category/Topic filter pills
@@ -7,7 +7,7 @@ coverImage: "/img/projects/sl-agent-honest-model.png" # Widescreen cover image p
 author: "Chamila Dharmawardhana, Ph.D."
 ---
 
-# The Smallest Honest Model: Why an 8B Beat a 14B by Knowing When to Say Null
+# Part 2: The Smallest Honest Model: Why an 8B Beat a 14B by Knowing When to Say Null
 
 *A naive metric told me my smallest, cheapest model was winning. A deterministic check told me it was the least trustworthy thing in the lineup — its real failure rate was 87%, not the comfortable 20% I'd been reading. The fix for the hallucination wasn't a bigger model. It was fifty lines of Python and a model humble enough to return `null`.*
 
@@ -125,7 +125,7 @@ Two lessons. First, **a naive evaluation metric is worse than no metric**, becau
 
 Second, **the durable fix for LLM hallucination here wasn't a bigger model — it was deterministic code guarding a humble one**. The 14B, with nearly twice the parameters, failed 72% of the time and invented owners freely. Fifty lines of Python and a model willing to say `null` beat it outright. Bigger didn't mean more truthful. Structure did.
 
-But a trustworthy extractor is only worth something if you can feed it pages to read. And getting the pages — past bot walls, metered APIs, and the AI subscriptions you already pay for and still can't call from code — turned out to be the hardest wall of all. That's the next post.
+But a trustworthy extractor is only worth something if you can feed it pages to read. And getting the pages — past bot walls, metered APIs, and the AI subscriptions you already pay for and still can't call from code — turned out to be the hardest wall of all. That's the next post: [Post 3 — The AI I Already Pay For Can't Be Called From Code](/blog/sl-agent_post-03).
 
 ---
 
@@ -139,84 +139,4 @@ But a trustworthy extractor is only worth something if you can feed it pages to 
 
 [^4]: **Selective Abstention and Epistemic Calibration in LLMs**: Calibrated models that output `null` or abstain under ambiguity routinely outperform nominally higher-parameter models on real-world downstream reliability. Larger models often suffer from overconfidence, filling schema slots with plausible fabrications when evidence is ambiguous. See Kadavath et al., *Language Models (Mostly) Know What They Know* (Anthropic, 2022); and Kuhn, Gal, & Farquhar, *Semantic Uncertainty: Predicting Language Model Hallucinations* (Nature, 2023).
 
----
 
-## Appendix — Claims & Sources Ledger
-
-Every factual claim in the post, with its pack provenance tag, source file(s), and verification status.
-
-**Tag key:** `[MEASURED]` / `[LOGGED]` / `[DOCUMENTED]` = stated as fact. `[INFERENCE]` = reasoning, math shown. `[EXTERNAL-CLAIM]` = about the outside world, verified and cited via footnotes `[^1]`–`[^4]`.
-
-**Scope note:** Post 2 rests entirely on internal, measured project evidence (bake-off numbers, database rows, code, prompt files) and methodological grounding on LLM evaluation.
-
-### Setup
-
-| # | Claim | Tag | Source file(s) | Verification status |
-|---|---|---|---|---|
-| 1 | Three-model bake-off: `llama3.2` (3B, local), `llama3.1:8b` (remote), `qwen2.5:14b` (remote) | LOGGED | [sl-agent_02](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_02_timeline.md), [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md) | Verified internal log (`PROGRESS.md` L131–135) |
-| 2 | Same 8 captures; `extract_v2`; `num_ctx` 16,384; `num_predict` 2,500 | LOGGED / DOCUMENTED | [sl-agent_02](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_02_timeline.md), [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_05](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_05_renting_gpus.md) | Verified internal log |
-| 3 | Task: extract structured amenity facts (a family trip abroad) | DOCUMENTED | [sl-agent_01](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_01_thesis_and_arc.md), [sl-agent_08](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_08_data_walls.md) | Verified internal design |
-| 4 | Naive scoring rule = quote exists verbatim on the page | DOCUMENTED | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md) | Verified internal code (`extract.py` v2 check) |
-
-### The naive result
-
-| # | Claim | Tag | Source file(s) | Verification status |
-|---|---|---|---|---|
-| 5 | Naive drop rates: 3B 19.6% (45/230), 14B 22.2% (41/185), 8B 25.7% (36/140) | MEASURED | [sl-agent_02](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_02_timeline.md), [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md) | Verified SQLite database records |
-| 6 | Naively the 3B kept the most / looked best; the 8B looked worst | MEASURED / INFERENCE | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md) | Verified bake-off data |
-
-### The prompt-leak defect
-
-| # | Claim | Tag | Source file(s) | Verification status |
-|---|---|---|---|---|
-| 7 | Prompt v2 included concrete example values ("available on request, free of charge"; "electric heaters provided in deluxe rooms") | DOCUMENTED | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_11](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_11_artifacts_and_excerpts.md) | Verified — see Footnote [^1], [^2] |
-| 8 | 3B and 14B copied those example strings and welded them to unrelated real page sentences | LOGGED / DOCUMENTED | [sl-agent_02](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_02_timeline.md), [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_11](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_11_artifacts_and_excerpts.md) | Verified test fixture (`test_extract.py` L92–111) |
-| 9 | The naive substring check passed them because the quote existed on the page though it didn't support the claim | DOCUMENTED | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md) | Verified pipeline behavior |
-
-### The fix
-
-| # | Claim | Tag | Source file(s) | Verification status |
-|---|---|---|---|---|
-| 10 | Prompt v3 stripped all concrete example values; rule made abstract | DOCUMENTED | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_11](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_11_artifacts_and_excerpts.md) | Verified prompt diff — see Footnote [^2] |
-| 11 | `check_evidence_support()` — 3-stage deterministic check: quote-on-page; entity tokens in quote; ≥50% value/quote overlap | DOCUMENTED | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_10](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_10_counter_evidence.md), [sl-agent_11](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_11_artifacts_and_excerpts.md) | Verified in [extract.py](file:///e:/My_GitHub__projects/vaccation_planning/discovery/discovery_agent/extract.py#L78-L131) — see Footnote [^3] |
-
-### Rescoring
-
-| # | Claim | Tag | Source file(s) | Verification status |
-|---|---|---|---|---|
-| 12 | Retrospective rescoring (v2 outputs under v3 rules): real drop 3B 87.4% (201/230), 14B 72.4% (134/185), 8B 44.3% (62/140) | MEASURED | [sl-agent_02](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_02_timeline.md), [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_11](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_11_artifacts_and_excerpts.md) | Verified SQLite rescore results |
-| 13 | Verified facts kept: 3B 29, 14B 51, 8B 78 | MEASURED | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_11](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_11_artifacts_and_excerpts.md) | Verified |
-| 14 | The 8B had the worst naive rate but the lowest real drop and the most kept | INFERENCE | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md) | Verified |
-| 15 | The rescoring is a re-run of existing outputs under stricter rules, not fresh runs | DOCUMENTED | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md) | Stated explicitly as an honest caveat |
-
-### Why the 8B won
-
-| # | Claim | Tag | Source file(s) | Verification status |
-|---|---|---|---|---|
-| 16 | 8B entity misattributions = 0; preferred `entity_name=null` when ambiguous | MEASURED | [sl-agent_02](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_02_timeline.md), [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_11](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_11_artifacts_and_excerpts.md) | Verified — see Footnote [^4] |
-| 17 | 14B had 60 entity mismatches | MEASURED | [sl-agent_02](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_02_timeline.md), [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md) | Verified |
-| 18 | Fresh 8B v3 run: 154 observations, 102 kept, 0 entity misattribution, 0 prompt-example leaks | MEASURED | [sl-agent_03](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_03_local_llm_on_a_laptop.md), [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_10](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_10_counter_evidence.md) | Verified (`PROGRESS.md` L155–166) |
-| 19 | +30.8% verified observations vs old prompt: `(102 − 78) / 78 ≈ 30.77%` | INFERENCE (formula shown) | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_10](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_10_counter_evidence.md) | Verified |
-
-### The caveat
-
-| # | Claim | Tag | Source file(s) | Verification status |
-|---|---|---|---|---|
-| 20 | The 14B was never re-run fresh under v3; only retrospectively rescored; cross-model v3 comparison is incomplete | DOCUMENTED | [sl-agent_02](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_02_timeline.md), [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md) | Mandatory caveat, stated prominently in draft |
-| 21 | The 8B was designated baseline (`extract_v3`, `min_value_evidence_overlap` 0.5) | DOCUMENTED | [sl-agent_02](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_02_timeline.md), [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md) | Verified (`config.yaml` L36) |
-| 22 | The rented GPU was torn down before the v3 check existed (session cost under $0.62) | DOCUMENTED | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_05](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_05_renting_gpus.md) | Handled with care: $0.62 is logged total, not itemized invoice |
-
-### The lesson / counter-evidence
-
-| # | Claim | Tag | Source file(s) | Verification status |
-|---|---|---|---|---|
-| 23 | Deterministic post-processing beat model size (larger 14B failed 72.4% of the time) | MEASURED / INFERENCE | [sl-agent_04](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_04_bakeoff_and_quality.md), [sl-agent_10](file:///e:/My_GitHub__projects/vaccation_planning/discovery/blog-source/sl-agent_10_counter_evidence.md) | Verified core finding |
-
----
-
-### Summary
-
-- **Total claims:** 23
-- **External / Methodological citations provided (`[^1]`–`[^4]`):** 4
-- **Mandatory caveat preserved:** row 20 (the 14B was never re-run fresh under v3; the comparison is incomplete)
-- **Logged-not-itemized figure handled with care:** row 22 (the <$0.62 session total)
